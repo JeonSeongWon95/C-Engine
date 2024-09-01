@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{2eeb11f6-684a-418d-a1fb-4851efffd75e}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)Actor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Entry.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)includeHeader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scene_Level.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Scene_LevelManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WLayer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WonApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WonEnum.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WonMath.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)Actor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Entry.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scene_Level.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Scene_LevelManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WonApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WonMath.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp" />
+  </ItemGroup>
+</Project>

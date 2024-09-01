@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WindowEditor", "WindowEditor.vcxproj", "{211D680F-661A-4FF5-8E26-03784A978198}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WonEngineSource", "..\WonEngineSource\WonEngineSource.vcxitems", "{2EEB11F6-684A-418D-A1FB-4851EFFFD75E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WonEngine", "..\WonEngine\WonEngine\WonEngine.vcxproj", "{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{211D680F-661A-4FF5-8E26-03784A978198}.Debug|x64.ActiveCfg = Debug|x64
+		{211D680F-661A-4FF5-8E26-03784A978198}.Debug|x64.Build.0 = Debug|x64
+		{211D680F-661A-4FF5-8E26-03784A978198}.Debug|x86.ActiveCfg = Debug|Win32
+		{211D680F-661A-4FF5-8E26-03784A978198}.Debug|x86.Build.0 = Debug|Win32
+		{211D680F-661A-4FF5-8E26-03784A978198}.Release|x64.ActiveCfg = Release|x64
+		{211D680F-661A-4FF5-8E26-03784A978198}.Release|x64.Build.0 = Release|x64
+		{211D680F-661A-4FF5-8E26-03784A978198}.Release|x86.ActiveCfg = Release|Win32
+		{211D680F-661A-4FF5-8E26-03784A978198}.Release|x86.Build.0 = Release|Win32
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Debug|x64.ActiveCfg = Debug|x64
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Debug|x64.Build.0 = Debug|x64
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Debug|x86.ActiveCfg = Debug|Win32
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Debug|x86.Build.0 = Debug|Win32
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Release|x64.ActiveCfg = Release|x64
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Release|x64.Build.0 = Release|x64
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Release|x86.ActiveCfg = Release|Win32
+		{A9A2CCF2-B8AB-400E-8C29-467E38B82DA7}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91D9FA5B-9212-4ACA-8F9A-28716656DBC7}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\WonEngineSource\WonEngineSource.vcxitems*{2eeb11f6-684a-418d-a1fb-4851efffd75e}*SharedItemsImports = 9
+		..\WonEngineSource\WonEngineSource.vcxitems*{a9a2ccf2-b8ab-400e-8c29-467e38b82da7}*SharedItemsImports = 4
+	EndGlobalSection
+EndGlobal
