@@ -5,6 +5,7 @@
 #include "Input.h"
 #include "Scene_LevelManager.h"
 #include "WonObject.h"
+#include "WTexture.h"
 
 Won::PlayScene_Level::PlayScene_Level()
 {
@@ -16,10 +17,14 @@ Won::PlayScene_Level::~PlayScene_Level()
 
 void Won::PlayScene_Level::Initialize()
 {
-	Player* Py = InstanceSpawn<Player>(LayerType::BackGround);
+	Scene_Level::Initialize();
 
+	Player* Py = InstanceSpawn<Player>(LayerType::BackGround);
 	SpriteRenderComponent* SRC = Py->AddComponent<SpriteRenderComponent>();
-	SRC->ImageLoad(L"M:/visualstudio/WonEngine/Resource/CloudOcean.png");
+
+	WTexture* BackGround = new WTexture();
+	BackGround->Load(L"M:/visualstudio/WonEngine/Resource/mountains.png");
+	
 }
 
 void Won::PlayScene_Level::Update()

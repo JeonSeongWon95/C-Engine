@@ -30,6 +30,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WonEnum.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Actor.cpp" />
@@ -46,5 +48,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WonApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp" />
   </ItemGroup>
 </Project>

@@ -11,4 +11,12 @@ namespace Won
 		Max = 16
 
 	};
+
+	enum class ResourceType
+	{
+		Texture,
+		Audio,
+		None
+	};
+
 }

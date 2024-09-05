@@ -41,11 +41,6 @@ namespace Won
 	{
 		Timer::Update();
 		Input::Update();
-
-		if(Input::GetKeyDown(KeyType::B))
-		{
-			int a = 0;
-		}
 		Scene_LevelManager::Update();
 	}
 

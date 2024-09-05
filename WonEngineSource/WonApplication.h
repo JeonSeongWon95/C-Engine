@@ -16,6 +16,7 @@ namespace Won
 		void Update();
 		void LateUpdate();
 		void Render();
+		HDC GetEngineDC() { return ahdc; }
 
 	private:
 

@@ -15,14 +15,14 @@ Won::EndScene_Level::~EndScene_Level()
 
 void Won::EndScene_Level::Initialize()
 {
-	Player* BackGround = new Player;
-	Transform* Tf = BackGround->AddComponent<Transform>();
-	Tf->SetName(L"TF");
-	SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
-	RenderComponent->SetName(L"RC");
-	RenderComponent->ImageLoad(L"M:/visualstudio/WonEngine/Resource/mountains.png");
+	//Player* BackGround = new Player;
+	//Transform* Tf = BackGround->AddComponent<Transform>();
+	//Tf->SetName(L"TF");
+	//SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
+	////RenderComponent->SetName(L"RC");
+	////RenderComponent->ImageLoad(L"M:/visualstudio/WonEngine/Resource/mountains.png");
 
-	AddGameObject(BackGround, LayerType::BackGround);
+	//AddGameObject(BackGround, LayerType::BackGround);
 }
 
 void Won::EndScene_Level::Update()

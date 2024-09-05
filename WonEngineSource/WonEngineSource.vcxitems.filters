@@ -29,6 +29,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
@@ -65,6 +71,12 @@
       <Filter>Common</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -75,6 +87,9 @@
     </Filter>
     <Filter Include="GameObject">
       <UniqueIdentifier>{0d386a07-f3ad-41b7-9578-caf272136d28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{d02817e1-047d-4af5-8f8d-0b8271e58920}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

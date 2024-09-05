@@ -5,7 +5,7 @@
 #include "../WonEngineSource/WonApplication.h"
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
 
-#pragma comment(lib, "M:\\visualstudio\\WonEngine\\WindowEditor\\x64\\Debug\\WonEngine.lib")
+#pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
 
 Won::WonApplication Engine;
 
