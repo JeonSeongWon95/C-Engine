@@ -5,6 +5,8 @@ namespace Won
 {
     class WTexture :  public WResource
     {
+    public:
+
         enum class TextureType
         {
             Bmp,
@@ -12,11 +14,17 @@ namespace Won
             None
         };
 
-    public:
+    
         WTexture();
         ~WTexture();
 
         virtual HRESULT Load(const std::wstring& NewPath) override;
+        TextureType GetTextureType() { return TType; }
+        Gdiplus::Image* GetImage() { return aImage; }
+        HBITMAP GetBitMap() { return aBitmap; }
+        HDC GetHDC() { return aDC; }
+        UINT GetWidth() { return Width; }
+        UINT GetHeight() { return Height; }
 
     private:
         TextureType TType;

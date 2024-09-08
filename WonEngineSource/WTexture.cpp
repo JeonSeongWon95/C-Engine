@@ -55,5 +55,5 @@ HRESULT Won::WTexture::Load(const std::wstring& NewPath)
 		
 	}
 
-	return E_NOTIMPL;
+	return S_OK;
 }

@@ -21,8 +21,8 @@ namespace Won
 			T* NewComponent = new T;
 			NewComponent->SetOwner(this);
 			NewComponent->Initialize();
-			Components.push_back(NewComponent);
 
+			Components[(int)(NewComponent->GetType())] = NewComponent;
 			return NewComponent;
 		}
 

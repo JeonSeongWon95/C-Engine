@@ -11,7 +11,7 @@ namespace Won
         virtual ~WResource();
 
         virtual HRESULT Load(const std::wstring& NewPath) = 0;
-        void SetPath(std::wstring& NewPath) { Path = NewPath; }
+        void SetPath(const std::wstring& NewPath) { Path = NewPath; }
         std::wstring& GetPath() { return Path; }
 
     private:

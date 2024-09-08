@@ -16,7 +16,7 @@ namespace Won
 		void Render(HDC hdc)  override;
 
 		void SetPos(FVector2 NewVector) { ComponentPosition = NewVector; }
-		FVector2* GetComponentPosition() { return &ComponentPosition; }
+		FVector2 GetComponentPosition() { return ComponentPosition; }
 
 	private:
 		FVector2 ComponentPosition;

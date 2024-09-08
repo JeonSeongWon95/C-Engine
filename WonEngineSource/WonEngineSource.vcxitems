@@ -20,17 +20,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)includeHeader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ResourceManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_Level.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_LevelManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonEnum.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WRender.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h" />
   </ItemGroup>
   <ItemGroup>
@@ -39,16 +43,20 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Entry.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ResourceManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene_Level.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene_LevelManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WRender.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp" />
   </ItemGroup>
 </Project>

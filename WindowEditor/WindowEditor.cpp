@@ -4,6 +4,7 @@
 #include "WindowEditor.h"
 #include "../WonEngineSource/WonApplication.h"
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
+#include "../WonEngine/WonEngine/LoadResources.h"
 
 #pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
 
@@ -120,8 +121,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Store instance handle in our global variable
 
-    const int Width = 1600;
-    const int Height = 900;
+    const int Width = 957;
+    const int Height = 763;
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
@@ -138,6 +139,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
 
     Gdiplus::GdiplusStartup(&gpToken, &gdsi, NULL);
+    Won::LoadResources();
     Won::LoadScene_Levels();
 
     return TRUE;

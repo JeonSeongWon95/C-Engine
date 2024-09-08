@@ -5,11 +5,10 @@
 #include <algorithm>
 #include <string>
 #include <map>
-
+#include <assert.h>
+#include <cstdint>
 #include "WonMath.h"
-
 #include <mmsystem.h>
-
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
 

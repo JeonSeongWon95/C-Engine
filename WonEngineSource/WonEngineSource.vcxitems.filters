@@ -35,6 +35,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ResourceManager.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WScript.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WCamera.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WRender.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Input.h" />
@@ -77,6 +87,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h">
       <Filter>Resource</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ResourceManager.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WScript.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WCamera.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WRender.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

@@ -3,6 +3,7 @@
 
 Won::GameObject::GameObject()
 {
+	Components.resize((int)ComponentType::End);
 	AddTransform();
 }
 
@@ -18,6 +19,9 @@ void Won::GameObject::Initialize()
 {
 	for (auto NewComponent : Components)
 	{
+		if (NewComponent == nullptr)
+			continue;
+
 		NewComponent->Initialize();
 	}
 
@@ -27,6 +31,9 @@ void Won::GameObject::Update()
 {
 	for (auto NewComponent : Components)
 	{
+		if (NewComponent == nullptr)
+			continue;
+
 		NewComponent->Update();
 	}
 
@@ -35,6 +42,9 @@ void Won::GameObject::LateUpdate()
 {
 	for (auto NewComponent : Components)
 	{
+		if (NewComponent == nullptr)
+			continue;
+
 		NewComponent->LateUpdate();
 	}
 }
@@ -42,6 +52,9 @@ void Won::GameObject::Render(HDC NewDC)
 {
 	for(auto NewComponent : Components)
 	{
+		if (NewComponent == nullptr)
+			continue;
+
 		NewComponent->Render(NewDC);
 	}
 

@@ -1,7 +1,8 @@
 #include "Component.h"
 
-Won::Component::Component()
-	:Owner(nullptr)
+Won::Component::Component(ComponentType NewType)
+	: Owner(nullptr)
+	, aType(NewType)
 {
 }
 

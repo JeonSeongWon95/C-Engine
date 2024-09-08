@@ -9,7 +9,7 @@ namespace Won
 	class Component : public Entry
 	{
 	public:
-		Component();
+		Component(ComponentType NewType);
 		virtual ~Component();
 
 
@@ -20,9 +20,11 @@ namespace Won
 
 		void SetOwner(GameObject* NewOwner) { Owner = NewOwner; }
 		GameObject* GetOwner() { return Owner; }
+		ComponentType GetType() { return aType; }
 
 	private:
 		GameObject* Owner;
+		ComponentType aType;
 	};
 
 }

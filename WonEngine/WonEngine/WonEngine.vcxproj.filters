@@ -9,6 +9,8 @@
     <ClInclude Include="EndScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="LoadResources.h" />
+    <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -23,5 +25,6 @@
     <ClCompile Include="EndScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="WPlayerScript.cpp" />
   </ItemGroup>
 </Project>

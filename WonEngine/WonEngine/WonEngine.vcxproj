@@ -129,14 +129,17 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EndScene_Level.h" />
+    <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScene_Level.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene_Level.h" />
+    <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EndScene_Level.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene_Level.cpp" />
+    <ClCompile Include="WPlayerScript.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
