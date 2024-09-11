@@ -32,9 +32,9 @@ void Won::PlayScene_Level::Initialize()
 	Player* Bg = InstanceSpawn<Player>(LayerType::BackGround);
 	SpriteRenderComponent* BSRC = Bg->AddComponent<SpriteRenderComponent>();
 	BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ba"));
-	BSRC->SetSize(FVector2(3.0f, 3.0f));
+	BSRC->SetSize(FVector2(2.0f, 2.0f));
 	BSRC->SetStartPosition(FVector2(0, 0));
-	RECT NewRect = { 0, 0, 319, 254 };
+	RECT NewRect = { 0, 0, 768, 400 };
 	BSRC->SetRect(NewRect);
 
 	Player* Ch = InstanceSpawn<Player>(LayerType::Character);

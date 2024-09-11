@@ -72,25 +72,26 @@ void Won::SpriteRenderComponent::Render(HDC NewDC)
 		assert(false);
 
 	FVector2 vc = GetOwner()->GetComponent<Transform>()->GetComponentPosition();
-	vc = MainCamera->CaluatePostion(vc);
+	//vc = MainCamera->CaluatePostion(vc);
 
 	if (texture->GetTextureType() == WTexture::TextureType::Bmp)
 	{
 		TransparentBlt(NewDC, static_cast<int>(vc.X), static_cast<int>(vc.Y), static_cast<int>(texture->GetWidth() * mSize.X),
 			static_cast<int>(texture->GetHeight() * mSize.Y), texture->GetHDC(),
 			static_cast<int>(CharacterRectangle.left), static_cast<int>(CharacterRectangle.top),
-			static_cast<int>(CharacterRectangle.top), static_cast<int>(CharacterRectangle.bottom),
+			static_cast<int>(CharacterRectangle.right), static_cast<int>(CharacterRectangle.bottom),
 			RGB(static_cast<int>(mRGB.X), static_cast<int>(mRGB.Y), static_cast<int>(mRGB.Z)));
 	}
 	else if (texture->GetTextureType() == WTexture::TextureType::png)
 	{
 		Gdiplus::Graphics graphics(NewDC);
 		Gdiplus::Rect srcRect(static_cast<int>(CharacterRectangle.left), static_cast<int>(CharacterRectangle.top),
-			static_cast<int>(CharacterRectangle.top), static_cast<int>(CharacterRectangle.bottom));
+			static_cast<int>(CharacterRectangle.right), static_cast<int>(CharacterRectangle.bottom));
 		Gdiplus::Rect desRect(static_cast<int>(vc.X + StartPosition.X), static_cast<int>(vc.Y + StartPosition.Y),
 			static_cast<int>(texture->GetWidth() * mSize.X), static_cast<int>(texture->GetHeight() * mSize.Y));
 
 		Gdiplus::ImageAttributes imgAttr;
+
 		if (!(mRGB.X == 0 && mRGB.Y == 0 && mRGB.Z == 0)) // Check if mRGB is not black (zero)
 		{
 			Gdiplus::Color transparentColor(static_cast<BYTE>(mRGB.X), static_cast<BYTE>(mRGB.Y), static_cast<BYTE>(mRGB.Z));
