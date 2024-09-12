@@ -15,11 +15,11 @@ namespace Won
 		void LateUpdate()  override;
 		void Render(HDC hdc)  override;
 
-		void SetPos(FVector2 NewVector) { ComponentPosition = NewVector; }
-		FVector2 GetComponentPosition() { return ComponentPosition; }
+		void SetPos(mVector2<float> NewVector) { ComponentPosition = NewVector; }
+		mVector2<float> GetComponentPosition() { return ComponentPosition; }
 
 	private:
-		FVector2 ComponentPosition;
+		mVector2<float> ComponentPosition;
     };
 }
 

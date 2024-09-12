@@ -3,33 +3,34 @@
 
 namespace Won
 {
-	struct FVector2
+	template<typename T>
+	struct mVector2
 	{
-		float X;
-		float Y;
+		T X;
+		T Y;
 
-		FVector2()
+		mVector2()
 		{
 			X = 0.0f;
 			Y = 0.0f;
 		}
-		FVector2(float NewX, float NewY)
+		mVector2(T NewX, T NewY)
 		{
 			X = NewX;
 			Y = NewY;
 		}
 
-		FVector2 operator-(FVector2 other)
+		mVector2 operator-(mVector2 other)
 		{
-			return FVector2(X - other.X, Y - other.Y);
+			return mVector2(X - other.X, Y - other.Y);
 		}
-		FVector2 operator+(FVector2 other)
+		mVector2 operator+(mVector2 other)
 		{
-			return FVector2(X + other.X, Y + other.Y);
+			return mVector2(X + other.X, Y + other.Y);
 		}
-		FVector2 operator/(float Value)
+		mVector2 operator/(float Value)
 		{
-			return FVector2(X / Value, Y / Value);
+			return mVector2(X / Value, Y / Value);
 		}
 
 	};

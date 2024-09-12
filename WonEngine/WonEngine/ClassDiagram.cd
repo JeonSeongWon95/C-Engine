@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Won::Player" Collapsed="true">
+    <Position X="1.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAIAAAAAAAAAAAABAAAQAAABA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::TitleScene_Level" Collapsed="true">
+    <Position X="10.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAACQAAAAAgIAAAAAAQAAAAAJAAAAAAAAA=</HashCode>
+      <FileName>TitleScene_Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::PlayScene_Level" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAAAAAQAAAAAAIAAAAAAQgAAAAJAAAAAIAAA=</HashCode>
+      <FileName>PlayScene_Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::EndScene_Level" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAAAAAAAAQAAAAEAIAAAAAAQAAAAAJAAAAAAAAA=</HashCode>
+      <FileName>EndScene_Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WPlayerScript" Collapsed="true">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAAAAAAAAAQAAAAAAIAAAAAAQAAAAABAAAAAAAAA=</HashCode>
+      <FileName>WPlayerScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Entry" Collapsed="true">
+    <Position X="6.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACQAAAAAAAAAAABAAAAAAQAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Entry.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::GameObject" Collapsed="true">
+    <Position X="4.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAIAYAAAAAAJAAAAAAAAAAAABAAAAIIAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\GameObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Component" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUgAACIAIAAAQAAAAAAIAAAAAAAAAEAABBAAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::SpriteRenderComponent" Collapsed="true">
+    <Position X="3" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIQAAIACFAAAAQAAAAAIJEAEACAAAgAAEBAAAgQAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\SpriteRenderComponent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Transform" Collapsed="true">
+    <Position X="1" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAQAAIAAAIAQAAAAAAIAAABAAAAAAAIA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Transform.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WCamera" Collapsed="true">
+    <Position X="5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAAAAAAISAAAAAAICAAQAAACAAAABAAAAAAACA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WCamera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WScript" Collapsed="true">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAQAAAAAAIAAAAAAAEAAAABACAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WScript.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WTexture" Collapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAABBAAAAAAAAACAUEBYABAAQAAgAAAACEAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WTexture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WResource" Collapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgAAAAAAIAAAAABAAAAAACIAAAAQAAAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WResource.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::ResourceManager" Collapsed="true">
+    <Position X="13.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\ResourceManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Input" Collapsed="true">
+    <Position X="11" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAAAgAAQACCEAAAARAKAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Scene_Level" Collapsed="true">
+    <Position X="10" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAAAAAAAAAQAAAAAAIAAAAAAQEAAEAJAAAAgAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Scene_Level.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Scene_LevelManager" Collapsed="true">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAAAAAAQAAAABAIAAAAAAAAAAAEBACAAgSAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Scene_LevelManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::Timer" Collapsed="true">
+    <Position X="12.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAQAAAAAAAAAASAAAAAAAAAAAAAAASAAABAAAEAEAgA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Timer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WLayer" Collapsed="true">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARAAgAEAAAAASAAAAAAIAIAAAAAAAAAARAAAAAAAAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WLayer.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Won::WonApplication" Collapsed="true">
+    <Position X="12" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAEgAABAAAgQBAAACAIEBBAEAEAIAAABFAAEABAAI=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WonApplication.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Won::mVector2&lt;T&gt;" Collapsed="true">
+    <Position X="11" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAgAAAAYAA=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WonMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Won::CVector3" Collapsed="true">
+    <Position X="12.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAQAAAQAAAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\WonMath.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Won::KeyState" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEEAAI=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Won::KeyType" Collapsed="true">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgAAAAAAAAAAAAICAAAgAAAAvv//YQE=</HashCode>
+      <FileName>C:\Work\Visual Studio\Project3\C-Engine\WonEngineSource\Input.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Malgun Gothic" Size="9" />
+</ClassDiagram>

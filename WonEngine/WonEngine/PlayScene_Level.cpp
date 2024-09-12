@@ -26,16 +26,19 @@ void Won::PlayScene_Level::Initialize()
 	GameObject* Camera = InstanceSpawn<GameObject>(LayerType::None);
 	WCamera* CameraComponent = Camera->AddComponent<WCamera>();
 	MainCamera = CameraComponent;
+	Transform* CTf = Camera->GetComponent<Transform>();
+	CTf->SetPos(mVector2<float>(0, 100));
+	Camera->AddComponent<WPlayerScript>();
 
-	//Camera->AddComponent<WPlayerScript>();
-
-	Player* Bg = InstanceSpawn<Player>(LayerType::BackGround);
-	SpriteRenderComponent* BSRC = Bg->AddComponent<SpriteRenderComponent>();
+	BG = InstanceSpawn<Player>(LayerType::BackGround);
+	SpriteRenderComponent* BSRC = BG->AddComponent<SpriteRenderComponent>();
 	BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ba"));
-	BSRC->SetSize(FVector2(2.0f, 2.0f));
-	BSRC->SetStartPosition(FVector2(0, 0));
-	RECT NewRect = { 0, 0, 768, 400 };
+	BSRC->SetSize(mVector2<float>(4.0f, 4.0f));
+	BSRC->SetStartPosition(mVector2<float>(0, 0));
+	RECT NewRect = { 10,33,764,213 };
 	BSRC->SetRect(NewRect);
+	BSRC->SetTextureSize(NewRect.right - NewRect.left, NewRect.bottom - NewRect.top);
+	
 
 	Player* Ch = InstanceSpawn<Player>(LayerType::Character);
 	SpriteRenderComponent* CSRC = Ch->AddComponent<SpriteRenderComponent>();
@@ -52,7 +55,7 @@ void Won::PlayScene_Level::LateUpdate()
 {
 	Scene_Level::LateUpdate();
 
-	if (Input::GetKeyDown(KeyType::N))
+	if (Input::GetKeyDown(KeyType::A))
 	{
 		Scene_LevelManager::LoadScene_Level(L"EndLevel");
 	}
@@ -71,5 +74,5 @@ void Won::PlayScene_Level::OnEnter()
 void Won::PlayScene_Level::OnExit()
 {
 	Transform* TF = BG->GetComponent<Transform>();
-	TF->SetPos(FVector2(0, 0));
+	TF->SetPos(mVector2<float>(0, 0));
 }

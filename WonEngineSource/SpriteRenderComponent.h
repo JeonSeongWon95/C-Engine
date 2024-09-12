@@ -16,17 +16,20 @@ namespace Won
 		void Render(HDC NewDC) override;
 
 		void SetTexture(class WTexture* NewTexture) { texture = NewTexture; }
-		void SetSize(FVector2 NewSize) { mSize = NewSize; }
-		void SetStartPosition(FVector2 NewPosition) { StartPosition = NewPosition; }
+		void SetSize(mVector2<float> NewSize) { mSize = NewSize; }
+		void SetStartPosition(mVector2<float> NewPosition) { StartPosition = NewPosition; }
 		void SetRect(RECT NewRECT) { CharacterRectangle = NewRECT; }
 		void SetRGB(CVector3 NewRGB) { mRGB = NewRGB; }
+		void SetTextureSize(UINT NewWidth, UINT NewHeight);
 
 	private:
 		class WTexture* texture;
-		FVector2 mSize;
-		FVector2 StartPosition;
+		mVector2<float> mSize;
+		mVector2<float> CuttingSize;
+		mVector2<float> StartPosition;
 		CVector3 mRGB;
 		RECT CharacterRectangle;
+		mVector2<UINT> TextureCuttingSize;
 		
 	};
 }

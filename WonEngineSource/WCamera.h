@@ -6,7 +6,7 @@ namespace Won
     class WCamera : public Component
     {
     public:
-        FVector2 CaluatePostion(FVector2 pos) { return pos - mDistance; }
+        mVector2<float> CaluatePostion(mVector2<float> pos) { return pos - mDistance; }
          
         WCamera();
         ~WCamera();
@@ -19,9 +19,9 @@ namespace Won
 
     private:
         GameObject* Target;
-        FVector2 mDistance;
-        FVector2 mLookPosition;
-        FVector2 mResolution;
+        mVector2<float> mDistance;
+        mVector2<float> mLookPosition;
+        mVector2<float> mResolution;
 
     };
 }

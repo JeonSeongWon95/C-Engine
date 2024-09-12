@@ -11,6 +11,9 @@
     </ClInclude>
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="WPlayerScript.h" />
+    <ClInclude Include="TitleScene_Level.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -26,5 +29,11 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="WPlayerScript.cpp" />
+    <ClCompile Include="TitleScene_Level.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

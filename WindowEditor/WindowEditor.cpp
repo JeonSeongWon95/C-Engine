@@ -6,7 +6,7 @@
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
 #include "../WonEngine/WonEngine/LoadResources.h"
 
-#pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
+#pragma comment(lib, "C:/Work/Visual Studio/Project3/C-Engine/WindowEditor/x64/Debug/WonEngine.lib")
 
 Won::WonApplication Engine;
 
@@ -121,8 +121,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
     hInst = hInstance; // Store instance handle in our global variable
 
-    const int Width = 1600;
-    const int Height = 900;
+    const int Width = 774;
+    const int Height = 729;
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);

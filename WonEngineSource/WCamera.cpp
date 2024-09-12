@@ -8,9 +8,9 @@ extern Won::WonApplication Engine;
 Won::WCamera::WCamera()
 	: Component(ComponentType::Camera)
 	, Target(nullptr)
-	, mDistance(FVector2(0,0))
-	, mLookPosition(FVector2(478.f,381.f))
-	, mResolution(FVector2(0, 0))
+	, mDistance(mVector2<float>(0,0))
+	, mLookPosition(mVector2<float>((774/2),(729/2)))
+	, mResolution(mVector2<float>(0, 0))
 {
 
 }
@@ -22,8 +22,8 @@ Won::WCamera::~WCamera()
 
 void Won::WCamera::Initialize()
 {
-	mResolution.X = Engine.GetWidth();
-	mResolution.Y = Engine.GetHeight();
+	mResolution.X = static_cast<float>(Engine.GetWidth());
+	mResolution.Y = static_cast<float>(Engine.GetHeight());
 }
 
 void Won::WCamera::Update()

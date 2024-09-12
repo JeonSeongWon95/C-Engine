@@ -34,6 +34,7 @@ namespace Won
 
 			resource->SetName(FileName);
 			resource->SetPath(Path);
+
 			ResourceManager::Resources.insert(std::make_pair(FileName, resource));
 
 			return resource;

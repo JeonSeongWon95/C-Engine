@@ -62,5 +62,6 @@ void Won::GameObject::Render(HDC NewDC)
 
 void Won::GameObject::AddTransform()
 {
-	AddComponent<Transform>();
+	Transform* Tr = AddComponent<Transform>();
+	Tr->SetName(L"Transform");
 }

@@ -1,9 +1,9 @@
 #pragma once
-#include "GameObject.h"
-#include "Scene_Level.h"
-#include "Scene_LevelManager.h"
-#include "WLayer.h"
-#include "Transform.h"
+#include "../WonEngineSource/GameObject.h"
+#include "../WonEngineSource/Scene_Level.h"
+#include "../WonEngineSource/Scene_LevelManager.h"
+#include "../WonEngineSource/WLayer.h"
+#include "../WonEngineSource/Transform.h"
 
 namespace Won
 {
@@ -12,7 +12,6 @@ namespace Won
 	{
 		T* NewObject = new T();
 		Transform* TF = NewObject->GetComponent<Transform>();
-		TF->SetName(L"Transform");
 
 		Scene_Level* AS = Scene_LevelManager::GetActiveScene();
 		WLayer* Layer = AS->GetLayer(Type);
@@ -22,7 +21,7 @@ namespace Won
 
 	}
 	template <typename T>
-	static T* InstanceSpawn(LayerType Type, FVector2* Location)
+	static T* InstanceSpawn(LayerType Type, mVector2<float>* Location)
 	{
 		T* NewObject = new T();
 		Transform* TF = NewObject->GetComponent<Transform>();

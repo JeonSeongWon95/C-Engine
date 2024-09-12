@@ -18,6 +18,7 @@ namespace Won
 
 		void AddGameObject(class GameObject* NewObject, LayerType Lt); 
 		class WLayer* GetLayer(LayerType Type) { return Layers[(UINT)Type]; }
+		std::vector<class WLayer*> GetLayers() { return Layers; }
 
 	private:
 		std::vector<class WLayer*> Layers;

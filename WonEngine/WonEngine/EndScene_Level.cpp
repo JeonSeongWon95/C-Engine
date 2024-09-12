@@ -2,8 +2,11 @@
 #include "Transform.h"
 #include "SpriteRenderComponent.h"
 #include "Player.h"
-#include "Input.h"
 #include "Scene_LevelManager.h"
+#include "WonObject.h"
+#include "ResourceManager.h"
+#include "WTexture.h"
+#include "Input.h"
 
 Won::EndScene_Level::EndScene_Level()
 {
@@ -15,14 +18,15 @@ Won::EndScene_Level::~EndScene_Level()
 
 void Won::EndScene_Level::Initialize()
 {
-	//Player* BackGround = new Player;
-	//Transform* Tf = BackGround->AddComponent<Transform>();
-	//Tf->SetName(L"TF");
-	//SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
-	////RenderComponent->SetName(L"RC");
-	////RenderComponent->ImageLoad(L"M:/visualstudio/WonEngine/Resource/mountains.png");
+	Scene_Level::Initialize();
 
-	//AddGameObject(BackGround, LayerType::BackGround);
+	Player* BackGround = InstanceSpawn<Player>(LayerType::BackGround);
+	SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
+	RECT rect = { 530,380,780,617 };
+	RenderComponent->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));
+	RenderComponent->SetRect(rect);
+	RenderComponent->SetStartPosition(mVector2<float>(0, 0));
+	RenderComponent->SetSize(mVector2<float>(3.f, 2.f));
 }
 
 void Won::EndScene_Level::Update()
@@ -34,9 +38,9 @@ void Won::EndScene_Level::LateUpdate()
 {
 	Scene_Level::LateUpdate();
 
-	if (Input::GetKeyDown(KeyType::N))
+	if (Input::GetKeyDown(KeyType::D))
 	{
-		Scene_LevelManager::LoadScene_Level(L"PlayLevel");
+		Scene_LevelManager::LoadScene_Level(L"TitleLevel");
 	}
 }
 
