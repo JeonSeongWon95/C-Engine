@@ -23,7 +23,7 @@ void Won::TitleScene_Level::Initialize()
 	//CameraTransform->SetPos(FVector2(0, 0));
 	//CameraComponent->SetName(L"CC");
 
-	Player* BG = InstanceSpawn<Player>(LayerType::BackGround);
+	Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* SRC = BG->AddComponent<SpriteRenderComponent>();
 	SRC->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));
 	RECT rect = { 0, 120, 258, 300 };

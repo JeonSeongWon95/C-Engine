@@ -7,7 +7,7 @@ namespace Won
     {
 
     public:
-        WResource(ResourceType NewType);
+        WResource(eResourceType NewType);
         virtual ~WResource();
 
         virtual HRESULT Load(const std::wstring& NewPath) = 0;
@@ -15,7 +15,7 @@ namespace Won
         std::wstring& GetPath() { return Path; }
 
     private:
-        ResourceType Type;
+        eResourceType Type;
         std::wstring Path;
 
     };

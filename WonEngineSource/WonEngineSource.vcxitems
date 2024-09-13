@@ -26,6 +26,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonApplication.h" />
@@ -49,6 +51,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonApplication.cpp" />

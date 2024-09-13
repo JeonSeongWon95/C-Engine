@@ -1,6 +1,6 @@
 #include "Component.h"
 
-Won::Component::Component(ComponentType NewType)
+Won::Component::Component(eComponentType NewType)
 	: Owner(nullptr)
 	, aType(NewType)
 {

@@ -23,14 +23,14 @@ void Won::PlayScene_Level::Initialize()
 {
 	Scene_Level::Initialize();
 
-	GameObject* Camera = InstanceSpawn<GameObject>(LayerType::None);
+	GameObject* Camera = InstanceSpawn<GameObject>(eLayerType::None);
 	WCamera* CameraComponent = Camera->AddComponent<WCamera>();
 	MainCamera = CameraComponent;
 	Transform* CTf = Camera->GetComponent<Transform>();
 	CTf->SetPos(mVector2<float>(0, 100));
 	Camera->AddComponent<WPlayerScript>();
 
-	BG = InstanceSpawn<Player>(LayerType::BackGround);
+	BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* BSRC = BG->AddComponent<SpriteRenderComponent>();
 	BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ba"));
 	BSRC->SetSize(mVector2<float>(4.0f, 4.0f));
@@ -40,7 +40,7 @@ void Won::PlayScene_Level::Initialize()
 	BSRC->SetTextureSize(NewRect.right - NewRect.left, NewRect.bottom - NewRect.top);
 	
 
-	Player* Ch = InstanceSpawn<Player>(LayerType::Character);
+	Player* Ch = InstanceSpawn<Player>(eLayerType::Character);
 	SpriteRenderComponent* CSRC = Ch->AddComponent<SpriteRenderComponent>();
 	CSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ch"));
 	Ch->AddComponent<WPlayerScript>();

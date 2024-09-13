@@ -5,7 +5,7 @@
 Won::Scene_Level::Scene_Level()
 	:Layers{}
 {
-	Layers.resize((UINT)LayerType::Max);
+	Layers.resize((UINT)eLayerType::Max);
 
 	for(int i = 0; i < Layers.size(); ++i)
 	{
@@ -70,7 +70,7 @@ void Won::Scene_Level::OnExit()
 {
 }
 
-void Won::Scene_Level::AddGameObject(GameObject* NewObject, LayerType Lt)
+void Won::Scene_Level::AddGameObject(GameObject* NewObject, eLayerType Lt)
 {
 	for(int i = 0; i < Layers.size(); ++i)
 	{

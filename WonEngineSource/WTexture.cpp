@@ -5,7 +5,7 @@
 extern Won::WonApplication Engine;
 
 Won::WTexture::WTexture()
-	:WResource(Won::ResourceType::Texture)
+	:WResource(eResourceType::Texture)
 {
 }
 

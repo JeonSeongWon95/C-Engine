@@ -20,7 +20,7 @@ void Won::EndScene_Level::Initialize()
 {
 	Scene_Level::Initialize();
 
-	Player* BackGround = InstanceSpawn<Player>(LayerType::BackGround);
+	Player* BackGround = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
 	RECT rect = { 530,380,780,617 };
 	RenderComponent->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));

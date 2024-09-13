@@ -6,7 +6,7 @@
 extern Won::WonApplication Engine;
 
 Won::WCamera::WCamera()
-	: Component(ComponentType::Camera)
+	: Component(eComponentType::Camera)
 	, Target(nullptr)
 	, mDistance(mVector2<float>(0,0))
 	, mLookPosition(mVector2<float>((774/2),(729/2)))

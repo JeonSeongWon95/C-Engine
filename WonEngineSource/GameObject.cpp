@@ -3,7 +3,7 @@
 
 Won::GameObject::GameObject()
 {
-	Components.resize((int)ComponentType::End);
+	Components.resize((int)eComponentType::End);
 	AddTransform();
 }
 

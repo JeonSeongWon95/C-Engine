@@ -1,7 +1,7 @@
 #include "Transform.h"
 
 Won::Transform::Transform()
-	:Component(ComponentType::Transform)
+	:Component(eComponentType::Transform)
 {
 }
 

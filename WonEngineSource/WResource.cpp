@@ -1,6 +1,6 @@
 #include "WResource.h"
 
-Won::WResource::WResource(ResourceType NewType)
+Won::WResource::WResource(eResourceType NewType)
 	: Type(NewType)
 {
 }

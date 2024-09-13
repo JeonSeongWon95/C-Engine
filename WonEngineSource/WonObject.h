@@ -8,7 +8,7 @@
 namespace Won
 {
 	template <typename T>
-	static T* InstanceSpawn(LayerType Type)
+	static T* InstanceSpawn(eLayerType Type)
 	{
 		T* NewObject = new T();
 		Transform* TF = NewObject->GetComponent<Transform>();
@@ -21,7 +21,7 @@ namespace Won
 
 	}
 	template <typename T>
-	static T* InstanceSpawn(LayerType Type, mVector2<float>* Location)
+	static T* InstanceSpawn(eLayerType Type, mVector2<float>* Location)
 	{
 		T* NewObject = new T();
 		Transform* TF = NewObject->GetComponent<Transform>();

@@ -5,7 +5,7 @@
 #include "WRender.h"
 
 Won::SpriteRenderComponent::SpriteRenderComponent()
-	: Component(ComponentType::SpriteRender)
+	: Component(eComponentType::SpriteRender)
 	, texture(nullptr)
 	, mSize(1.0f, 1.0f)
 	, StartPosition(0.0, 0.0)

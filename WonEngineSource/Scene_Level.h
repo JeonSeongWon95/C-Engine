@@ -7,7 +7,7 @@ namespace Won
 	{
 	public:
 		Scene_Level();
-		~Scene_Level();
+		virtual ~Scene_Level();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -16,8 +16,8 @@ namespace Won
 		virtual void OnEnter();
 		virtual void OnExit();
 
-		void AddGameObject(class GameObject* NewObject, LayerType Lt); 
-		class WLayer* GetLayer(LayerType Type) { return Layers[(UINT)Type]; }
+		void AddGameObject(class GameObject* NewObject, eLayerType Lt); 
+		class WLayer* GetLayer(eLayerType Type) { return Layers[(UINT)Type]; }
 		std::vector<class WLayer*> GetLayers() { return Layers; }
 
 	private:

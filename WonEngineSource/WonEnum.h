@@ -2,7 +2,7 @@
 
 namespace Won
 {
-	enum class LayerType
+	enum class eLayerType
 	{
 		None,
 		BackGround,
@@ -13,19 +13,21 @@ namespace Won
 
 	};
 
-	enum class ComponentType
+	enum class eComponentType
 	{
 		Transform,
 		SpriteRender,
 		Script,
 		Camera,
+		Animator,
 		End
 	};
 
-	enum class ResourceType
+	enum class eResourceType
 	{
 		Texture,
 		Audio,
+		Animation,
 		None
 	};
 

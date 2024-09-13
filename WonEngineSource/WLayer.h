@@ -7,18 +7,18 @@ namespace Won
 	{
 	public:
 		WLayer();
-		~WLayer();
+		virtual ~WLayer();
 
 		virtual void Initialize();
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
 
-		void SetLayerType(LayerType NewType) { Type = NewType; }
+		void SetLayerType(eLayerType NewType) { Type = NewType; }
 		void AddGameObject(class GameObject* NewObject);
 
 	private:
-		LayerType Type;
+		eLayerType Type;
 		std::vector<class GameObject*> GameObjects;
 
 	};
