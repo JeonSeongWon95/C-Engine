@@ -5,7 +5,13 @@
 extern Won::WonApplication Engine;
 
 Won::WTexture::WTexture()
-	:WResource(eResourceType::Texture)
+	: WResource(eResourceType::Texture)
+	, TType(TextureType::None)
+	, aBitmap(nullptr)
+	, aImage(nullptr)
+	, aDC(nullptr)
+	, Width(0)
+	, Height(0)
 {
 }
 
@@ -28,7 +34,7 @@ HRESULT Won::WTexture::Load(const std::wstring& NewPath)
 		}
 
 		BITMAP info = {};
-		GetObject(nullptr, sizeof(BITMAP), &info);
+		GetObject(aBitmap, sizeof(BITMAP), &info);
 
 		Width = info.bmWidth;
 		Height = info.bmHeight;

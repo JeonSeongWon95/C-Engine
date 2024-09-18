@@ -9,6 +9,7 @@ namespace Won
 		Environment,
 		Character,
 		Player,
+		Effect,
 		Max = 16
 
 	};

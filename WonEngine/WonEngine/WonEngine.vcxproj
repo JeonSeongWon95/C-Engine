@@ -133,18 +133,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="EndScene_Level.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="LoadScene_Level.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene_Level.h" />
     <ClInclude Include="TitleScene_Level.h" />
+    <ClInclude Include="WEnemyScript.h" />
     <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EndScene_Level.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene_Level.cpp" />
     <ClCompile Include="TitleScene_Level.cpp" />
+    <ClCompile Include="WEnemyScript.cpp" />
     <ClCompile Include="WPlayerScript.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -11,6 +11,16 @@ namespace Won
         {
             mVector2<float> sStartPostion;
             mVector2<float> sSize;
+            mVector2<float> Offset;
+            float Duration;
+
+            Sprite()
+            {
+                    sStartPostion = { 0,0 };
+                    sSize = { 0,0 };
+                    Duration = 0.0f;
+                    Offset = { 0,0 };
+            }
         };
 
         WAnimation();
@@ -18,16 +28,24 @@ namespace Won
 
         virtual HRESULT Load(const std::wstring& NewPath) override;
         bool IsCompleted() { return bIsCompleted; }
+        void CreateAnimation(const std::wstring& Name, class WTexture* NewText, mVector2<float> StartPosition, 
+            mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
 
-        class WAnimation* CreateAnimation(std::wstring& Name, mVector2<float> StartPosition, mVector2<float> SpriteSize, mVector2<float> offset,
-            mVector2<float>, bool AnimationCompleted);
+        void SetAnimator(class WAnimator* NewAnimator) { Animator = NewAnimator; }
+        void Update();
+        void Reset();
+        void Render(HDC NewDC);
+        void SetRemoveColor(mVector3<int> NewColor) { ColorKey = NewColor; }
 
 
     private:
+        WAnimator* Animator;
         class WTexture* MainTexture;
-        std::vector<Sprite> Sprites;
+        std::vector<Sprite*> Sprites;
         UINT mIndex;
+        float mTimer;
         bool bIsCompleted;
+        mVector3<int> ColorKey;
 
     };
 }

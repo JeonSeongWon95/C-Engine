@@ -7,6 +7,7 @@
 #include <map>
 #include <assert.h>
 #include <cstdint>
+#include <functional>
 #include "WonMath.h"
 #include <mmsystem.h>
 #define DIRECTINPUT_VERSION 0x0800

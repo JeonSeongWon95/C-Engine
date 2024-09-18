@@ -6,7 +6,7 @@
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
 #include "../WonEngine/WonEngine/LoadResources.h"
 
-#pragma comment(lib, "C:/Work/Visual Studio/Project3/C-Engine/WindowEditor/x64/Debug/WonEngine.lib")
+#pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
 
 Won::WonApplication Engine;
 
@@ -141,6 +141,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     Gdiplus::GdiplusStartup(&gpToken, &gdsi, NULL);
     Won::LoadResources();
     Won::LoadScene_Levels();
+
+    int a = 0;
+    srand((unsigned int)(&a));
 
     return TRUE;
 }

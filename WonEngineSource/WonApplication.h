@@ -17,6 +17,7 @@ namespace Won
 		void LateUpdate();
 		void Render();
 		HDC GetEngineDC() { return ahdc; }
+		HWND GetEngineWND() { return ahwnd; }
 		int GetWidth() { return Width; }
 		int GetHeight() { return Height; }
 

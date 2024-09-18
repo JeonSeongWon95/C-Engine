@@ -11,7 +11,7 @@ namespace Won
 		virtual ~Entry();
 
 		void SetName(const std::wstring& NewName) { Name = NewName; }
-		std::wstring GetDisplayName() { return Name; }
+		std::wstring GetName() { return Name; }
 
 	protected:
 		std::wstring Name;

@@ -17,7 +17,6 @@ namespace Won
 		void OnExit() override;
 
 	private:
-		class Player* BG;
 	};
 }
 

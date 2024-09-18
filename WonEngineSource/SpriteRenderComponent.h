@@ -19,7 +19,7 @@ namespace Won
 		void SetSize(mVector2<float> NewSize) { mSize = NewSize; }
 		void SetStartPosition(mVector2<float> NewPosition) { StartPosition = NewPosition; }
 		void SetRect(RECT NewRECT) { CharacterRectangle = NewRECT; }
-		void SetRGB(CVector3 NewRGB) { mRGB = NewRGB; }
+		void SetRemoveRGB(mVector3<int> NewRGB) { RemoveRGB = NewRGB; }
 		void SetTextureSize(UINT NewWidth, UINT NewHeight);
 
 	private:
@@ -27,7 +27,7 @@ namespace Won
 		mVector2<float> mSize;
 		mVector2<float> CuttingSize;
 		mVector2<float> StartPosition;
-		CVector3 mRGB;
+		mVector3<int> RemoveRGB;
 		RECT CharacterRectangle;
 		mVector2<UINT> TextureCuttingSize;
 		

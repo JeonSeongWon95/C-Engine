@@ -6,6 +6,32 @@ namespace Won
     class WAnimator :  public Component
     {
     public:
+        struct Event
+        {
+            void operator=(std::function<void()> func)
+            {
+                mEvent = std::move(func);
+            }
+
+            void operator()()
+            {
+                if(mEvent)
+                {
+                    mEvent();
+                }
+            }
+
+            std::function<void()> mEvent;
+        };
+
+        struct Events
+        {
+            Event mStartEvent;
+            Event mCompleteEvent;
+            Event mEndEvent;
+        };
+        
+
         WAnimator();
         ~WAnimator();
 
@@ -14,15 +40,24 @@ namespace Won
         void LateUpdate() override;
         void Render(HDC NewDC) override;
 
-        class WAnimation* CreateAnimation(std::wstring& Name, mVector2<float> StartPosition, mVector2<float> SpriteSize, mVector2<float> offset,
-            mVector2<float>  , bool AnimationCompleted);
+        void CreateAnimation(const std::wstring& Name, class WTexture* NewTexture, mVector2<float> StartPosition, 
+            mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
 
-        WAnimation* FindAnimation(std::wstring& Name);
+        class WAnimation* FindAnimation(const std::wstring& Name);
+        Events* FindEvents(const std::wstring& Name);
+
+        void PlayAnimation(const std::wstring& Name, bool bLoop);
+        void SetRemoveColor(mVector3<int> Newcolor);
+        bool IsCompletedActiveAnimation();
+        std::function<void()> GetStartEvent(const std::wstring& Name);
+        std::function<void()> GetCompleteEvent(const std::wstring& Name);
+        std::function<void()> GetEndEvent(const std::wstring& Name);
 
 
     private:
-       std::map<std::wstring, WAnimation*> Animations;
-       WAnimation* ActiveAnimation;
+       std::map<std::wstring, WAnimation*> mAnimations;
+       std::map<std::wstring, Events*> mAnimEvents;
+       WAnimation* mActiveAnimation;
        bool mLoop;
     };
 }

@@ -25,7 +25,7 @@ void Won::TitleScene_Level::Initialize()
 
 	Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* SRC = BG->AddComponent<SpriteRenderComponent>();
-	SRC->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));
+	SRC->SetTexture(ResourceManager::Find<WTexture>(L"Hu"));
 	RECT rect = { 0, 120, 258, 300 };
 	SRC->SetRect(rect);
 	SRC->SetStartPosition(mVector2<float>(0, 0));
@@ -49,11 +49,6 @@ void Won::TitleScene_Level::Update()
 void Won::TitleScene_Level::LateUpdate()
 {
 	Scene_Level::LateUpdate();
-
-	if(Input::GetKey(KeyType::S))
-	{
-		Scene_LevelManager::LoadScene_Level(L"PlayLevel");
-	}
 
 }
 

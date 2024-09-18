@@ -14,6 +14,8 @@
     <ClInclude Include="TitleScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="WEnemyScript.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -32,6 +34,8 @@
     <ClCompile Include="TitleScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="WEnemyScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

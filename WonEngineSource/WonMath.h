@@ -11,8 +11,8 @@ namespace Won
 
 		mVector2()
 		{
-			X = 0.0f;
-			Y = 0.0f;
+			X = 0;
+			Y = 0;
 		}
 		mVector2(T NewX, T NewY)
 		{
@@ -35,28 +35,27 @@ namespace Won
 
 	};
 
-	struct CVector3
+	template<typename T>
+	struct mVector3
 	{
-		int8_t X;
-		int8_t Y;
-		int8_t Z;
+		T X;
+		T Y;
+		T Z;
 
-		static CVector3 Zero;
-
-		CVector3()
+		mVector3()
 		{
 			X = 0;
 			Y = 0;
 			Z = 0;
 		}
-		CVector3(int8_t NewX, int8_t NewY, int8_t NewZ)
+		mVector3(T NewX, T NewY, T NewZ)
 		{
 			X = NewX;
 			Y = NewY;
 			Z = NewZ;
 		}
 
-		bool operator==(CVector3 other)
+		bool operator==(mVector3 other)
 		{
 			if(X == other.X && Y == other.Y && Z == other.Z)
 			{

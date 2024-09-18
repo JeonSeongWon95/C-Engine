@@ -1,7 +1,11 @@
 #include "Input.h"
 #include <iostream>
+#include "WonApplication.h"
 
 std::vector<Won::Input::aKey> Won::Input::Keys = {};
+Won::mVector2<float> Won::Input::mMousePosition = {0.f, 0.f};
+
+extern Won::WonApplication Engine;
 
 namespace Won
 {
@@ -9,7 +13,8 @@ namespace Won
 	{
 		'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
 		'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Z',
-		'X', 'C', 'V', 'B', 'N', 'M', VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN
+		'X', 'C', 'V', 'B', 'N', 'M', VK_LEFT, VK_RIGHT, VK_UP, VK_DOWN,
+		VK_LBUTTON, VK_RBUTTON
 
 	};
 }
@@ -49,13 +54,21 @@ void Won::Input::updateKey()
 
 void Won::Input::updatekey(Input::aKey& NewKey)
 {
-	if(isKeyDown(NewKey.Type))
+	if (GetFocus())
 	{
-		updateKeyDown(NewKey);
+		if (isKeyDown(NewKey.Type))
+		{
+			updateKeyDown(NewKey);
+		}
+		else
+		{
+			updateKeyUp(NewKey);
+		}
+		SetMousePosition();
 	}
 	else
 	{
-		updateKeyUp(NewKey);
+		ClearKeys();
 	}
 }
 
@@ -90,4 +103,31 @@ void Won::Input::updateKeyUp(Input::aKey& NewKey)
 	}
 
 	NewKey.IsPressed = false;
+}
+
+void Won::Input::ClearKeys()
+{
+	for (aKey& Key : Keys)
+	{
+		if (Key.State == KeyState::Down || Key.State == KeyState::Pressed)
+		{
+			Key.State = KeyState::Up;
+		}
+		else if (Key.State == KeyState::Up)
+		{
+			Key.State = KeyState::None;
+		}
+
+		Key.IsPressed = false;
+	}
+}
+
+void Won::Input::SetMousePosition()
+{
+	POINT Cursorpos = {};
+	GetCursorPos(&Cursorpos);
+	ScreenToClient(Engine.GetEngineWND(), &Cursorpos);
+
+	mMousePosition.X = Cursorpos.x;
+	mMousePosition.Y = Cursorpos.y;
 }

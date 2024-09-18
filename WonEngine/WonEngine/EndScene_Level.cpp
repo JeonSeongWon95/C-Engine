@@ -23,7 +23,7 @@ void Won::EndScene_Level::Initialize()
 	Player* BackGround = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
 	RECT rect = { 530,380,780,617 };
-	RenderComponent->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));
+	RenderComponent->SetTexture(ResourceManager::Find<WTexture>(L"Hu"));
 	RenderComponent->SetRect(rect);
 	RenderComponent->SetStartPosition(mVector2<float>(0, 0));
 	RenderComponent->SetSize(mVector2<float>(3.f, 2.f));
@@ -38,10 +38,6 @@ void Won::EndScene_Level::LateUpdate()
 {
 	Scene_Level::LateUpdate();
 
-	if (Input::GetKeyDown(KeyType::D))
-	{
-		Scene_LevelManager::LoadScene_Level(L"TitleLevel");
-	}
 }
 
 void Won::EndScene_Level::Render(HDC NewDC)
