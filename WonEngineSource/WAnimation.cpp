@@ -21,6 +21,20 @@ Won::WAnimation::WAnimation()
 
 Won::WAnimation::~WAnimation()
 {
+	if(MainTexture)
+	{
+		MainTexture = nullptr;
+	}
+	if(Animator)
+	{
+		Animator = nullptr;
+	}
+	for(auto Sprite : Sprites)
+	{
+		delete Sprite;
+	}
+
+	Sprites.clear();
 }
 
 HRESULT Won::WAnimation::Load(const std::wstring& NewPath)
@@ -32,6 +46,7 @@ void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewTex
 	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal)
 {
 	MainTexture = NewText;
+	SetName(Name);
 
 	if (bIsReversal == false)
 	{

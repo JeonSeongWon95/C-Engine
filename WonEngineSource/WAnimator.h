@@ -49,9 +49,9 @@ namespace Won
         void PlayAnimation(const std::wstring& Name, bool bLoop);
         void SetRemoveColor(mVector3<int> Newcolor);
         bool IsCompletedActiveAnimation();
-        std::function<void()> GetStartEvent(const std::wstring& Name);
-        std::function<void()> GetCompleteEvent(const std::wstring& Name);
-        std::function<void()> GetEndEvent(const std::wstring& Name);
+        Event& GetStartEvent(const std::wstring& Name);
+        Event& GetCompleteEvent(const std::wstring& Name);
+        Event& GetEndEvent(const std::wstring& Name);
 
 
     private:

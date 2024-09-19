@@ -24,8 +24,6 @@ Won::PlayScene_Level::~PlayScene_Level()
  
 void Won::PlayScene_Level::Initialize()
 {
-	Scene_Level::Initialize();
-
 	Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	SpriteRenderComponent* BSRC = BG->AddComponent<SpriteRenderComponent>();
 	BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ba"));
@@ -40,7 +38,7 @@ void Won::PlayScene_Level::Initialize()
 	//CATS->SetRemoveColor(mVector3<int>(0, 0, 0));
 
 	Player* Ch = InstanceSpawn<Player>(eLayerType::Player);
-	Ch->AddComponent<WPlayerScript>();
+	WPlayerScript* chScr =  Ch->AddComponent<WPlayerScript>();
 	Transform* CTR = Ch->GetComponent<Transform>();
 	CTR->SetScale(mVector2<float>(3.0f, 3.0f));
 	CTR->SetPos(mVector2<float>(0, 500.f));
@@ -51,7 +49,7 @@ void Won::PlayScene_Level::Initialize()
 	CAT->CreateAnimation(L"RightIdle", CharcterTexture, mVector2<float>(0, 8), mVector2<float>(18.5, 15.5), mVector2<float>(0, 0), 1, 0.2f);
 	CAT->CreateAnimation(L"LeftIdle", CharcterTexture, mVector2<float>(568, 222), mVector2<float>(18.5, 15.5), mVector2<float>(0, 0), 1, 0.2f, true);
 	
-	CAT->GetCompleteEvent(L"RightWalk") = std::bind(&WPlayerScript::SpawnEnemy, Ch);
+	CAT->GetCompleteEvent(L"RightWalk") = std::bind(&WPlayerScript::SpawnEnemy, chScr);
 
 	//CAT->CreateAnimation(L"RightBigger", CharcterTexture, mVector2<float>(568, 222), mVector2<float>(18.5, 15.5), mVector2<float>(0, 0), 1, 0.2f);
 	//CAT->CreateAnimation(L"RightSmall", CharcterTexture, mVector2<float>(568, 222), mVector2<float>(18.5, 15.5), mVector2<float>(0, 0), 1, 0.2f);
@@ -75,6 +73,8 @@ void Won::PlayScene_Level::Initialize()
 	//WAnimator* MAT = Monster->AddComponent<WAnimator>();
 	//MAT->CreateAnimation(L"Walk", MonsterTexture, mVector2<float>(0, 15), mVector2<float>(18.5, 18), mVector2<float>(0, 0), 2, 0.1f);
 	//MAT->PlayAnimation(L"Walk", true);
+
+	Scene_Level::Initialize();
 }
 
 void Won::PlayScene_Level::Update()

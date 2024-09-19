@@ -8,6 +8,10 @@ Won::Component::Component(eComponentType NewType)
 
 Won::Component::~Component()
 {
+	if(Owner)
+	{
+		Owner = nullptr;
+	}
 }
 
 void Won::Component::Initialize()

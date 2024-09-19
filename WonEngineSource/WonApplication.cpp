@@ -36,6 +36,7 @@ namespace Won
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 	void WonApplication::Update()
 	{
@@ -57,6 +58,10 @@ namespace Won
 		Scene_LevelManager::Render(shdc);
 
 		CopyBuffer(shdc, ahdc);
+	}
+	void WonApplication::Destroy()
+	{
+		Scene_LevelManager::Destroy();
 	}
 
 	void WonApplication::ClearBuffer()

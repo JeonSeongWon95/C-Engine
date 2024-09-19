@@ -17,6 +17,10 @@ Won::WTexture::WTexture()
 
 Won::WTexture::~WTexture()
 {
+	if(aImage)
+	{
+		delete aImage;
+	}
 }
 
 HRESULT Won::WTexture::Load(const std::wstring& NewPath)

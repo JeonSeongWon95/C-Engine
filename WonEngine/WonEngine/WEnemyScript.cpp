@@ -4,6 +4,7 @@
 #include "Timer.h"
 #include "Input.h"
 #include "WAnimator.h"
+#include "../WonEngineSource/WonObject.h"
 
 
 Won::WEnemyScript::WEnemyScript()
@@ -11,6 +12,7 @@ Won::WEnemyScript::WEnemyScript()
 	, Anim(nullptr)
 	, Direction(eEnemyDirection::RIGHT)
 	, mTimer(0.f)
+	, mDeathTimer(0.f)
 {
 	SetName(L"EnemyScript");
 }
@@ -29,6 +31,13 @@ void Won::WEnemyScript::Update()
 	if (Anim == nullptr)
 	{
 		Anim = GetOwner()->GetComponent<WAnimator>();
+	}
+
+	mDeathTimer += Timer::GetDeltaSeconds();
+
+	if(mDeathTimer > 10.0f)
+	{
+		Destroy(GetOwner());
 	}
 
 	switch (mState)

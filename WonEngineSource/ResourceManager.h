@@ -8,6 +8,9 @@ namespace Won
 	class ResourceManager
 	{
 	public:
+		ResourceManager();
+		~ResourceManager();
+
 		template<typename T>
 		static T* Find(const std::wstring& FileName)
 		{

@@ -17,6 +17,7 @@ namespace Won
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC NewDC);
+		static void Destroy();
 		static Scene_Level* GetActiveScene() {return ActiveScene_Level;}
 
 

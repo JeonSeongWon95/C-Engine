@@ -17,7 +17,7 @@ Won::Scene_Level::~Scene_Level()
 {
 	for (WLayer* Layer : Layers)
 	{
-		delete(Layer);
+		delete Layer;
 	}
 
 	Layers.clear();
@@ -59,6 +59,15 @@ void Won::Scene_Level::Render(HDC NewDC)
 	{
 		if (Layer == nullptr) { continue; }
 		Layer->Render(NewDC);
+	}
+}
+
+void Won::Scene_Level::Destroy()
+{
+	for (WLayer* Layer : Layers)
+	{
+		if (Layer == nullptr) { continue; }
+		Layer->Destroy();
 	}
 }
 

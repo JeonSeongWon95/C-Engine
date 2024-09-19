@@ -34,5 +34,10 @@ namespace Won
 
 		return NewObject;
 	}
+
+	static void Destroy(GameObject* NewGameObject)
+	{
+		NewGameObject->DoDeath();
+	}
 }
 

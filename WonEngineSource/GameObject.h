@@ -7,6 +7,14 @@ namespace Won
 	class GameObject
 	{
 	public:
+		enum class eState
+		{
+			Active,
+			Pased,
+			Death,
+			End
+		};
+
 		GameObject();
 		virtual ~GameObject();
 
@@ -14,6 +22,16 @@ namespace Won
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
+		virtual void SetActive(bool NewActive)
+		{
+			if (NewActive) { ObjectState = eState::Active; }
+			if (!NewActive) { ObjectState = eState::Pased; }
+		}
+		virtual void DoDeath()
+		{
+			ObjectState = eState::Death;
+		}
+		virtual eState& GetActive() { return ObjectState; }
 
 		template<typename T>
 		T* AddComponent()
@@ -49,6 +67,7 @@ namespace Won
 	protected:
 		void AddTransform();
 		std::vector<Component*> Components;
+		eState ObjectState;
 
 
 

@@ -12,6 +12,27 @@ Won::WAnimator::WAnimator()
 
 Won::WAnimator::~WAnimator()
 {
+	for(std::map<std::wstring, WAnimation*>::iterator iter = mAnimations.begin();
+		iter != mAnimations.end();)
+	{
+		delete iter->second;
+		iter = mAnimations.erase(iter);
+	}
+	mAnimations.clear();
+
+	for(std::map<std::wstring, Events*>::iterator iter = mAnimEvents.begin();
+		iter != mAnimEvents.end();)
+	{
+		delete iter->second;
+		iter = mAnimEvents.erase(iter);
+	}
+
+	mAnimEvents.clear();
+
+	if(mActiveAnimation != nullptr)
+	{
+		mActiveAnimation = nullptr;
+	}
 }
 
 void Won::WAnimator::Initialize()
@@ -20,14 +41,17 @@ void Won::WAnimator::Initialize()
 
 void Won::WAnimator::Update()
 {
-	if(mActiveAnimation)
+	if (mActiveAnimation)
 	{
 		mActiveAnimation->Update();
-		
-		Events* mainEvent = FindEvents(mActiveAnimation->GetName());
-		mainEvent->mCompleteEvent.mEvent();
 
-		if(mActiveAnimation->IsCompleted() == true && mLoop == true)
+		Events* mainEvent = FindEvents(mActiveAnimation->GetName());
+		if (mainEvent)
+		{
+			mainEvent->mCompleteEvent();
+		}
+
+		if (mActiveAnimation->IsCompleted() == true && mLoop == true)
 		{
 			mActiveAnimation->Reset();
 		}
@@ -40,18 +64,18 @@ void Won::WAnimator::LateUpdate()
 
 void Won::WAnimator::Render(HDC NewDC)
 {
-	if(mActiveAnimation)
+	if (mActiveAnimation)
 	{
 		mActiveAnimation->Render(NewDC);
 	}
 }
 
-void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition, 
+void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition,
 	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal)
 {
 	WAnimation* findanim = FindAnimation(Name);
-	
-	if(findanim != nullptr)
+
+	if (findanim != nullptr)
 		return;
 
 	findanim = new WAnimation();
@@ -62,14 +86,14 @@ void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText
 
 	mAnimEvents.insert(std::make_pair(Name, NewEvents));
 	mAnimations.insert(std::make_pair(Name, findanim));
-	
+
 }
 
 Won::WAnimation* Won::WAnimator::FindAnimation(const std::wstring& Name)
 {
 	auto Iter = mAnimations.find(Name);
 
-	if(Iter == mAnimations.end())
+	if (Iter == mAnimations.end())
 	{
 		return nullptr;
 	}
@@ -96,16 +120,23 @@ void Won::WAnimator::PlayAnimation(const std::wstring& Name, bool bLoop)
 	if (PlayAnim == nullptr)
 		return;
 
-	if(mActiveAnimation)
+	if (mActiveAnimation)
 	{
 		Events* mainEvent = FindEvents(mActiveAnimation->GetName());
-		mainEvent->mEndEvent.mEvent();
+
+		if (mainEvent)
+		{
+			mainEvent->mEndEvent();
+		}
 	}
 
 	PlayAnim->Reset();
-
 	Events* mainEvent = FindEvents(PlayAnim->GetName());
-	mainEvent->mCompleteEvent.mEvent();
+
+	if (mainEvent)
+	{
+		mainEvent->mStartEvent();
+	}
 
 	mActiveAnimation = PlayAnim;
 	mLoop = bLoop;
@@ -113,10 +144,8 @@ void Won::WAnimator::PlayAnimation(const std::wstring& Name, bool bLoop)
 
 void Won::WAnimator::SetRemoveColor(mVector3<int> Newcolor)
 {
-	if(mActiveAnimation)
-	{
+	if (mActiveAnimation)
 		mActiveAnimation->SetRemoveColor(Newcolor);
-	}
 }
 
 bool Won::WAnimator::IsCompletedActiveAnimation()
@@ -124,36 +153,21 @@ bool Won::WAnimator::IsCompletedActiveAnimation()
 	return mActiveAnimation->IsCompleted();
 }
 
-std::function<void()> Won::WAnimator::GetStartEvent(const std::wstring& Name)
+Won::WAnimator::Event& Won::WAnimator::GetStartEvent(const std::wstring& Name)
 {
 	Events* FindEv = FindEvents(Name);
 
-	if(FindEv != nullptr)
-	{
-		return FindEv->mStartEvent.mEvent;
-	}
-
-	return nullptr;
+	return FindEv->mStartEvent;
 }
 
-std::function<void()> Won::WAnimator::GetCompleteEvent(const std::wstring& Name)
+Won::WAnimator::Event& Won::WAnimator::GetCompleteEvent(const std::wstring& Name)
 {
 	Events* FindEv = FindEvents(Name);
-
-	if (FindEv != nullptr)
-	{
-		return FindEv->mCompleteEvent.mEvent;
-	}
-	return nullptr;
+	return FindEv->mCompleteEvent;
 }
 
-std::function<void()> Won::WAnimator::GetEndEvent(const std::wstring& Name)
+Won::WAnimator::Event& Won::WAnimator::GetEndEvent(const std::wstring& Name)
 {
 	Events* FindEv = FindEvents(Name);
-
-	if (FindEv != nullptr)
-	{
-		return FindEv->mEndEvent.mEvent;
-	}
-	return nullptr;
+	return FindEv->mEndEvent;
 }

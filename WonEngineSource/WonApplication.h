@@ -12,10 +12,10 @@ namespace Won
 
 		void Initialize(HWND NewHWND, int NewWidth, int NewHeight);
 		void Run();
-
 		void Update();
 		void LateUpdate();
 		void Render();
+		void Destroy();
 		HDC GetEngineDC() { return ahdc; }
 		HWND GetEngineWND() { return ahwnd; }
 		int GetWidth() { return Width; }

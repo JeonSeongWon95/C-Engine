@@ -2,6 +2,7 @@
 #include "Transform.h"
 
 Won::GameObject::GameObject()
+	:ObjectState(eState::Active)
 {
 	Components.resize((int)eComponentType::End);
 	AddTransform();
@@ -14,6 +15,8 @@ Won::GameObject::~GameObject()
 		delete NewComponent;
 		NewComponent = nullptr;
 	}
+
+	Components.clear();
 }
 void Won::GameObject::Initialize()
 {

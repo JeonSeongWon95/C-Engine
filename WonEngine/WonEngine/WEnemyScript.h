@@ -34,6 +34,7 @@ namespace Won
         eEnemyDirection Direction;
         class WAnimator* Anim;
         float mTimer;
+        float mDeathTimer;
 
     };
 }

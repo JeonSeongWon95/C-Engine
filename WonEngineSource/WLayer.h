@@ -13,6 +13,7 @@ namespace Won
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
+		virtual void Destroy();
 
 		void SetLayerType(eLayerType NewType) { Type = NewType; }
 		void AddGameObject(class GameObject* NewObject);

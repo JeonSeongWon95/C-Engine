@@ -17,7 +17,7 @@ Won::WCamera::WCamera()
 
 Won::WCamera::~WCamera()
 {
-
+	Target = nullptr;
 }
 
 void Won::WCamera::Initialize()

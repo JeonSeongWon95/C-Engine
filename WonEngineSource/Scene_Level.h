@@ -13,6 +13,7 @@ namespace Won
 		virtual void Update();
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
+		virtual void Destroy();
 		virtual void OnEnter();
 		virtual void OnExit();
 
