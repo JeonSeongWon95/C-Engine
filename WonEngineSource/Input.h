@@ -31,9 +31,9 @@ namespace Won
 		static void Initialize();
 		static void Update();
 		
-		static bool GetKeyDown(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Down; }
-		static bool GetKeyUp(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Up; }
-		static bool GetKey(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Pressed; }
+		__forceinline static bool GetKeyDown(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Down; }
+		__forceinline static bool GetKeyUp(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Up; }
+		__forceinline static bool GetKey(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Pressed; }
 		static mVector2<float> GetMousePosition() { return mMousePosition; }
 
 

@@ -36,7 +36,7 @@ namespace Won
         void Reset();
         void Render(HDC NewDC);
         void SetRemoveColor(mVector3<int> NewColor) { ColorKey = NewColor; }
-
+      
 
     private:
         WAnimator* Animator;

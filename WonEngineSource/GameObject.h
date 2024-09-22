@@ -31,6 +31,7 @@ namespace Won
 		{
 			ObjectState = eState::Death;
 		}
+		virtual bool IsActive() { return ObjectState == eState::Active; }
 		virtual eState& GetActive() { return ObjectState; }
 
 		template<typename T>
@@ -68,8 +69,6 @@ namespace Won
 		void AddTransform();
 		std::vector<Component*> Components;
 		eState ObjectState;
-
-
 
 	};
 }

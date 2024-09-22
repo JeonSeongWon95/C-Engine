@@ -13,7 +13,7 @@ namespace Won
 		static void Initialize();
 		static void Update();
 		static void Render(HDC NewDC);
-		static float GetDeltaSeconds() { return DeltaSeconds; }
+		__forceinline static float GetDeltaSeconds() { return DeltaSeconds; }
 
 	private:
 		static LARGE_INTEGER TotalFrequency;

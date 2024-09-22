@@ -93,7 +93,7 @@ void Won::WEnemyScript::Idle()
 void Won::WEnemyScript::Walk()
 {
 	Transform* tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> pos = tr->GetComponentPosition();
+	mVector2<float> pos = tr->GetPosition();
 	mTimer += Timer::GetDeltaSeconds();
 
 	if (Direction == eEnemyDirection::LEFT)

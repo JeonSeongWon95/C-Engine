@@ -15,6 +15,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Actor.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ColliderManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Entry.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h" />
@@ -23,6 +26,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ResourceManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_Level.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_LevelManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)SphereCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
@@ -41,6 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)Actor.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)BoxCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)Collider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ColliderManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Entry.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp" />
@@ -48,6 +55,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ResourceManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene_Level.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene_LevelManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)SphereCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />

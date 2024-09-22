@@ -5,39 +5,70 @@
     <ClInclude Include="PlayScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
     <ClInclude Include="EndScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="LoadResources.h" />
-    <ClInclude Include="WPlayerScript.h" />
     <ClInclude Include="TitleScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h" />
-    <ClInclude Include="WEnemyScript.h" />
+    <ClInclude Include="Enemy.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WEnemyScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WPlayerScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
       <UniqueIdentifier>{80bb6932-b782-4fca-bdd4-914d54385838}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChildObject">
+      <UniqueIdentifier>{5f9cdcc9-f1ad-47d2-a7fb-feceb7e7ba53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ChildComponent">
+      <UniqueIdentifier>{cfa833fb-9b46-4ed7-9e40-2ad23783ffcc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PlayScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
     <ClCompile Include="EndScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="WPlayerScript.cpp" />
     <ClCompile Include="TitleScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="WEnemyScript.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WEnemyScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WPlayerScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

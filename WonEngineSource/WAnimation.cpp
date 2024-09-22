@@ -43,12 +43,12 @@ HRESULT Won::WAnimation::Load(const std::wstring& NewPath)
 }
 
 void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition,
-	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal)
+	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
 {
 	MainTexture = NewText;
 	SetName(Name);
 
-	if (bIsReversal == false)
+	if (bIsReverse == false)
 	{
 		for (int i = 0; i < (int)AnimationSize; ++i)
 		{
@@ -114,7 +114,7 @@ void Won::WAnimation::Render(HDC NewDC)
 
 	GameObject* GO = Animator->GetOwner();
 	Transform* Tr = GO->GetComponent<Transform>();
-	mVector2<float> Pos = Tr->GetComponentPosition();
+	mVector2<float> Pos = Tr->GetPosition();
 	mVector2<float> Sca = Tr->GetScale();
 	float Rot = Tr->GetRotation();
 	Sprite* CurrentSprite = Sprites[mIndex];
@@ -136,8 +136,8 @@ void Won::WAnimation::Render(HDC NewDC)
 		func.SourceConstantAlpha = 255;
 
 		AlphaBlend(NewDC
-			, static_cast<int>((Pos.X) - (CurrentSprite->sSize.X / 2.f))
-			, static_cast<int>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f))
+			, static_cast<int>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
+			, static_cast<int>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
 			, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
 			, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
 			, ImageDC
@@ -169,8 +169,8 @@ void Won::WAnimation::Render(HDC NewDC)
 		graphics.DrawImage(MainTexture->GetImage()
 			, Gdiplus::Rect
 			( 
-				  static_cast<INT>((Pos.X) - (CurrentSprite->sSize.X / 2.f))
-				, static_cast<INT>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f))
+				  static_cast<INT>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
+				, static_cast<INT>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
 				, static_cast<INT>((CurrentSprite->sSize.X) * Sca.X)
 				, static_cast<INT>((CurrentSprite->sSize.Y) * Sca.Y)
 			)

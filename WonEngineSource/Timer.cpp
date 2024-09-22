@@ -36,5 +36,4 @@ void Won::Timer::Render(HDC NewDC)
 
 	swprintf(Clock, sizeof(Clock), L"%d", CastDeltaTime);
 	TextOut(NewDC, 50, 10, Clock, (int)wcslen(Clock));
-
 }

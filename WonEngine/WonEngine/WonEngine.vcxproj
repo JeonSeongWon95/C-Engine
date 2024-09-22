@@ -132,6 +132,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletScript.h" />
     <ClInclude Include="EndScene_Level.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="LoadResources.h" />
@@ -143,6 +145,8 @@
     <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletScript.cpp" />
     <ClCompile Include="EndScene_Level.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -150,9 +154,6 @@
     <ClCompile Include="TitleScene_Level.cpp" />
     <ClCompile Include="WEnemyScript.cpp" />
     <ClCompile Include="WPlayerScript.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -17,6 +17,7 @@ namespace Won
 
 		void SetLayerType(eLayerType NewType) { Type = NewType; }
 		void AddGameObject(class GameObject* NewObject);
+		std::vector<class GameObject*>& GetGameObject() { return GameObjects; }
 
 	private:
 		eLayerType Type;

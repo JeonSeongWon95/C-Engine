@@ -36,7 +36,7 @@ void Won::WCamera::LateUpdate()
 	if(Target)
 	{
 		Transform* Tr = Target->GetComponent<Transform>();
-		mLookPosition = Tr->GetComponentPosition();
+		mLookPosition = Tr->GetPosition();
 	}
 
 	mDistance = mLookPosition - (mResolution / 2.0f);

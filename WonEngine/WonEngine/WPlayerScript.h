@@ -10,7 +10,9 @@ namespace Won
         {
             IdleState,
             WalkState,
-            JumpState
+            JumpState,
+            AttackState,
+            ChangeSize
         };
 
         enum ePlayerDirection
@@ -36,8 +38,10 @@ namespace Won
         void Idle();
         void Walk();
         void Jump();
-        void SpawnEnemy();
+        void Change();
+        void Fire();
 
+        ePlayerDirection& GetPlayerDirection() { return Direction ;}
 
     private:
         ePlayerState mState;

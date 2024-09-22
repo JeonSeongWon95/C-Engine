@@ -3,6 +3,8 @@
 
 namespace Won
 {
+#define PI 3.141592f
+
 	template<typename T>
 	struct mVector2
 	{
@@ -20,6 +22,17 @@ namespace Won
 			Y = NewY;
 		}
 
+		static float Dot(mVector2& v)
+		{
+			return X * v.X + Y * v.Y;
+
+		}
+
+		static float Cross(mVector2& v)
+		{
+			return X * v.Y + Y * v.X;
+		}
+
 		mVector2 operator-(mVector2 other)
 		{
 			return mVector2(X - other.X, Y - other.Y);
@@ -31,6 +44,33 @@ namespace Won
 		mVector2 operator/(float Value)
 		{
 			return mVector2(X / Value, Y / Value);
+		}
+		mVector2 operator*(float Value)
+		{
+			return mVector2(X * Value, Y * Value);
+		}
+		mVector2 operator+=(mVector2 Other)
+		{
+			return mVector2(X += Other.X, Y += Other.Y);
+		}
+
+		float Lenth()
+		{
+			return sqrtf(X * X + Y * Y);
+		}
+
+		mVector2 Nomalize()
+		{
+			float lenth = Lenth();
+			X /= lenth;
+			Y /= lenth;
+
+			return *(this);
+		}
+
+		mVector2 Rotate(float Degree)
+		{
+			float radian = (Degree / 180.f) * PI;
 		}
 
 	};

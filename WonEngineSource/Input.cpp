@@ -128,6 +128,6 @@ void Won::Input::SetMousePosition()
 	GetCursorPos(&Cursorpos);
 	ScreenToClient(Engine.GetEngineWND(), &Cursorpos);
 
-	mMousePosition.X = Cursorpos.x;
-	mMousePosition.Y = Cursorpos.y;
+	mMousePosition.X = static_cast<float>(Cursorpos.x);
+	mMousePosition.Y = static_cast<float>(Cursorpos.y);
 }

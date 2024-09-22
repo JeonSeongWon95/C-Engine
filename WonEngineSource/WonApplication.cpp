@@ -2,6 +2,7 @@
 #include "Input.h"
 #include "Timer.h"
 #include "Scene_LevelManager.h"
+#include "ColliderManager.h"
 
 namespace Won
 {
@@ -28,6 +29,7 @@ namespace Won
 		createBuffer(NewWidth, NewHeight);
 
 		initializeEtc();
+		ColliderManager::Initialize();
 		Scene_LevelManager::Initialize();
 	}
 
@@ -41,12 +43,14 @@ namespace Won
 	void WonApplication::Update()
 	{
 		Timer::Update();
+		ColliderManager::Update();
 		Input::Update();
 		Scene_LevelManager::Update();
 	}
 
 	void WonApplication::LateUpdate()
 	{
+		ColliderManager::LateUpdate();
 		Scene_LevelManager::LateUpdate();
 	}
 
@@ -55,6 +59,7 @@ namespace Won
 		ClearBuffer();
 
 		Timer::Render(shdc);
+		ColliderManager::Render(shdc);
 		Scene_LevelManager::Render(shdc);
 
 		CopyBuffer(shdc, ahdc);
@@ -66,7 +71,13 @@ namespace Won
 
 	void WonApplication::ClearBuffer()
 	{
+		HBRUSH GrayBrush = CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH OldBrush = (HBRUSH)SelectObject(shdc, GrayBrush);
+
 		Rectangle(shdc, -1, -1, Width + 1, Height + 1);
+		(HBRUSH)SelectObject(shdc, OldBrush);
+
+		DeleteObject(GrayBrush);
 	}
 
 	void WonApplication::CopyBuffer(HDC src, HDC des)

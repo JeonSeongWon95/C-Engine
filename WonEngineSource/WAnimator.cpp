@@ -71,7 +71,7 @@ void Won::WAnimator::Render(HDC NewDC)
 }
 
 void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition,
-	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal)
+	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
 {
 	WAnimation* findanim = FindAnimation(Name);
 
@@ -79,7 +79,7 @@ void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText
 		return;
 
 	findanim = new WAnimation();
-	findanim->CreateAnimation(Name, NewText, StartPosition, SpriteSize, offset, AnimationSize, Duration, bIsReversal);
+	findanim->CreateAnimation(Name, NewText, StartPosition, SpriteSize, offset, AnimationSize, Duration, bIsReverse);
 	findanim->SetAnimator(this);
 
 	Events* NewEvents = new Events();

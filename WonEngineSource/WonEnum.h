@@ -17,9 +17,10 @@ namespace Won
 	enum class eComponentType
 	{
 		Transform,
-		SpriteRender,
+		Collider,
 		Script,
 		Camera,
+		SpriteRender,
 		Animator,
 		End
 	};

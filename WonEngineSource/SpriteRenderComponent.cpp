@@ -36,7 +36,7 @@ void Won::SpriteRenderComponent::Render(HDC NewDC)
 		assert(false);
 
 	Transform* Tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> vc = Tr->GetComponentPosition();
+	mVector2<float> vc = Tr->GetPosition();
 	mVector2<float> Sc = Tr->GetScale();
 	float Ro = Tr->GetRotation();
 
