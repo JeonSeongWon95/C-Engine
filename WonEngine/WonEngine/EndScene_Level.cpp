@@ -32,6 +32,11 @@ void Won::EndScene_Level::Initialize()
 void Won::EndScene_Level::Update()
 {
 	Scene_Level::Update();
+
+	if (Input::GetKey(KeyType::A))
+	{
+		Scene_LevelManager::LoadScene_Level(L"PlayLevel");
+	}
 }
 
 void Won::EndScene_Level::LateUpdate()

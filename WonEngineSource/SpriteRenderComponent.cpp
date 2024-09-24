@@ -16,6 +16,7 @@ Won::SpriteRenderComponent::SpriteRenderComponent()
 
 Won::SpriteRenderComponent::~SpriteRenderComponent()
 {
+	texture = nullptr;
 }
 
 void Won::SpriteRenderComponent::Initialize()
@@ -59,8 +60,8 @@ void Won::SpriteRenderComponent::Render(HDC NewDC)
 	if (texture->GetTextureType() == WTexture::TextureType::Bmp)
 	{
 		TransparentBlt(NewDC
-			, static_cast<int>(vc.X + StartPosition.X)
-			, static_cast<int>(vc.Y + StartPosition.Y)
+			, static_cast<int>(vc.X)
+			, static_cast<int>(vc.Y)
 			, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
 			, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
 			, texture->GetHDC()

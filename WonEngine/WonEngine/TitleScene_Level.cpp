@@ -44,6 +44,11 @@ void Won::TitleScene_Level::Initialize()
 void Won::TitleScene_Level::Update()
 {
 	Scene_Level::Update();
+
+	if (Input::GetKey(KeyType::A))
+	{
+		Scene_LevelManager::LoadScene_Level(L"EndLevel");
+	}
 }
 
 void Won::TitleScene_Level::LateUpdate()

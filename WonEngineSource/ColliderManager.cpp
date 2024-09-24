@@ -164,8 +164,8 @@ bool Won::ColliderManager::Intersect(Collider* Left, Collider* Right)
 	}
 	else if(Left->GetColliderType() == Collider::eColliderType::Sphere && Right->GetColliderType() == Collider::eColliderType::Sphere)
 	{
-		if(fabs(LeftSize.X / 2 + RightSize.X/ 2) >= fabs(mVector2<float>((LeftPos.X - LeftSize.X/2) + (RightPos.X - RightSize.X / 2), 
-			(LeftPos.Y + LeftSize.Y/2) + (RightPos.Y + RightSize.Y / 2)).Lenth()))
+
+		if(fabs(LeftSize.X / 2 + RightSize.X/ 2) >= fabs(((LeftPos - (LeftSize / 2)) - (RightPos - (RightSize / 2))).Lenth()))
 		{
 			return true;
 		}

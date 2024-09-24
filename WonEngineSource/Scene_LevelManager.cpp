@@ -4,6 +4,7 @@
 
 std::map<std::wstring, Won::Scene_Level*> Won::Scene_LevelManager::Scene_Levels = {};
 Won::Scene_Level* Won::Scene_LevelManager::ActiveScene_Level = nullptr;
+Won::Scene_Level* Won::Scene_LevelManager::DontDestoryScene_Level = nullptr;
 
 Won::Scene_LevelManager::Scene_LevelManager()
 {
@@ -12,12 +13,13 @@ Won::Scene_LevelManager::Scene_LevelManager()
 Won::Scene_LevelManager::~Scene_LevelManager()
 {
 	for(std::map<std::wstring, Won::Scene_Level*>::iterator iter = Scene_Levels.begin();
-		iter != Scene_Levels.end(); ++iter)
+		iter != Scene_Levels.end();)
 	{
 		delete iter->second;
 		iter = Scene_Levels.erase(iter);
 	}
 	
+	delete DontDestoryScene_Level;
 	Scene_Levels.clear();
 }
 

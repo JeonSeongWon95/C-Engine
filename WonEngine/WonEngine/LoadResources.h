@@ -14,6 +14,7 @@ namespace Won
 		ResourceManager::Load<WTexture>(L"Ob", L"../Resource/Item/Object.bmp");
 		ResourceManager::Load<WTexture>(L"It", L"../Resource/Item/Item.bmp");
 		ResourceManager::Load<WTexture>(L"Ef", L"../Resource/Effect/Sprite.png");
+		ResourceManager::Load<WTexture>(L"Ti", L"../Resource/TileMap.bmp");
 	}
 }
 

@@ -28,6 +28,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_LevelManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SphereCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TileRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h" />
@@ -57,6 +58,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)Scene_LevelManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SphereCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TileRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp" />

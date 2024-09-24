@@ -93,9 +93,12 @@ void Won::WPlayerScript::Idle()
 				Anim->PlayAnimation(L"ChangeToRightBigger", false);
 			}
 
-			BoxCollider2D* BoxCollider = GetOwner()->GetComponent<BoxCollider2D>();
-			BoxCollider->SetSize(mVector2<float>(50, 100));
-			BoxCollider->Setoffset(mVector2<float>(-18.0f, -10.0f));
+			Collider* mCollider = GetOwner()->GetComponent<Collider>();
+			if (mCollider->GetColliderType() == Collider::eColliderType::Box)
+			{
+				mCollider->SetSize(mVector2<float>(50, 100));
+				mCollider->Setoffset(mVector2<float>(-18.0f, -10.0f));
+			}
 			mState = ePlayerState::ChangeSize;
 			Size = ePlayerSize::Bigger;
 		}
@@ -126,9 +129,15 @@ void Won::WPlayerScript::Idle()
 			{
 				Anim->PlayAnimation(L"ChangeToRightSmall", false);
 			}
-			BoxCollider2D* BoxCollider = GetOwner()->GetComponent<BoxCollider2D>();
-			BoxCollider->SetSize(mVector2<float>(50, 50));
-			BoxCollider->Setoffset(mVector2<float>(-18.0f, -25.0f));
+
+
+			Collider* mCollider = GetOwner()->GetComponent<Collider>();
+			if (mCollider->GetColliderType() == Collider::eColliderType::Box)
+			{
+				mCollider->SetSize(mVector2<float>(50, 50));
+				mCollider->Setoffset(mVector2<float>(-18.0f, -25.0f));
+			}
+
 			mState = ePlayerState::ChangeSize;
 			Size = ePlayerSize::Small;
 		}

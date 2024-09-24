@@ -6,6 +6,7 @@ namespace Won
 	{
 		None,
 		BackGround,
+		Tilemap,
 		Environment,
 		Character,
 		Player,
@@ -21,6 +22,7 @@ namespace Won
 		Script,
 		Camera,
 		SpriteRender,
+		TileRender,
 		Animator,
 		End
 	};

@@ -4,6 +4,7 @@ Won::Component::Component(eComponentType NewType)
 	: Owner(nullptr)
 	, aType(NewType)
 {
+
 }
 
 Won::Component::~Component()

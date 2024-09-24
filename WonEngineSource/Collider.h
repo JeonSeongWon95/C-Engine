@@ -34,6 +34,7 @@ namespace Won
         void SetSize(mVector2<float> NewSize) { mSize = NewSize; }
         mVector2<float> GetSize() { return mSize; }
         eColliderType GetColliderType() { return mType; }
+        void SetColliderType(eColliderType NewType) { mType = NewType; }
 
     private:
         static UINT32 ColliderID;

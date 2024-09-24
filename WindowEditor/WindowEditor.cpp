@@ -5,6 +5,8 @@
 #include "../WonEngineSource/WonApplication.h"
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
 #include "../WonEngine/WonEngine/LoadResources.h"
+#include <crtdbg.h>
+
 
 #pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
 
@@ -14,6 +16,7 @@ ULONG_PTR gpToken;
 Gdiplus::GdiplusStartupInput gdsi;
 
 #define MAX_LOADSTRING 100
+#define _CRTDBG_MAP_ALLOC
 
 // Global Variables:
 HINSTANCE hInst;                                // current instance
@@ -21,9 +24,10 @@ WCHAR szTitle[MAX_LOADSTRING];                  // The title bar text
 WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 
 // Forward declarations of functions included in this code module:
-ATOM                MyRegisterClass(HINSTANCE hInstance);
+ATOM                MyRegisterClass(HINSTANCE hInstance,const wchar_t* Name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
+LRESULT CALLBACK    WndProcToo(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -38,14 +42,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     
     //메모리 숫자를 넣으면 해당 순번에 생성된 메모리가 어디서 생성되었는지 알려줌.
-    //_CrtSetBreakAlloc(635);
+    //_CrtSetBreakAlloc(909);
 
     // TODO: Place code here.
 
     // Initialize global strings
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
     LoadStringW(hInstance, IDC_WINDOWEDITOR, szWindowClass, MAX_LOADSTRING);
-    MyRegisterClass(hInstance);
+
+    MyRegisterClass(hInstance, szWindowClass, WndProc);
+    MyRegisterClass(hInstance, L"TILEMAP", WndProcToo);
 
     // Perform application initialization:
     if (!InitInstance(hInstance, nCmdShow))
@@ -92,14 +98,14 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 //  PURPOSE: Registers the window class.
 //
-ATOM MyRegisterClass(HINSTANCE hInstance)
+ATOM MyRegisterClass(HINSTANCE hInstance,const wchar_t* Name, WNDPROC proc)
 {
     WNDCLASSEXW wcex;
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
     wcex.style = CS_HREDRAW | CS_VREDRAW;
-    wcex.lpfnWndProc = WndProc;
+    wcex.lpfnWndProc = proc;
     wcex.cbClsExtra = 0;
     wcex.cbWndExtra = 0;
     wcex.hInstance = hInstance;
@@ -107,7 +113,7 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_WINDOWEDITOR);
-    wcex.lpszClassName = szWindowClass;
+    wcex.lpszClassName = Name;
     wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
@@ -133,6 +139,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
 
+    HWND hWndToo = CreateWindowW(L"TILEMAP", L"TileMap", WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
+
     Engine.Initialize(hWnd, Width, Height);
 
     if (!hWnd)
@@ -142,6 +151,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     ShowWindow(hWnd, nCmdShow);
     UpdateWindow(hWnd);
+
+    ShowWindow(hWndToo, nCmdShow);
+    UpdateWindow(hWndToo);
 
 
     Gdiplus::GdiplusStartup(&gpToken, &gdsi, NULL);
@@ -164,6 +176,44 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - post a quit message and return
 //
 //
+LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+    switch (message)
+    {
+    case WM_COMMAND:
+    {
+        int wmId = LOWORD(wParam);
+        // Parse the menu selections:
+        switch (wmId)
+        {
+        case IDM_ABOUT:
+            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
+            break;
+        case IDM_EXIT:
+            DestroyWindow(hWnd);
+            break;
+        default:
+            return DefWindowProc(hWnd, message, wParam, lParam);
+        }
+    }
+    break;
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        // TODO: Add any drawing code that uses hdc here...
+        EndPaint(hWnd, &ps);
+    }
+    break;
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        break;
+    default:
+        return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+    return 0;
+}
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)

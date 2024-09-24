@@ -25,8 +25,10 @@ namespace Won
         HDC GetHDC() { return aDC; }
         UINT GetWidth() { return Width; }
         UINT GetHeight() { return Height; }
+        bool IsAlpha() {return mIsAlpha;}
 
     private:
+        bool mIsAlpha;
         TextureType TType;
         HBITMAP aBitmap;
         Gdiplus::Image* aImage;

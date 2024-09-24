@@ -65,6 +65,9 @@
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ColliderManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)TileRenderer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)Scene_Level.h" />
@@ -137,6 +140,9 @@
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ColliderManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)TileRenderer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

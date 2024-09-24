@@ -15,6 +15,7 @@
 #include "WEnemyScript.h"
 #include "BoxCollider2D.h"
 #include "ColliderManager.h"
+#include "SphereCollider2D.h"
 
 Won::PlayScene_Level::PlayScene_Level()
 {
@@ -28,7 +29,7 @@ void Won::PlayScene_Level::Initialize()
 {
 	//Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	//SpriteRenderComponent* BSRC = BG->AddComponent<SpriteRenderComponent>();
-	//BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ba"));
+	//BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));
 	//BSRC->SetSize(mVector2<float>(4.0f, 4.0f));
 	//BSRC->SetStartPosition(mVector2<float>(0, -325));
 
@@ -44,7 +45,7 @@ void Won::PlayScene_Level::Initialize()
 	Player* Ch = InstanceSpawn<Player>(eLayerType::Player);
 	WPlayerScript* chScr =  Ch->AddComponent<WPlayerScript>();
 
-	BoxCollider2D* PlayerCollider = Ch->AddComponent<BoxCollider2D>();
+	SphereCollider2D* PlayerCollider = Ch->AddComponent<SphereCollider2D>();
 	PlayerCollider->Setoffset(mVector2<float>(-18.0f, -25.0f));
 	PlayerCollider->SetSize(mVector2<float>(50.0f, 50.0f));
 
@@ -72,10 +73,12 @@ void Won::PlayScene_Level::Initialize()
 	CAT->GetStartEvent(L"Attack") = std::bind(&WPlayerScript::Fire, chScr);
 	CAT->PlayAnimation(L"RightIdle", false);
 
+	DestoryOnLoadScene(Ch);
+
 	Enemy* Monster = InstanceSpawn<Enemy>(eLayerType::Character);
 	Monster->AddComponent<WEnemyScript>();
 
-	BoxCollider2D* MB = Monster->AddComponent<BoxCollider2D>();
+	SphereCollider2D* MB = Monster->AddComponent<SphereCollider2D>();
 	MB->SetSize(mVector2<float>(50.0f, 50.0f));
 	MB->Setoffset(mVector2<float>(-15.0f, -15.0f));
 
@@ -94,6 +97,11 @@ void Won::PlayScene_Level::Initialize()
 void Won::PlayScene_Level::Update()
 {
 	Scene_Level::Update();
+
+	if(Input::GetKey(KeyType::A))
+	{
+		Scene_LevelManager::LoadScene_Level(L"TitleLevel");
+	}
 }
 
 void Won::PlayScene_Level::LateUpdate()

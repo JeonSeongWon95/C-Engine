@@ -15,6 +15,10 @@ namespace Won
 		void LateUpdate() override;
 		void Render(HDC NewDC) override;
 
+		void OnColliderEnter(Collider* Other) override;
+		void OnColliderStay(Collider* Other) override;
+		void OnColliderExit(Collider* Other) override;
+
 	private:
     };
 }

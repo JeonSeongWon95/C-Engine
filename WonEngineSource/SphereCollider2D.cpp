@@ -4,6 +4,7 @@
 
 Won::SphereCollider2D::SphereCollider2D()
 {
+	Collider::SetColliderType(eColliderType::Sphere);
 }
 
 Won::SphereCollider2D::~SphereCollider2D()
@@ -46,4 +47,16 @@ void Won::SphereCollider2D::Render(HDC NewDC)
 	SelectObject(NewDC, OldPen);
 
 	DeleteObject(BluePen);
+}
+
+void Won::SphereCollider2D::OnColliderEnter(Collider* Other)
+{
+}
+
+void Won::SphereCollider2D::OnColliderStay(Collider* Other)
+{
+}
+
+void Won::SphereCollider2D::OnColliderExit(Collider* Other)
+{
 }

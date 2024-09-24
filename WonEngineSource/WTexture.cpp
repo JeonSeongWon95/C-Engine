@@ -12,6 +12,7 @@ Won::WTexture::WTexture()
 	, aDC(nullptr)
 	, Width(0)
 	, Height(0)
+	, mIsAlpha(false)
 {
 }
 
@@ -42,6 +43,10 @@ HRESULT Won::WTexture::Load(const std::wstring& NewPath)
 
 		Width = info.bmWidth;
 		Height = info.bmHeight;
+		if(info.bmBitsPixel == 32)
+		{
+			mIsAlpha = true;
+		}
 
 		HDC	NewDC = Engine.GetEngineDC();
 		aDC = CreateCompatibleDC(NewDC);

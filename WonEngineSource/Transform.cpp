@@ -2,7 +2,7 @@
 
 Won::Transform::Transform()
 	:Component(eComponentType::Transform)
-	, ComponentPosition(0,0)
+	, Position(0,0)
 	, mscale(1, 1)
 	, Rotation(0)
 {

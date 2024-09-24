@@ -4,7 +4,7 @@
 
 Won::BoxCollider2D::BoxCollider2D()
 {
-
+	Collider::SetColliderType(eColliderType::Box);
 }
 
 Won::BoxCollider2D::~BoxCollider2D()
@@ -51,4 +51,16 @@ void Won::BoxCollider2D::Render(HDC NewDC)
 	SelectObject(NewDC, OldPen);
 
 	DeleteObject(BluePen);
+}
+
+void Won::BoxCollider2D::OnColliderEnter(Collider* Other)
+{
+}
+
+void Won::BoxCollider2D::OnColliderStay(Collider* Other)
+{
+}
+
+void Won::BoxCollider2D::OnColliderExit(Collider* Other)
+{
 }
