@@ -34,6 +34,9 @@ namespace Won
 		virtual bool IsActive() { return ObjectState == eState::Active; }
 		virtual eState& GetActive() { return ObjectState; }
 
+		eLayerType GetLayerType() { return mLayerType; }
+		void SetLayerType(eLayerType NewLayer) { mLayerType = NewLayer; }
+
 		template<typename T>
 		T* AddComponent()
 		{
@@ -69,6 +72,7 @@ namespace Won
 		void AddTransform();
 		std::vector<Component*> Components;
 		eState ObjectState;
+		eLayerType mLayerType;
 
 	};
 }

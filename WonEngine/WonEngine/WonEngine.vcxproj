@@ -134,6 +134,7 @@
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletScript.h" />
+    <ClInclude Include="DontDestoryScene.h" />
     <ClInclude Include="EndScene_Level.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="LoadResources.h" />
@@ -147,6 +148,7 @@
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletScript.cpp" />
+    <ClCompile Include="DontDestoryScene.cpp" />
     <ClCompile Include="EndScene_Level.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />

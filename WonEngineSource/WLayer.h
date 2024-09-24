@@ -14,14 +14,15 @@ namespace Won
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
 		virtual void Destroy();
+		virtual void EraseGameObjcet(class GameObject* NewGameObject);
 
 		void SetLayerType(eLayerType NewType) { Type = NewType; }
-		void AddGameObject(class GameObject* NewObject);
-		std::vector<class GameObject*>& GetGameObject() { return GameObjects; }
+		void AddGameObject(GameObject* NewObject);
+		std::vector<GameObject*>& GetGameObject() { return GameObjects; }
 
 	private:
 		eLayerType Type;
-		std::vector<class GameObject*> GameObjects;
+		std::vector<GameObject*> GameObjects;
 
 	};
 }

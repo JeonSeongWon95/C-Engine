@@ -1,21 +1,19 @@
 #pragma once
-#include "Collider.h"
-
+#include "Scene_Level.h"
 
 namespace Won
 {
-    class SphereCollider2D : public Collider
+    class DontDestoryScene : public Scene_Level
     {
 	public:
-		SphereCollider2D();
-		~SphereCollider2D();
+		DontDestoryScene();
+		~DontDestoryScene();
 
 		void Initialize() override;
 		void Update() override;
 		void LateUpdate() override;
 		void Render(HDC NewDC) override;
 
-	private:
     };
 }
 

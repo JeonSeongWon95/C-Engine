@@ -79,6 +79,11 @@ void Won::Scene_Level::OnExit()
 {
 }
 
+void Won::Scene_Level::EraseGameObject(GameObject* NewGameObject)
+{
+	Layers[(UINT)NewGameObject->GetLayerType()]->EraseGameObjcet(NewGameObject);
+}
+
 void Won::Scene_Level::AddGameObject(GameObject* NewObject, eLayerType Lt)
 {
 	for(int i = 0; i < Layers.size(); ++i)

@@ -30,6 +30,9 @@
     <ClInclude Include="BulletScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DontDestoryScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scene">
@@ -69,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="BulletScript.cpp">
       <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DontDestoryScene.cpp">
+      <Filter>Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

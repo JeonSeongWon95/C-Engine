@@ -16,8 +16,9 @@ namespace Won
 		virtual void Destroy();
 		virtual void OnEnter();
 		virtual void OnExit();
+		virtual void EraseGameObject(class GameObject* NewGameObject);
 
-		void AddGameObject(class GameObject* NewObject, eLayerType Lt); 
+		void AddGameObject(GameObject* NewObject, eLayerType Lt); 
 		class WLayer* GetLayer(eLayerType Type) { return Layers[(UINT)Type]; }
 		std::vector<class WLayer*> GetLayers() { return Layers; }
 

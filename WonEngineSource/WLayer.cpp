@@ -87,6 +87,20 @@ void Won::WLayer::Destroy()
 	}
 }
 
+void Won::WLayer::EraseGameObjcet(GameObject* NewGameObject)
+{
+	for (std::vector<class GameObject*>::iterator iter = GameObjects.begin();
+		iter != GameObjects.end(); ++iter)
+	{
+		if (*iter == NewGameObject)
+		{
+			iter = GameObjects.erase(iter);
+			return;
+		}
+
+	}
+}
+
 void Won::WLayer::AddGameObject(GameObject* NewObject)
 {
 	if (NewObject == nullptr) { return; }

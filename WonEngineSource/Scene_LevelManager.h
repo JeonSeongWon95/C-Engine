@@ -19,12 +19,13 @@ namespace Won
 		static void Render(HDC NewDC);
 		static void Destroy();
 		static Scene_Level* GetActiveScene() {return ActiveScene_Level;}
-
+		static Scene_Level* GetDontDestoryOnScene() { return DontDestoryScene_Level; }
 
 
 	private:
 		static std::map<std::wstring, Scene_Level*> Scene_Levels;
 		static Scene_Level* ActiveScene_Level;
+		static Scene_Level* DontDestoryScene_Level;
 	};
 
 	template<typename T>

@@ -6,6 +6,7 @@ Won::Collider::Collider()
 	:Component(eComponentType::Collider)
 	,offset(0,0)
 	,mID(ColliderID++)
+	,mType(eColliderType::None)
 {
 
 }

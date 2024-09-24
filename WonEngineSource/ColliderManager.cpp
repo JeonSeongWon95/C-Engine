@@ -152,11 +152,28 @@ bool Won::ColliderManager::Intersect(Collider* Left, Collider* Right)
 	mVector2<float> LeftSize = Left->GetSize();
 	mVector2<float> RightSize = Right->GetSize();
 
-
-	if(fabs(LeftPos.X - RightPos.X) < fabs(LeftSize.X / 2.0f + RightSize.X / 2.0f) && 
-		fabs(LeftPos.Y - RightPos.Y) < fabs(LeftSize.Y / 2.0f + RightSize.Y / 2.0f))
+	
+	if (Left->GetColliderType() == Collider::eColliderType::Box && Right->GetColliderType() == Collider::eColliderType::Box)
 	{
-		return true;
+
+		if (fabs(LeftPos.X - RightPos.X) < fabs(LeftSize.X / 2.0f + RightSize.X / 2.0f) &&
+			fabs(LeftPos.Y - RightPos.Y) < fabs(LeftSize.Y / 2.0f + RightSize.Y / 2.0f))
+		{
+			return true;
+		}
+	}
+	else if(Left->GetColliderType() == Collider::eColliderType::Sphere && Right->GetColliderType() == Collider::eColliderType::Sphere)
+	{
+		if(fabs(LeftSize.X / 2 + RightSize.X/ 2) >= fabs(mVector2<float>((LeftPos.X - LeftSize.X/2) + (RightPos.X - RightSize.X / 2), 
+			(LeftPos.Y + LeftSize.Y/2) + (RightPos.Y + RightSize.Y / 2)).Lenth()))
+		{
+			return true;
+		}
+	}
+	else if(Left->GetColliderType() == Collider::eColliderType::Sphere && Right->GetColliderType() == Collider::eColliderType::Box ||
+		Left->GetColliderType() == Collider::eColliderType::Box && Right->GetColliderType() == Collider::eColliderType::Sphere)
+	{
+
 	}
 
 	return false;

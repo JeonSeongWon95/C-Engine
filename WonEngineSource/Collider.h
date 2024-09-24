@@ -8,6 +8,14 @@ namespace Won
     {
     public:
 
+        enum class eColliderType
+        {
+            None,
+            Box,
+            Sphere
+
+        };
+
         Collider();
         ~Collider();
 
@@ -25,11 +33,13 @@ namespace Won
         UINT32 GetID() { return mID; }
         void SetSize(mVector2<float> NewSize) { mSize = NewSize; }
         mVector2<float> GetSize() { return mSize; }
+        eColliderType GetColliderType() { return mType; }
 
     private:
         static UINT32 ColliderID;
         mVector2<float> offset;
         mVector2<float> mSize;
+        eColliderType mType;
         UINT32 mID;
     };
 }
