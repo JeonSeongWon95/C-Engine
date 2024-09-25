@@ -1,4 +1,4 @@
-#include "BulletScript.h"
+#include "WBulletScript.h"
 #include "Transform.h"
 #include "Player.h"
 #include "WPlayerScript.h"
@@ -6,7 +6,7 @@
 #include "Timer.h"
 #include "WonObject.h"
 
-Won::BulletScript::BulletScript()
+Won::WBulletScript::WBulletScript()
 	:Target(nullptr)
 	,Pos(0,0)
 	,Dr(WPlayerScript::ePlayerDirection::RIGHT)
@@ -14,11 +14,11 @@ Won::BulletScript::BulletScript()
 {
 }
 
-Won::BulletScript::~BulletScript()
+Won::WBulletScript::~WBulletScript()
 {
 }
 
-void Won::BulletScript::Initialize()
+void Won::WBulletScript::Initialize()
 {
 	if(Target != nullptr)
 	{
@@ -27,7 +27,7 @@ void Won::BulletScript::Initialize()
 	}
 }
 
-void Won::BulletScript::Update()
+void Won::WBulletScript::Update()
 {
 	mDeathTimer += Timer::GetDeltaSeconds();
 
@@ -50,12 +50,12 @@ void Won::BulletScript::Update()
 	}
 }
 
-void Won::BulletScript::LateUpdate()
+void Won::WBulletScript::LateUpdate()
 {
 
 }
 
-void Won::BulletScript::Render(HDC NewDC)
+void Won::WBulletScript::Render(HDC NewDC)
 {
 
 }

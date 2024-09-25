@@ -6,7 +6,7 @@
 #include "WAnimator.h"
 #include "Bullet.h"
 #include "../WonEngineSource/WonObject.h"
-#include "BulletScript.h"
+#include "WBulletScript.h"
 #include "WTexture.h"
 #include "ResourceManager.h"
 #include "Player.h"
@@ -210,7 +210,7 @@ void Won::WPlayerScript::Fire()
 {
 	Bullet* Monster = InstanceSpawn<Bullet>(eLayerType::Character);
 	Transform* TR = Monster->GetComponent<Transform>();
-	BulletScript* BS = Monster->AddComponent<BulletScript>();
+	WBulletScript* BS = Monster->AddComponent<WBulletScript>();
 	TR->SetPos(GetOwner()->GetComponent<Transform>()->GetPosition());
 	TR->SetScale(mVector2<float>(3.0f, 3.0f));
 	BS->SetPlayer(dynamic_cast<Player*>(GetOwner()));

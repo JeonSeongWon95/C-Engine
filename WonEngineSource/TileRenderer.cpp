@@ -7,8 +7,8 @@
 Won::TileRenderer::TileRenderer()
 	:Component(eComponentType::TileRender)
 	,texture(nullptr)
-	,mIndex(2,3)
 	,mSize(16.0f,16.0f)
+	,mSheetIndex(-1,-1)
 {
 }
 
@@ -33,6 +33,9 @@ void Won::TileRenderer::Render(HDC NewDC)
 	if (texture == nullptr)
 		assert(false);
 
+	if (mSheetIndex.X == -1 && mSheetIndex.Y == -1)
+		return;
+
 	Transform* Tr = GetOwner()->GetComponent<Transform>();
 	mVector2<float> vc = Tr->GetPosition();
 	mVector2<float> Sc = Tr->GetScale();
@@ -53,11 +56,11 @@ void Won::TileRenderer::Render(HDC NewDC)
 				, static_cast<int>(mSize.X * Sc.X)
 				, static_cast<int>(mSize.Y * Sc.Y)
 				, texture->GetHDC()
-				, static_cast<int>(mIndex.X * mSize.X)
-				, static_cast<int>(mIndex.Y * mSize.Y)
+				, static_cast<int>(mSheetIndex.X * mSize.X)
+				, static_cast<int>(mSheetIndex.Y * mSize.Y)
 				, static_cast<int>(mSize.X)
 				, static_cast<int>(mSize.Y)
-				, RGB(255, 0, 255));
+				, RGB(255, 255, 255));
 		}
 		else
 		{
@@ -73,8 +76,8 @@ void Won::TileRenderer::Render(HDC NewDC)
 				, static_cast<int>(mSize.X * Sc.X)
 				, static_cast<int>(mSize.Y * Sc.Y)
 				, texture->GetHDC()
-				, static_cast<int>(mIndex.X * mSize.X)
-				, static_cast<int>(mIndex.Y * mSize.Y)
+				, static_cast<int>(mSheetIndex.X * mSize.X)
+				, static_cast<int>(mSheetIndex.Y * mSize.Y)
 				, static_cast<int>(mSize.X)
 				, static_cast<int>(mSize.Y)
 				, func);

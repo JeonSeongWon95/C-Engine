@@ -16,6 +16,16 @@ namespace Won
 		void Render(HDC NewDC) override;
 		void OnEnter() override;
 		void OnExit() override;
+
+		void Load();
+		void Save();
+
+		static Won::mVector2<int> sStartPosition;
+
+
+	private:
     };
 }
+
+LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 

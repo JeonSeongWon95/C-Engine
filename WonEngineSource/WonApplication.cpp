@@ -93,10 +93,11 @@ namespace Won
 		RECT rect = { 0, 0, static_cast<LONG>(width), static_cast<LONG>(height) };
 		AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
+
 		Width = width;
 		Height = height;
 
-		SetWindowPos(ahwnd, nullptr, 100, 100, Width, Height, 0);
+		SetWindowPos(ahwnd, nullptr, 0, 0, Width, Height, 0);
 		ShowWindow(hwnd, true);
 
 	}

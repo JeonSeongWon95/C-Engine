@@ -3,7 +3,7 @@
 #include "WonApplication.h"
 
 std::vector<Won::Input::aKey> Won::Input::Keys = {};
-Won::mVector2<float> Won::Input::mMousePosition = {0.f, 0.f};
+Won::mVector2<float> Won::Input::mMousePosition = { 0.f, 0.f };
 
 extern Won::WonApplication Engine;
 
@@ -93,7 +93,7 @@ void Won::Input::updateKeyDown(Input::aKey& NewKey)
 
 void Won::Input::updateKeyUp(Input::aKey& NewKey)
 {
-	if(NewKey.IsPressed == true)
+	if (NewKey.IsPressed == true)
 	{
 		NewKey.State = KeyState::Up;
 	}
@@ -124,10 +124,20 @@ void Won::Input::ClearKeys()
 
 void Won::Input::SetMousePosition()
 {
-	POINT Cursorpos = {};
-	GetCursorPos(&Cursorpos);
-	ScreenToClient(Engine.GetEngineWND(), &Cursorpos);
+	POINT mousePos = { };
+	GetCursorPos(&mousePos);
+	ScreenToClient(Engine.GetEngineWND(), &mousePos);
 
-	mMousePosition.X = static_cast<float>(Cursorpos.x);
-	mMousePosition.Y = static_cast<float>(Cursorpos.y);
+	UINT width = Engine.GetWidth();
+	UINT height = Engine.GetHeight();
+
+	mMousePosition.X = -1.0f;
+	mMousePosition.Y = -1.0f;
+
+	if (mousePos.x > 0 && mousePos.x < width)
+		mMousePosition.X = mousePos.x;
+
+	if (mousePos.y > 0 && mousePos.y < height)
+		mMousePosition.Y = mousePos.y;
+
 }

@@ -16,6 +16,8 @@
 #include "BoxCollider2D.h"
 #include "ColliderManager.h"
 #include "SphereCollider2D.h"
+#include "TileObject.h"
+#include "TileRenderer.h"
 
 Won::PlayScene_Level::PlayScene_Level()
 {
@@ -27,6 +29,34 @@ Won::PlayScene_Level::~PlayScene_Level()
  
 void Won::PlayScene_Level::Initialize()
 {
+
+	FILE* Pfile = nullptr;
+	_wfopen_s(&Pfile, L"../Test", L"rb");
+
+	if (Pfile == nullptr)
+		return;
+
+	mVector2<int> SheetIndex;
+	mVector2<int> TileIndex;
+
+	while (!feof(Pfile))
+	{
+
+		fread(&SheetIndex, sizeof(SheetIndex), 1, Pfile);
+		fread(&TileIndex, sizeof(TileIndex), 1, Pfile);
+
+		TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
+		Transform* ObjectTransform = Object->GetComponent<Transform>();
+		ObjectTransform->SetScale(mVector2<float>(3.0f, 3.0f));
+		TileRenderer* TileRender = Object->AddComponent<TileRenderer>();
+		TileRender->SetTexture(ResourceManager::Find<WTexture>(L"Ob"));
+		ObjectTransform->SetPos(mVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
+		TileRender->SetSheetIndex(SheetIndex);
+
+	}
+
+	fclose(Pfile);
+
 	//Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	//SpriteRenderComponent* BSRC = BG->AddComponent<SpriteRenderComponent>();
 	//BSRC->SetTexture(ResourceManager::Find<WTexture>(L"Ti"));

@@ -8,7 +8,7 @@
 #include <crtdbg.h>
 
 
-#pragma comment(lib, "M:/visualstudio/WonEngine/WindowEditor/x64/Debug/WonEngine.lib")
+#pragma comment(lib, "../WindowEditor/x64/Debug/WonEngine.lib")
 
 Won::WonApplication Engine;
 
@@ -27,7 +27,7 @@ WCHAR szWindowClass[MAX_LOADSTRING];            // the main window class name
 ATOM                MyRegisterClass(HINSTANCE hInstance,const wchar_t* Name, WNDPROC proc);
 BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
-LRESULT CALLBACK    WndProcToo(HWND, UINT, WPARAM, LPARAM);
+
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -137,7 +137,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     const int Height = 729;
 
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
+        0, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
 
     HWND hWndToo = CreateWindowW(L"TILEMAP", L"TileMap", WS_OVERLAPPEDWINDOW,
         CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
@@ -149,12 +149,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         return FALSE;
     }
 
+
     ShowWindow(hWnd, nCmdShow);
     UpdateWindow(hWnd);
-
-    ShowWindow(hWndToo, nCmdShow);
-    UpdateWindow(hWndToo);
-
 
     Gdiplus::GdiplusStartup(&gpToken, &gdsi, NULL);
     Won::LoadResources();
@@ -162,6 +159,19 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     int a = 0;
     srand((unsigned int)(&a));
+
+    Won::WTexture* texture
+        = Won::ResourceManager::Find<Won::WTexture>(L"Ob");
+
+    RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+
+    UINT toolWidth = rect.right - rect.left;
+    UINT toolHeight = rect.bottom - rect.top;
+
+    SetWindowPos(hWndToo, nullptr, Width, 0, toolWidth, toolHeight, 0);
+    ShowWindow(hWndToo, true);
+    UpdateWindow(hWndToo);
 
     return TRUE;
 }
@@ -176,43 +186,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 //  WM_DESTROY  - post a quit message and return
 //
 //
-LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
-{
-    switch (message)
-    {
-    case WM_COMMAND:
-    {
-        int wmId = LOWORD(wParam);
-        // Parse the menu selections:
-        switch (wmId)
-        {
-        case IDM_ABOUT:
-            DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
-            break;
-        case IDM_EXIT:
-            DestroyWindow(hWnd);
-            break;
-        default:
-            return DefWindowProc(hWnd, message, wParam, lParam);
-        }
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        // TODO: Add any drawing code that uses hdc here...
-        EndPaint(hWnd, &ps);
-    }
-    break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
-    }
-    return 0;
-}
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {

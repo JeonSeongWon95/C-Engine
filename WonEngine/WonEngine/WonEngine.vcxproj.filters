@@ -26,7 +26,7 @@
     <ClInclude Include="WPlayerScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
-    <ClInclude Include="BulletScript.h">
+    <ClInclude Include="WBulletScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
     <ClInclude Include="DontDestoryScene.h">
@@ -41,6 +41,9 @@
     </ClInclude>
     <ClInclude Include="ToolScene.h">
       <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="WCameraScript.h">
+      <Filter>ChildComponent</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -79,7 +82,7 @@
     <ClCompile Include="WPlayerScript.cpp">
       <Filter>ChildComponent</Filter>
     </ClCompile>
-    <ClCompile Include="BulletScript.cpp">
+    <ClCompile Include="WBulletScript.cpp">
       <Filter>ChildComponent</Filter>
     </ClCompile>
     <ClCompile Include="DontDestoryScene.cpp">
@@ -93,6 +96,9 @@
     </ClCompile>
     <ClCompile Include="ToolScene.cpp">
       <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="WCameraScript.cpp">
+      <Filter>ChildComponent</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

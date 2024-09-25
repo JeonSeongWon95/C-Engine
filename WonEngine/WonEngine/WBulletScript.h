@@ -5,11 +5,11 @@
 
 namespace Won
 {
-    class BulletScript : public WScript
+    class WBulletScript : public WScript
     {
     public:
-        BulletScript();
-        ~BulletScript();
+        WBulletScript();
+        ~WBulletScript();
 
         virtual void Initialize() override;
         virtual void Update() override;

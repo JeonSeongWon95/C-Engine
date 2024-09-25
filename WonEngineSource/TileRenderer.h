@@ -17,10 +17,13 @@ namespace Won
 
 		void SetTileSize(mVector2<float> NewVector) { mSize = NewVector; }
 		void SetTexture(class WTexture* NewTexture) { texture = NewTexture; }
+		void SetSheetIndex(mVector2<int> NewVector) { mSheetIndex = NewVector; }
+		mVector2<float> GetSize() { return mSize; }
+		mVector2<int> GetSheetIndex() { return mSheetIndex; }
 
 	private:
 		class WTexture* texture;
-		mVector2<float> mIndex;
+		mVector2<int> mSheetIndex;
 		mVector2<float> mSize;
     };
 }
