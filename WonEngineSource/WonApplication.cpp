@@ -1,8 +1,8 @@
 #include "WonApplication.h"
-#include "Input.h"
-#include "Timer.h"
-#include "Scene_LevelManager.h"
-#include "ColliderManager.h"
+#include "WInput.h"
+#include "WTime.h"
+#include "WSceneManager.h"
+#include "WColliderManager.h"
 
 namespace Won
 {
@@ -29,8 +29,8 @@ namespace Won
 		createBuffer(NewWidth, NewHeight);
 
 		initializeEtc();
-		ColliderManager::Initialize();
-		Scene_LevelManager::Initialize();
+		WColliderManager::Initialize();
+		WSceneManager::Initialize();
 	}
 
 	void WonApplication::Run()
@@ -42,31 +42,31 @@ namespace Won
 	}
 	void WonApplication::Update()
 	{
-		Timer::Update();
-		ColliderManager::Update();
-		Input::Update();
-		Scene_LevelManager::Update();
+		WTime::Update();
+		WColliderManager::Update();
+		WInput::Update();
+		WSceneManager::Update();
 	}
 
 	void WonApplication::LateUpdate()
 	{
-		ColliderManager::LateUpdate();
-		Scene_LevelManager::LateUpdate();
+		WColliderManager::LateUpdate();
+		WSceneManager::LateUpdate();
 	}
 
 	void WonApplication::Render()
 	{
 		ClearBuffer();
 
-		Timer::Render(shdc);
-		ColliderManager::Render(shdc);
-		Scene_LevelManager::Render(shdc);
+		WTime::Render(shdc);
+		WColliderManager::Render(shdc);
+		WSceneManager::Render(shdc);
 
 		CopyBuffer(shdc, ahdc);
 	}
 	void WonApplication::Destroy()
 	{
-		Scene_LevelManager::Destroy();
+		WSceneManager::Destroy();
 	}
 
 	void WonApplication::ClearBuffer()
@@ -113,7 +113,7 @@ namespace Won
 
 	void WonApplication::initializeEtc() 
 	{
-		Input::Initialize();
-		Timer::Initialize();
+		WInput::Initialize();
+		WTime::Initialize();
 	}
 }

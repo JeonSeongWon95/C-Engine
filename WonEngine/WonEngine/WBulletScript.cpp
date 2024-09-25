@@ -1,9 +1,9 @@
 #include "WBulletScript.h"
-#include "Transform.h"
+#include "WTransform.h"
 #include "Player.h"
 #include "WPlayerScript.h"
-#include "Input.h"
-#include "Timer.h"
+#include "WInput.h"
+#include "WTime.h"
 #include "WonObject.h"
 
 Won::WBulletScript::WBulletScript()
@@ -29,19 +29,19 @@ void Won::WBulletScript::Initialize()
 
 void Won::WBulletScript::Update()
 {
-	mDeathTimer += Timer::GetDeltaSeconds();
+	mDeathTimer += WTime::GetDeltaSeconds();
 
-	//Transform* TR = GetOwner()->GetComponent<Transform>();
+	//WTransform* TR = GetOwner()->GetComponent<WTransform>();
 	//mVector2<float> Distance = Pos - TR->GetPosition();
 	//Distance.Nomalize();
 	//mVector2<float> CurrentPosition = TR->GetComponentPosition();
-	//CurrentPosition += Distance * 100.0f * Timer::GetDeltaSeconds();
+	//CurrentPosition += Distance * 100.0f * WTime::GetDeltaSeconds();
 	//TR->SetPos(CurrentPosition);
 
 	float radian = cosf( 5 * mDeathTimer);
-	Transform* TR = GetOwner()->GetComponent<Transform>();
-	mVector2<float> GPOS = TR->GetPosition();
-	GPOS += mVector2<float>(1.0f,radian) * 100.0f * Timer::GetDeltaSeconds();
+	WTransform* TR = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> GPOS = TR->GetPosition();
+	GPOS += sVector2<float>(1.0f,radian) * 100.0f * WTime::GetDeltaSeconds();
 	TR->SetPos(GPOS);
 
 	if(mDeathTimer > 5.0f)

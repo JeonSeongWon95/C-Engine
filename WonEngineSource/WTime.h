@@ -4,11 +4,11 @@
 
 namespace Won
 {
-	class Timer
+	class WTime
 	{
 	public:
-		Timer();
-		~Timer();
+		WTime();
+		~WTime();
 
 		static void Initialize();
 		static void Update();

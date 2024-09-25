@@ -1,5 +1,5 @@
 #include "WLayer.h"
-#include "GameObject.h"
+#include "WGameObject.h"
 
 Won::WLayer::WLayer()
 	: Type(eLayerType::None)
@@ -10,9 +10,9 @@ Won::WLayer::WLayer()
 
 Won::WLayer::~WLayer()
 {
-	for(GameObject* GameObject : GameObjects)
+	for(WGameObject* WGameObject : GameObjects)
 	{
-		delete GameObject;
+		delete WGameObject;
 	}
 
 	GameObjects.clear();
@@ -20,62 +20,62 @@ Won::WLayer::~WLayer()
 
 void Won::WLayer::Initialize()
 {
-	for (GameObject* GameObject : GameObjects)
+	for (WGameObject* WGameObject : GameObjects)
 	{
-		if (GameObject == nullptr) { continue; }
+		if (WGameObject == nullptr) { continue; }
 
-		GameObject->Initialize();
+		WGameObject->Initialize();
 	}
 }
 
 void Won::WLayer::Update()
 {
-	for (GameObject* GameObject : GameObjects)
+	for (WGameObject* WGameObject : GameObjects)
 	{
-		if (GameObject == nullptr)
+		if (WGameObject == nullptr)
 			continue;
-		if (GameObject->GetActive() == GameObject::eState::Pased || GameObject->GetActive() == GameObject::eState::Death)
+		if (WGameObject->GetActive() == WGameObject::eState::Pased || WGameObject->GetActive() == WGameObject::eState::Death)
 			continue;
 
-		GameObject->Update();
+		WGameObject->Update();
 	}
 }
 
 void Won::WLayer::LateUpdate()
 {
-	for (GameObject* GameObject : GameObjects)
+	for (WGameObject* WGameObject : GameObjects)
 	{
-		if (GameObject == nullptr)
+		if (WGameObject == nullptr)
 			continue;
-		if (GameObject->GetActive() == GameObject::eState::Pased || GameObject->GetActive() == GameObject::eState::Death)
+		if (WGameObject->GetActive() == WGameObject::eState::Pased || WGameObject->GetActive() == WGameObject::eState::Death)
 			continue;
 
-		GameObject->LateUpdate();
+		WGameObject->LateUpdate();
 	}
 }
 
 void Won::WLayer::Render(HDC NewDC)
 {
 
-	for (GameObject* GameObject : GameObjects)
+	for (WGameObject* WGameObject : GameObjects)
 	{
-		if (GameObject == nullptr) 
+		if (WGameObject == nullptr) 
 			continue; 
-		if (GameObject->GetActive() == GameObject::eState::Pased || GameObject->GetActive() == GameObject::eState::Death)
+		if (WGameObject->GetActive() == WGameObject::eState::Pased || WGameObject->GetActive() == WGameObject::eState::Death)
 			continue;
 
-		GameObject->Render(NewDC);
+		WGameObject->Render(NewDC);
 	}
 }
 
 void Won::WLayer::Destroy()
 {
-	for (std::vector<class GameObject*>::iterator iter = GameObjects.begin();
+	for (std::vector<class WGameObject*>::iterator iter = GameObjects.begin();
 		iter != GameObjects.end();)
 	{
-		if ((*iter)->GetActive() == GameObject::eState::Death)
+		if ((*iter)->GetActive() == WGameObject::eState::Death)
 		{
-			GameObject* DeleteObj = *(iter);
+			WGameObject* DeleteObj = *(iter);
 			iter = GameObjects.erase(iter);
 			delete DeleteObj;
 			DeleteObj = nullptr;
@@ -87,9 +87,9 @@ void Won::WLayer::Destroy()
 	}
 }
 
-void Won::WLayer::EraseGameObjcet(GameObject* NewGameObject)
+void Won::WLayer::EraseGameObjcet(WGameObject* NewGameObject)
 {
-	for (std::vector<class GameObject*>::iterator iter = GameObjects.begin();
+	for (std::vector<class WGameObject*>::iterator iter = GameObjects.begin();
 		iter != GameObjects.end(); ++iter)
 	{
 		if (*iter == NewGameObject)
@@ -101,7 +101,7 @@ void Won::WLayer::EraseGameObjcet(GameObject* NewGameObject)
 	}
 }
 
-void Won::WLayer::AddGameObject(GameObject* NewObject)
+void Won::WLayer::AddGameObject(WGameObject* NewObject)
 {
 	if (NewObject == nullptr) { return; }
 	GameObjects.push_back(NewObject);

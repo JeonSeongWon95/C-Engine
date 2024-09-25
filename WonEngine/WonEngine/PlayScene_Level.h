@@ -1,9 +1,9 @@
 #pragma once
-#include "../WonEngineSource/Scene_Level.h"
+#include "../WonEngineSource/WScene.h"
 
 namespace Won
 {
-	class PlayScene_Level : public Scene_Level
+	class PlayScene_Level : public WScene
 	{
 	public:
 		PlayScene_Level();

@@ -1,16 +1,16 @@
 #include "WCamera.h"
-#include "GameObject.h"
-#include "Transform.h"
+#include "WGameObject.h"
+#include "WTransform.h"
 #include "WonApplication.h"
 
 extern Won::WonApplication Engine;
 
 Won::WCamera::WCamera()
-	: Component(eComponentType::Camera)
+	: WComponent(eComponentType::Camera)
 	, mTarget(nullptr)
-	, mDistance(mVector2<float>(0,0))
-	, mLookPosition(mVector2<float>(0,0))
-	, mResolution(mVector2<float>(0, 0))
+	, mDistance(sVector2<float>(0,0))
+	, mLookPosition(sVector2<float>(0,0))
+	, mResolution(sVector2<float>(0, 0))
 {
 
 }
@@ -25,8 +25,8 @@ void Won::WCamera::Initialize()
 	mResolution.X = static_cast<float>(Engine.GetWidth());
 	mResolution.Y = static_cast<float>(Engine.GetHeight());
 
-	Transform* cameraTr = GetOwner()->GetComponent<Transform>();
-	cameraTr->SetPos(mVector2<float>(mResolution.X / 2, mResolution.Y / 2));
+	WTransform* cameraTr = GetOwner()->GetComponent<WTransform>();
+	cameraTr->SetPos(sVector2<float>(mResolution.X / 2, mResolution.Y / 2));
 }
 
 void Won::WCamera::Update()
@@ -38,12 +38,12 @@ void Won::WCamera::LateUpdate()
 {
 	if (mTarget)
 	{
-		Transform* tr = mTarget->GetComponent<Transform>();
+		WTransform* tr = mTarget->GetComponent<WTransform>();
 		mLookPosition = tr->GetPosition();
 	}
 	else
 	{
-		Transform* cameraTr = GetOwner()->GetComponent<Transform>();
+		WTransform* cameraTr = GetOwner()->GetComponent<WTransform>();
 		mLookPosition = cameraTr->GetPosition();
 	}
 

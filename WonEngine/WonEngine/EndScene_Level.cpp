@@ -1,12 +1,12 @@
 #include "EndScene_Level.h"
-#include "Transform.h"
-#include "SpriteRenderComponent.h"
+#include "WTransform.h"
+#include "WSpriteRenderComponent.h"
 #include "Player.h"
-#include "Scene_LevelManager.h"
+#include "WSceneManager.h"
 #include "WonObject.h"
-#include "ResourceManager.h"
+#include "WResourceManager.h"
 #include "WTexture.h"
-#include "Input.h"
+#include "WInput.h"
 
 Won::EndScene_Level::EndScene_Level()
 {
@@ -18,36 +18,36 @@ Won::EndScene_Level::~EndScene_Level()
 
 void Won::EndScene_Level::Initialize()
 {
-	Scene_Level::Initialize();
+	WScene::Initialize();
 
 	Player* BackGround = InstanceSpawn<Player>(eLayerType::BackGround);
-	SpriteRenderComponent* RenderComponent = BackGround->AddComponent<SpriteRenderComponent>();
+	WSpriteRenderComponent* RenderComponent = BackGround->AddComponent<WSpriteRenderComponent>();
 	RECT rect = { 530,380,780,617 };
-	RenderComponent->SetTexture(ResourceManager::Find<WTexture>(L"Hu"));
+	RenderComponent->SetTexture(WResourceManager::Find<WTexture>(L"Hu"));
 	RenderComponent->SetRect(rect);
-	RenderComponent->SetStartPosition(mVector2<float>(0, 0));
-	RenderComponent->SetSize(mVector2<float>(3.f, 2.f));
+	RenderComponent->SetStartPosition(sVector2<float>(0, 0));
+	RenderComponent->SetSize(sVector2<float>(3.f, 2.f));
 }
 
 void Won::EndScene_Level::Update()
 {
-	Scene_Level::Update();
+	WScene::Update();
 
-	if (Input::GetKey(KeyType::A))
+	if (WInput::GetKey(KeyType::A))
 	{
-		Scene_LevelManager::LoadScene_Level(L"PlayLevel");
+		WSceneManager::LoadScene_Level(L"PlayLevel");
 	}
 }
 
 void Won::EndScene_Level::LateUpdate()
 {
-	Scene_Level::LateUpdate();
+	WScene::LateUpdate();
 
 }
 
 void Won::EndScene_Level::Render(HDC NewDC)
 {
-	Scene_Level::Render(NewDC);
+	WScene::Render(NewDC);
 }
 
 void Won::EndScene_Level::OnEnter()

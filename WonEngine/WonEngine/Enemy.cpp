@@ -10,20 +10,20 @@ Won::Enemy::~Enemy()
 
 void Won::Enemy::Initialize()
 {
-	GameObject::Initialize();
+	WGameObject::Initialize();
 }
 
 void Won::Enemy::Update()
 {
-	GameObject::Update();
+	WGameObject::Update();
 }
 
 void Won::Enemy::LateUpdate()
 {
-	GameObject::LateUpdate();
+	WGameObject::LateUpdate();
 }
 
 void Won::Enemy::Render(HDC NewDC)
 {
-	GameObject::Render(NewDC);
+	WGameObject::Render(NewDC);
 }

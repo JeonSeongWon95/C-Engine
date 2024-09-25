@@ -1,9 +1,9 @@
 #pragma once
-#include "GameObject.h"
+#include "WGameObject.h"
 
 namespace Won
 {
-    class TileObject : public GameObject
+    class TileObject : public WGameObject
     {
     public:
         TileObject();

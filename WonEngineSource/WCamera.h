@@ -1,13 +1,13 @@
 #pragma once
-#include "Component.h"
+#include "WComponent.h"
 
 namespace Won
 {
-    class WCamera : public Component
+    class WCamera : public WComponent
     {
     public:
-        mVector2<float> CaluatePostion(mVector2<float> pos) { return pos - mDistance; }
-        mVector2<float> CaluateTilePosition(mVector2<float> pos) { return pos + mDistance; }
+        sVector2<float> CaluatePostion(sVector2<float> pos) { return pos - mDistance; }
+        sVector2<float> CaluateTilePosition(sVector2<float> pos) { return pos + mDistance; }
          
         WCamera();
         ~WCamera();
@@ -19,10 +19,10 @@ namespace Won
 
 
     private:
-        GameObject* mTarget;
-        mVector2<float> mDistance;
-        mVector2<float> mLookPosition;
-        mVector2<float> mResolution;
+        WGameObject* mTarget;
+        sVector2<float> mDistance;
+        sVector2<float> mLookPosition;
+        sVector2<float> mResolution;
 
     };
 }

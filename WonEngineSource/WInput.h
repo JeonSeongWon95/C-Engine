@@ -19,7 +19,7 @@ namespace Won
 		End
 
 	};
-	class Input
+	class WInput
 	{
 		struct aKey
 		{
@@ -34,21 +34,21 @@ namespace Won
 		__forceinline static bool GetKeyDown(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Down; }
 		__forceinline static bool GetKeyUp(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Up; }
 		__forceinline static bool GetKey(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Pressed; }
-		static mVector2<float> GetMousePosition() { return mMousePosition; }
+		static sVector2<float> GetMousePosition() { return mMousePosition; }
 
 
 	private:
 		static void createKeys();
 		static void updateKey();
-		static void updatekey(Input::aKey& NewKey);
+		static void updatekey(WInput::aKey& NewKey);
 		static bool isKeyDown(KeyType KeyName);
-		static void updateKeyDown(Input::aKey& NewKey);
-		static void updateKeyUp(Input::aKey& NewKey);
+		static void updateKeyDown(WInput::aKey& NewKey);
+		static void updateKeyUp(WInput::aKey& NewKey);
 		static void ClearKeys();
 		static void SetMousePosition();
 
 
 		static std::vector<aKey> Keys;
-		static mVector2<float> mMousePosition;
+		static sVector2<float> mMousePosition;
 	};
 }

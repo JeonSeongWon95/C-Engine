@@ -17,12 +17,12 @@ void Won::TileScene::Initialize()
 
 void Won::TileScene::Update()
 {
-	Scene_Level::Update();
+	WScene::Update();
 }
 
 void Won::TileScene::LateUpdate()
 {
-	Scene_Level::LateUpdate();
+	WScene::LateUpdate();
 }
 
 void Won::TileScene::Render(HDC NewDC)

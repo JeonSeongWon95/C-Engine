@@ -1,34 +1,34 @@
-#include "TileRenderer.h"
-#include "Transform.h"
-#include "GameObject.h"
+#include "WTileRenderer.h"
+#include "WTransform.h"
+#include "WGameObject.h"
 #include "WRender.h"
 #include "WTexture.h"
 
-Won::TileRenderer::TileRenderer()
-	:Component(eComponentType::TileRender)
+Won::WTileRenderer::WTileRenderer()
+	:WComponent(eComponentType::TileRender)
 	,texture(nullptr)
 	,mSize(16.0f,16.0f)
 	,mSheetIndex(-1,-1)
 {
 }
 
-Won::TileRenderer::~TileRenderer()
+Won::WTileRenderer::~WTileRenderer()
 {
 }
 
-void Won::TileRenderer::Initialize()
+void Won::WTileRenderer::Initialize()
 {
 }
 
-void Won::TileRenderer::Update()
+void Won::WTileRenderer::Update()
 {
 }
 
-void Won::TileRenderer::LateUpdate()
+void Won::WTileRenderer::LateUpdate()
 {
 }
 
-void Won::TileRenderer::Render(HDC NewDC)
+void Won::WTileRenderer::Render(HDC NewDC)
 {
 	if (texture == nullptr)
 		assert(false);
@@ -36,9 +36,9 @@ void Won::TileRenderer::Render(HDC NewDC)
 	if (mSheetIndex.X == -1 && mSheetIndex.Y == -1)
 		return;
 
-	Transform* Tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> vc = Tr->GetPosition();
-	mVector2<float> Sc = Tr->GetScale();
+	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> vc = Tr->GetPosition();
+	sVector2<float> Sc = Tr->GetScale();
 
 	if (MainCamera != nullptr)
 	{

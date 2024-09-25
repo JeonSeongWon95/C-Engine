@@ -1,15 +1,18 @@
 #include "ToolScene.h"
 #include "WonObject.h"
 #include "TileObject.h"
-#include "TileRenderer.h"
-#include "ResourceManager.h"
+#include "WTileRenderer.h"
+#include "WResourceManager.h"
 #include "WTexture.h"
-#include "Input.h"
+#include "WInput.h"
 #include "WCamera.h"
 #include "WCameraScript.h"
 #include "WRender.h"
+#include "WonApplication.h"
 
-Won::mVector2<int> Won::ToolScene::sStartPosition = Won::mVector2<int>(-1,-1);
+Won::sVector2<int> Won::ToolScene::sStartPosition = Won::sVector2<int>(-1,-1);
+
+extern Won::WonApplication Engine;
 
 Won::ToolScene::ToolScene()
 {
@@ -21,41 +24,47 @@ Won::ToolScene::~ToolScene()
 
 void Won::ToolScene::Initialize()
 {
-	GameObject* Camera = InstanceSpawn<GameObject>(eLayerType::None);
+	WGameObject* Camera = InstanceSpawn<WGameObject>(eLayerType::None);
 	WCamera* CameraComponent =	Camera->AddComponent<WCamera>();
 	Camera->AddComponent<WCameraScript>();
 
 	MainCamera = CameraComponent;
-
-	Scene_Level::Initialize();
+	WScene::Initialize();
 }
 
 void Won::ToolScene::Update()
 {
-	Scene_Level::Update();
+	WScene::Update();
 
-	if (Input::GetKey(KeyType::LBUTTON))
+	HWND ActiveWindow = GetForegroundWindow();
+
+	if (ActiveWindow != Engine.GetEngineWND())
+		return;
+
+	if (WInput::GetKey(KeyType::LBUTTON))
 	{
+		sVector2<float> MousePos = WInput::GetMousePosition();
 
-		mVector2<float> pos = Input::GetMousePosition();
-		pos = MainCamera->CaluateTilePosition(pos);
+		if (MousePos.X == -1 && MousePos.Y == -1 || sStartPosition.X == -1 || sStartPosition.Y == -1)
+			return;
 
-		if (pos.X >= 0.0f && pos.Y >= 0.0f)
+		MousePos = MainCamera->CaluateTilePosition(MousePos);
+
+		if (MousePos.X >= 0.0f && MousePos.Y >= 0.0f)
 		{
 
-			mVector2 <float> MousePos = Input::GetMousePosition();
 			TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
 
-			Transform* ObjectTransform = Object->GetComponent<Transform>();
-			ObjectTransform->SetScale(mVector2<float>(3.0f, 3.0f));
+			WTransform* ObjectTransform = Object->GetComponent<WTransform>();
+			ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
 
-			TileRenderer* TileRender = Object->AddComponent<TileRenderer>();
-			TileRender->SetTexture(ResourceManager::Find<WTexture>(L"Ob"));
+			WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
+			TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
 
-			mVector2<float> Size = TileRender->GetSize();
-			mVector2<float> Scale = ObjectTransform->GetScale();
-			mVector2<int> Index;
-			mVector2<float> Position;
+			sVector2<float> Size = TileRender->GetSize();
+			sVector2<float> Scale = ObjectTransform->GetScale();
+			sVector2<int> Index;
+			sVector2<float> Position;
 			Index.X = static_cast<int>(MousePos.X / (Size.X * Scale.X));
 			Index.Y = static_cast<int>(MousePos.Y / (Size.Y * Scale.Y));
 
@@ -70,13 +79,13 @@ void Won::ToolScene::Update()
 
 void Won::ToolScene::LateUpdate()
 {
-	Scene_Level::LateUpdate();
+	WScene::LateUpdate();
 
-	if(Input::GetKey(KeyType::S))
+	if(WInput::GetKey(KeyType::S))
 	{
 		Save();
 	}
-	else if(Input::GetKey(KeyType::L))
+	else if(WInput::GetKey(KeyType::L))
 	{
 		Load();
 	}
@@ -84,18 +93,18 @@ void Won::ToolScene::LateUpdate()
 
 void Won::ToolScene::Render(HDC NewDC)
 {
-	Scene_Level::Render(NewDC);
+	WScene::Render(NewDC);
 
 	for (int i = 0; i < 50; ++i)
 	{
-		mVector2<float> Pos = MainCamera->CaluatePostion(mVector2<float>((16 * 3 * i), 0));
+		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>((16 * 3 * i), 0));
 
 		MoveToEx(NewDC, Pos.X, 0, NULL);
 		LineTo(NewDC, Pos.X, 1000);
 	}
 	for (int i = 0; i < 50; ++i)
 	{
-		mVector2<float> Pos = MainCamera->CaluatePostion(mVector2<float>(0, (16 * 3 * i)));
+		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(0, (16 * 3 * i)));
 
 		MoveToEx(NewDC, 0, Pos.Y, NULL);
 		LineTo(NewDC, 1000, Pos.Y);
@@ -138,8 +147,8 @@ void Won::ToolScene::Load()
 	if (Pfile == nullptr)
 		return;
 
-	mVector2<int> SheetIndex;
-	mVector2<int> TileIndex;
+	sVector2<int> SheetIndex;
+	sVector2<int> TileIndex;
 
 	while (!feof(Pfile))
 	{
@@ -148,11 +157,11 @@ void Won::ToolScene::Load()
 		fread(&TileIndex, sizeof(TileIndex), 1, Pfile);
 
 		TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
-		Transform* ObjectTransform = Object->GetComponent<Transform>();
-		ObjectTransform->SetScale(mVector2<float>(3.0f, 3.0f));
-		TileRenderer* TileRender = Object->AddComponent<TileRenderer>();
-		TileRender->SetTexture(ResourceManager::Find<WTexture>(L"Ob"));
-		ObjectTransform->SetPos(mVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
+		WTransform* ObjectTransform = Object->GetComponent<WTransform>();
+		ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+		WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
+		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
+		ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
 		TileRender->SetSheetIndex(SheetIndex);
 
 	}
@@ -189,18 +198,18 @@ void Won::ToolScene::Save()
 	if (Pfile == nullptr)
 		return;
 
-	WLayer* TileLayers = Scene_Level::GetLayer(eLayerType::Tilemap);
+	WLayer* TileLayers = WScene::GetLayer(eLayerType::Tilemap);
 
-	mVector2<int> SheetIndex;
-	mVector2<int> TileIndex;
+	sVector2<int> SheetIndex;
+	sVector2<int> TileIndex;
 
-	for(GameObject* GB : TileLayers->GetGameObject())
+	for(WGameObject* GB : TileLayers->GetGameObject())
 	{
-		if (GB->GetComponent<TileRenderer>() == nullptr)
+		if (GB->GetComponent<WTileRenderer>() == nullptr)
 			continue;
 		
-		TileRenderer* TileRender = GB->GetComponent<TileRenderer>();
-		Transform* ObjectTransform = GB->GetComponent<Transform>();
+		WTileRenderer* TileRender = GB->GetComponent<WTileRenderer>();
+		WTransform* ObjectTransform = GB->GetComponent<WTransform>();
 		TileIndex.X = ObjectTransform->GetPosition().X / TileRender->GetSize().X;
 		TileIndex.Y = ObjectTransform->GetPosition().Y / TileRender->GetSize().Y;
 		SheetIndex.X = TileRender->GetSheetIndex().X;
@@ -216,9 +225,9 @@ void Won::ToolScene::Save()
 
 LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	Won::mVector2<int> mStartPosition = Won::mVector2<int>(0, 0);
-	Won::mVector2<int> SheetIndex = Won::mVector2<int>(0, 0);
-	Won::mVector2 <float> MousePos = Won::mVector2<float>(0, 0);
+	Won::sVector2<int> mStartPosition = Won::sVector2<int>(0, 0);
+	Won::sVector2<int> SheetIndex = Won::sVector2<int>(0, 0);
+	Won::sVector2 <float> MousePos = Won::sVector2<float>(0, 0);
 	POINT Cursorpos = {};
 
     switch (message)
@@ -228,7 +237,7 @@ LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
         // TODO: Add any drawing code that uses hdc here...
-        Won::WTexture* Image = Won::ResourceManager::Find<Won::WTexture>(L"Ob");
+        Won::WTexture* Image = Won::WResourceManager::Find<Won::WTexture>(L"Ob");
 
         TransparentBlt(hdc
             , 0

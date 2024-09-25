@@ -3,11 +3,11 @@
 
 namespace Won
 {
-	class Scene_Level : public Entry
+	class WScene : public Entry
 	{
 	public:
-		Scene_Level();
-		virtual ~Scene_Level();
+		WScene();
+		virtual ~WScene();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -16,9 +16,9 @@ namespace Won
 		virtual void Destroy();
 		virtual void OnEnter();
 		virtual void OnExit();
-		virtual void EraseGameObject(class GameObject* NewGameObject);
+		virtual void EraseGameObject(class WGameObject* NewGameObject);
 
-		void AddGameObject(GameObject* NewObject, eLayerType Lt); 
+		void AddGameObject(WGameObject* NewObject, eLayerType Lt); 
 		class WLayer* GetLayer(eLayerType Type) { return Layers[(UINT)Type]; }
 		std::vector<class WLayer*> GetLayers() { return Layers; }
 

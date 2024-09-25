@@ -1,9 +1,9 @@
 #pragma once
-#include "../WonEngineSource/GameObject.h"
-#include "../WonEngineSource/Scene_Level.h"
-#include "../WonEngineSource/Scene_LevelManager.h"
+#include "../WonEngineSource/WGameObject.h"
+#include "../WonEngineSource/WScene.h"
+#include "../WonEngineSource/WSceneManager.h"
 #include "../WonEngineSource/WLayer.h"
-#include "../WonEngineSource/Transform.h"
+#include "../WonEngineSource/WTransform.h"
 
 namespace Won
 {
@@ -11,9 +11,9 @@ namespace Won
 	static T* InstanceSpawn(eLayerType Type)
 	{
 		T* NewObject = new T();
-		Transform* TF = NewObject->GetComponent<Transform>();
+		WTransform* TF = NewObject->GetComponent<WTransform>();
 		NewObject->SetLayerType(Type);
-		Scene_Level* AS = Scene_LevelManager::GetActiveScene();
+		WScene* AS = WSceneManager::GetActiveScene();
 		WLayer* Layer = AS->GetLayer(Type);
 		Layer->AddGameObject(NewObject);
 
@@ -21,32 +21,32 @@ namespace Won
 
 	}
 	template <typename T>
-	static T* InstanceSpawn(eLayerType Type, mVector2<float>* Location)
+	static T* InstanceSpawn(eLayerType Type, sVector2<float>* Location)
 	{
 		T* NewObject = new T();
-		Transform* TF = NewObject->GetComponent<Transform>();
+		WTransform* TF = NewObject->GetComponent<WTransform>();
 		TF->SetPos(Location);
-		TF->SetName(L"Transform");
+		TF->SetName(L"WTransform");
 		NewObject->SetLayerType(Type);
-		Scene_Level* AS = Scene_LevelManager::GetActiveScene();
+		WScene* AS = WSceneManager::GetActiveScene();
 		WLayer* Layer = AS->GetLayer(Type);
 		Layer->AddGameObject(NewObject);
 
 		return NewObject;
 	}
 
-	static void Destroy(GameObject* NewGameObject)
+	static void Destroy(WGameObject* NewGameObject)
 	{
 		NewGameObject->DoDeath();
 	}
 
-	static void DestoryOnLoadScene(GameObject* NewGameObject)
+	static void DestoryOnLoadScene(WGameObject* NewGameObject)
 	{
 		eLayerType GLayerType = NewGameObject->GetLayerType();
-		Scene_Level* AS = Scene_LevelManager::GetActiveScene();
+		WScene* AS = WSceneManager::GetActiveScene();
 		AS->EraseGameObject(NewGameObject);
 		
-		Scene_Level* DD = Scene_LevelManager::GetDontDestoryOnScene();
+		WScene* DD = WSceneManager::GetDontDestoryOnScene();
 		DD->AddGameObject(NewGameObject, NewGameObject->GetLayerType());
 
 	}

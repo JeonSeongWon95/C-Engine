@@ -1,8 +1,8 @@
 #include "WAnimation.h"
-#include "../WonEngineSource/Timer.h"
+#include "../WonEngineSource/WTime.h"
 #include "../WonEngineSource/WAnimator.h"
-#include "../WonEngineSource/GameObject.h"
-#include "../WonEngineSource/Transform.h"
+#include "../WonEngineSource/WGameObject.h"
+#include "../WonEngineSource/WTransform.h"
 #include "../WonEngineSource/WRender.h"
 #include "../WonEngineSource/WTexture.h"
 
@@ -42,8 +42,8 @@ HRESULT Won::WAnimation::Load(const std::wstring& NewPath)
 	return E_NOTIMPL;
 }
 
-void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition,
-	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
+void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewText, sVector2<float> StartPosition,
+	sVector2<float> SpriteSize, sVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
 {
 	MainTexture = NewText;
 	SetName(Name);
@@ -83,7 +83,7 @@ void Won::WAnimation::Update()
 	if (bIsCompleted)
 		return;
 
-	mTimer += Timer::GetDeltaSeconds();
+	mTimer += WTime::GetDeltaSeconds();
 
 	if (mTimer > Sprites[mIndex]->Duration)
 	{
@@ -112,10 +112,10 @@ void Won::WAnimation::Render(HDC NewDC)
 	if (MainTexture == nullptr)
 		return;
 
-	GameObject* GO = Animator->GetOwner();
-	Transform* Tr = GO->GetComponent<Transform>();
-	mVector2<float> Pos = Tr->GetPosition();
-	mVector2<float> Sca = Tr->GetScale();
+	WGameObject* GO = Animator->GetOwner();
+	WTransform* Tr = GO->GetComponent<WTransform>();
+	sVector2<float> Pos = Tr->GetPosition();
+	sVector2<float> Sca = Tr->GetScale();
 	float Rot = Tr->GetRotation();
 	Sprite* CurrentSprite = Sprites[mIndex];
 	HDC ImageDC = MainTexture->GetHDC();

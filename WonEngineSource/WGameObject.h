@@ -1,10 +1,10 @@
 #pragma once
 #include "includeHeader.h"
-#include "Component.h"
+#include "WComponent.h"
 
 namespace Won
 {
-	class GameObject
+	class WGameObject
 	{
 	public:
 		enum class eState
@@ -15,8 +15,8 @@ namespace Won
 			End
 		};
 
-		GameObject();
-		virtual ~GameObject();
+		WGameObject();
+		virtual ~WGameObject();
 
 		virtual void Initialize();
 		virtual void Update();
@@ -55,7 +55,7 @@ namespace Won
 
 			if (Components.size() > 0)
 			{
-				for (Component* OneComponent : Components)
+				for (WComponent* OneComponent : Components)
 				{
 					findComponent = dynamic_cast<T*>(OneComponent);
 
@@ -70,7 +70,7 @@ namespace Won
 
 	protected:
 		void AddTransform();
-		std::vector<Component*> Components;
+		std::vector<WComponent*> Components;
 		eState ObjectState;
 		eLayerType mLayerType;
 

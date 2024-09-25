@@ -10,21 +10,21 @@ Won::Player::~Player()
 
 void Won::Player::Initialize()
 {
-	GameObject::Initialize();
+	WGameObject::Initialize();
 }
 
 void Won::Player::Update()
 {
-	GameObject::Update();
+	WGameObject::Update();
 }
 
 void Won::Player::LateUpdate()
 {
-	GameObject::LateUpdate();
+	WGameObject::LateUpdate();
 }
 
 void Won::Player::Render(HDC NewDC)
 {
-	GameObject::Render(NewDC);
+	WGameObject::Render(NewDC);
 }
 

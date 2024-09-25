@@ -4,13 +4,13 @@
 namespace Won
 {
 
-	class GameObject;
+	class WGameObject;
 
-	class Component : public Entry
+	class WComponent : public Entry
 	{
 	public:
-		Component(eComponentType NewType);
-		virtual ~Component();
+		WComponent(eComponentType NewType);
+		virtual ~WComponent();
 
 
 		virtual void Initialize();
@@ -18,12 +18,12 @@ namespace Won
 		virtual void LateUpdate();
 		virtual void Render(HDC NewDC);
 
-		void SetOwner(GameObject* NewOwner) { Owner = NewOwner; }
-		GameObject* GetOwner() { return Owner; }
+		void SetOwner(WGameObject* NewOwner) { Owner = NewOwner; }
+		WGameObject* GetOwner() { return Owner; }
 		eComponentType GetType() { return aType; }
 
 	private:
-		GameObject* Owner;
+		WGameObject* Owner;
 		eComponentType aType;
 	};
 

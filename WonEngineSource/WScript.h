@@ -1,9 +1,9 @@
 #pragma once
-#include "Component.h"
+#include "WComponent.h"
 
 namespace Won
 {
-    class WScript : public Component
+    class WScript : public WComponent
     {
 
     public:

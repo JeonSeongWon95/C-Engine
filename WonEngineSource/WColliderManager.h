@@ -4,7 +4,7 @@
 
 namespace Won
 {
-	class ColliderManager
+	class WColliderManager
 	{
 	public:
 		union ColliderID
@@ -18,8 +18,8 @@ namespace Won
 			UINT64 ID;
 		};
 
-		ColliderManager();
-		~ColliderManager();
+		WColliderManager();
+		~WColliderManager();
 
 		static void Initialize();
 		static void Update();
@@ -27,9 +27,10 @@ namespace Won
 		static void Render(HDC NewDC);
 
 		static void SetColliderEnable(eLayerType Left, eLayerType Right, bool IsEnable);
-		static void CollisionCheckLayer(class Scene_Level* Scene, eLayerType Left, eLayerType Right);
-		static void CollisionCheckCollider(class Collider* Left, Collider* Right);
-		static bool Intersect(Collider* Left, Collider* Right);
+		static void CollisionCheckLayer(class WScene* Scene, eLayerType Left, eLayerType Right);
+		static void CollisionCheckCollider(class WCollider* Left, WCollider* Right);
+		static bool Intersect(WCollider* Left, WCollider* Right);
+		static void Clear();
 
 	private:
 		static std::bitset<(UINT)eLayerType::Max> ColliderMatrix[(UINT)eLayerType::Max];

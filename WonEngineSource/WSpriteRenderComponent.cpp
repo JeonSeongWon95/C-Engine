@@ -1,11 +1,11 @@
-#include "SpriteRenderComponent.h"
-#include "GameObject.h"
-#include "Transform.h"
+#include "WSpriteRenderComponent.h"
+#include "WGameObject.h"
+#include "WTransform.h"
 #include "WTexture.h"
 #include "WRender.h"
 
-Won::SpriteRenderComponent::SpriteRenderComponent()
-	: Component(eComponentType::SpriteRender)
+Won::WSpriteRenderComponent::WSpriteRenderComponent()
+	: WComponent(eComponentType::SpriteRender)
 	, texture(nullptr)
 	, mSize(1.0f, 1.0f)
 	, StartPosition(0.0, 0.0)
@@ -14,31 +14,31 @@ Won::SpriteRenderComponent::SpriteRenderComponent()
 {
 }
 
-Won::SpriteRenderComponent::~SpriteRenderComponent()
+Won::WSpriteRenderComponent::~WSpriteRenderComponent()
 {
 	texture = nullptr;
 }
 
-void Won::SpriteRenderComponent::Initialize()
+void Won::WSpriteRenderComponent::Initialize()
 {
 }
 
-void Won::SpriteRenderComponent::Update()
+void Won::WSpriteRenderComponent::Update()
 {
 }
 
-void Won::SpriteRenderComponent::LateUpdate()
+void Won::WSpriteRenderComponent::LateUpdate()
 {
 }
 
-void Won::SpriteRenderComponent::Render(HDC NewDC)
+void Won::WSpriteRenderComponent::Render(HDC NewDC)
 {
 	if (texture == nullptr)
 		assert(false);
 
-	Transform* Tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> vc = Tr->GetPosition();
-	mVector2<float> Sc = Tr->GetScale();
+	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> vc = Tr->GetPosition();
+	sVector2<float> Sc = Tr->GetScale();
 	float Ro = Tr->GetRotation();
 
 
@@ -136,7 +136,7 @@ void Won::SpriteRenderComponent::Render(HDC NewDC)
 	}
 }
 
-void Won::SpriteRenderComponent::SetTextureSize(UINT NewWidth, UINT NewHeight)
+void Won::WSpriteRenderComponent::SetTextureSize(UINT NewWidth, UINT NewHeight)
 {
 	if(texture != nullptr)
 	{

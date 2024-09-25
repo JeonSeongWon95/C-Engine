@@ -17,8 +17,9 @@ namespace Won
 
 	enum class eComponentType
 	{
-		Transform,
-		Collider,
+		WTransform,
+		WCollider,
+		Rigidbody,
 		Script,
 		Camera,
 		SpriteRender,

@@ -1,10 +1,10 @@
 #pragma once
-#include "../WonEngineSource/Scene_Level.h"
+#include "../WonEngineSource/WScene.h"
 
 
 namespace Won
 {
-    class ToolScene : public Scene_Level
+    class ToolScene : public WScene
     {
 	public:
 		ToolScene();
@@ -20,7 +20,7 @@ namespace Won
 		void Load();
 		void Save();
 
-		static Won::mVector2<int> sStartPosition;
+		static Won::sVector2<int> sStartPosition;
 
 
 	private:

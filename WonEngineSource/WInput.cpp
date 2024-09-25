@@ -1,9 +1,9 @@
-#include "Input.h"
+#include "WInput.h"
 #include <iostream>
 #include "WonApplication.h"
 
-std::vector<Won::Input::aKey> Won::Input::Keys = {};
-Won::mVector2<float> Won::Input::mMousePosition = { 0.f, 0.f };
+std::vector<Won::WInput::aKey> Won::WInput::Keys = {};
+Won::sVector2<float> Won::WInput::mMousePosition = { 0.f, 0.f };
 
 extern Won::WonApplication Engine;
 
@@ -21,17 +21,17 @@ namespace Won
 
 
 
-void Won::Input::Initialize()
+void Won::WInput::Initialize()
 {
 	createKeys();
 }
 
-void Won::Input::Update()
+void Won::WInput::Update()
 {
 	updateKey();
 }
 
-void Won::Input::createKeys()
+void Won::WInput::createKeys()
 {
 	for (int i = 0; i < (int)KeyType::End; ++i)
 	{
@@ -44,15 +44,15 @@ void Won::Input::createKeys()
 	}
 }
 
-void Won::Input::updateKey()
+void Won::WInput::updateKey()
 {
-	for (Input::aKey& NewKey : Keys)
+	for (WInput::aKey& NewKey : Keys)
 	{
 		updatekey(NewKey);
 	}
 }
 
-void Won::Input::updatekey(Input::aKey& NewKey)
+void Won::WInput::updatekey(WInput::aKey& NewKey)
 {
 	if (GetFocus())
 	{
@@ -64,6 +64,7 @@ void Won::Input::updatekey(Input::aKey& NewKey)
 		{
 			updateKeyUp(NewKey);
 		}
+
 		SetMousePosition();
 	}
 	else
@@ -72,12 +73,12 @@ void Won::Input::updatekey(Input::aKey& NewKey)
 	}
 }
 
-bool Won::Input::isKeyDown(KeyType KeyName)
+bool Won::WInput::isKeyDown(KeyType KeyName)
 {
 	return GetAsyncKeyState(ASCII[(int)KeyName]) & 0X8000;
 }
 
-void Won::Input::updateKeyDown(Input::aKey& NewKey)
+void Won::WInput::updateKeyDown(WInput::aKey& NewKey)
 {
 	if (NewKey.IsPressed == true)
 	{
@@ -91,7 +92,7 @@ void Won::Input::updateKeyDown(Input::aKey& NewKey)
 	NewKey.IsPressed = true;
 }
 
-void Won::Input::updateKeyUp(Input::aKey& NewKey)
+void Won::WInput::updateKeyUp(WInput::aKey& NewKey)
 {
 	if (NewKey.IsPressed == true)
 	{
@@ -105,7 +106,7 @@ void Won::Input::updateKeyUp(Input::aKey& NewKey)
 	NewKey.IsPressed = false;
 }
 
-void Won::Input::ClearKeys()
+void Won::WInput::ClearKeys()
 {
 	for (aKey& Key : Keys)
 	{
@@ -122,7 +123,7 @@ void Won::Input::ClearKeys()
 	}
 }
 
-void Won::Input::SetMousePosition()
+void Won::WInput::SetMousePosition()
 {
 	POINT mousePos = { };
 	GetCursorPos(&mousePos);

@@ -10,20 +10,20 @@ Won::TileObject::~TileObject()
 
 void Won::TileObject::Initialize()
 {
-	GameObject::Initialize();
+	WGameObject::Initialize();
 }
 
 void Won::TileObject::Update()
 {
-	GameObject::Update();
+	WGameObject::Update();
 }
 
 void Won::TileObject::LateUpdate()
 {
-	GameObject::LateUpdate();
+	WGameObject::LateUpdate();
 }
 
 void Won::TileObject::Render(HDC NewDC)
 {
-	GameObject::Render(NewDC);
+	WGameObject::Render(NewDC);
 }

@@ -1,10 +1,10 @@
 #pragma once
-#include "../WonEngineSource/Scene_Level.h"
+#include "../WonEngineSource/WScene.h"
 
 
 namespace Won
 {
-    class TileScene : public Scene_Level
+    class TileScene : public WScene
     {
 	public:
 		TileScene();

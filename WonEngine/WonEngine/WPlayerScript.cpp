@@ -1,16 +1,16 @@
 #include "WPlayerScript.h"
-#include "GameObject.h"
-#include "Transform.h"
-#include "Timer.h"
-#include "Input.h"
+#include "WGameObject.h"
+#include "WTransform.h"
+#include "WTime.h"
+#include "WInput.h"
 #include "WAnimator.h"
 #include "Bullet.h"
 #include "../WonEngineSource/WonObject.h"
 #include "WBulletScript.h"
 #include "WTexture.h"
-#include "ResourceManager.h"
+#include "WResourceManager.h"
 #include "Player.h"
-#include "BoxCollider2D.h"
+#include "WBoxCollider2D.h"
 
 
 Won::WPlayerScript::WPlayerScript()
@@ -68,20 +68,20 @@ void Won::WPlayerScript::Idle()
 {
 	if (Size == ePlayerSize::Small)
 	{
-		if (Input::GetKey(KeyType::LEFT))
+		if (WInput::GetKey(KeyType::LEFT))
 		{
 			mState = ePlayerState::WalkState;
 			Direction = ePlayerDirection::LEFT;
 			Anim->PlayAnimation(L"LeftWalk", true);
 		}
-		if (Input::GetKey(KeyType::RIGHT))
+		if (WInput::GetKey(KeyType::RIGHT))
 		{
 			mState = ePlayerState::WalkState;
 			Direction = ePlayerDirection::RIGHT;
 			Anim->PlayAnimation(L"RightWalk", true);
 		}
 
-		if (Input::GetKey(KeyType::A))
+		if (WInput::GetKey(KeyType::A))
 		{
 
 			if (Direction == ePlayerDirection::LEFT)
@@ -93,11 +93,11 @@ void Won::WPlayerScript::Idle()
 				Anim->PlayAnimation(L"ChangeToRightBigger", false);
 			}
 
-			Collider* mCollider = GetOwner()->GetComponent<Collider>();
-			if (mCollider->GetColliderType() == Collider::eColliderType::Box)
+			WCollider* mCollider = GetOwner()->GetComponent<WCollider>();
+			if (mCollider->GetColliderType() == WCollider::eColliderType::Box)
 			{
-				mCollider->SetSize(mVector2<float>(50, 100));
-				mCollider->Setoffset(mVector2<float>(-18.0f, -10.0f));
+				mCollider->SetSize(sVector2<float>(50, 100));
+				mCollider->Setoffset(sVector2<float>(-18.0f, -10.0f));
 			}
 			mState = ePlayerState::ChangeSize;
 			Size = ePlayerSize::Bigger;
@@ -106,19 +106,19 @@ void Won::WPlayerScript::Idle()
 	else if (Size == ePlayerSize::Bigger)
 	{
 
-		if (Input::GetKey(KeyType::LEFT))
+		if (WInput::GetKey(KeyType::LEFT))
 		{
 			mState = ePlayerState::WalkState;
 			Direction = ePlayerDirection::LEFT;
 			Anim->PlayAnimation(L"BiggerLeftWalk", true);
 		}
-		if (Input::GetKey(KeyType::RIGHT))
+		if (WInput::GetKey(KeyType::RIGHT))
 		{
 			mState = ePlayerState::WalkState;
 			Direction = ePlayerDirection::RIGHT;
 			Anim->PlayAnimation(L"BiggerRightWalk", true);
 		}
-		if (Input::GetKey(KeyType::A))
+		if (WInput::GetKey(KeyType::A))
 		{
 
 			if (Direction == ePlayerDirection::LEFT)
@@ -131,17 +131,17 @@ void Won::WPlayerScript::Idle()
 			}
 
 
-			Collider* mCollider = GetOwner()->GetComponent<Collider>();
-			if (mCollider->GetColliderType() == Collider::eColliderType::Box)
+			WCollider* mCollider = GetOwner()->GetComponent<WCollider>();
+			if (mCollider->GetColliderType() == WCollider::eColliderType::Box)
 			{
-				mCollider->SetSize(mVector2<float>(50, 50));
-				mCollider->Setoffset(mVector2<float>(-18.0f, -25.0f));
+				mCollider->SetSize(sVector2<float>(50, 50));
+				mCollider->Setoffset(sVector2<float>(-18.0f, -25.0f));
 			}
 
 			mState = ePlayerState::ChangeSize;
 			Size = ePlayerSize::Small;
 		}
-		if (Input::GetKeyDown(KeyType::LBUTTON))
+		if (WInput::GetKeyDown(KeyType::LBUTTON))
 		{
 			Anim->PlayAnimation(L"Attack", false);
 		}
@@ -152,21 +152,21 @@ void Won::WPlayerScript::Idle()
 
 void Won::WPlayerScript::Walk()
 {
-	Transform* tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> pos = tr->GetPosition();
+	WTransform* tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> pos = tr->GetPosition();
 
-	if (Input::GetKey(KeyType::LEFT))
+	if (WInput::GetKey(KeyType::LEFT))
 	{
-		pos.X -= 100.f * Timer::GetDeltaSeconds();
+		pos.X -= 100.f * WTime::GetDeltaSeconds();
 	}
-	if (Input::GetKey(KeyType::RIGHT))
+	if (WInput::GetKey(KeyType::RIGHT))
 	{
-		pos.X += 100.f * Timer::GetDeltaSeconds();
+		pos.X += 100.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);
 
-	if (Input::GetKeyUp(KeyType::LEFT) || Input::GetKeyUp(KeyType::RIGHT))
+	if (WInput::GetKeyUp(KeyType::LEFT) || WInput::GetKeyUp(KeyType::RIGHT))
 	{
 		if (Size == ePlayerSize::Small)
 		{
@@ -209,19 +209,19 @@ void Won::WPlayerScript::Change()
 void Won::WPlayerScript::Fire()
 {
 	Bullet* Monster = InstanceSpawn<Bullet>(eLayerType::Character);
-	Transform* TR = Monster->GetComponent<Transform>();
+	WTransform* TR = Monster->GetComponent<WTransform>();
 	WBulletScript* BS = Monster->AddComponent<WBulletScript>();
-	TR->SetPos(GetOwner()->GetComponent<Transform>()->GetPosition());
-	TR->SetScale(mVector2<float>(3.0f, 3.0f));
+	TR->SetPos(GetOwner()->GetComponent<WTransform>()->GetPosition());
+	TR->SetScale(sVector2<float>(3.0f, 3.0f));
 	BS->SetPlayer(dynamic_cast<Player*>(GetOwner()));
-	BS->SetTargetPos(Input::GetMousePosition());
+	BS->SetTargetPos(WInput::GetMousePosition());
 
-	WTexture* MonsterTexture = ResourceManager::Find<WTexture>(L"Ch");
+	WTexture* MonsterTexture = WResourceManager::Find<WTexture>(L"Ch");
 	WAnimator* MAT = Monster->AddComponent<WAnimator>();
-	MAT->CreateAnimation(L"Flying", MonsterTexture, mVector2<float>(170, 75), mVector2<float>(10, 10), mVector2<float>(0, 0), 4, 0.1f);
+	MAT->CreateAnimation(L"Flying", MonsterTexture, sVector2<float>(170, 75), sVector2<float>(10, 10), sVector2<float>(0, 0), 4, 0.1f);
 	MAT->PlayAnimation(L"Flying", true);
 
-	if (Input::GetKeyUp(KeyType::LBUTTON))
+	if (WInput::GetKeyUp(KeyType::LBUTTON))
 	{
 		if (Direction == ePlayerDirection::LEFT)
 		{
@@ -235,11 +235,11 @@ void Won::WPlayerScript::Fire()
 		}
 	}
 
-	//Transform* MTR = Monster->GetComponent<Transform>();
+	//WTransform* MTR = Monster->GetComponent<WTransform>();
 	//MTR->SetScale(mVector2<float>(3.0f, 3.0f));
 	//MTR->SetPos(mVector2<float>(500.f, 500.f));
 	// 
-	//WTexture* MonsterTexture = ResourceManager::Find<WTexture>(L"Ee");
+	//WTexture* MonsterTexture = WResourceManager::Find<WTexture>(L"Ee");
 	//WAnimator* MAT = Monster->AddComponent<WAnimator>();
 	//MAT->CreateAnimation(L"Walk", MonsterTexture, mVector2<float>(0, 15), mVector2<float>(18.5, 18), mVector2<float>(0, 0), 2, 0.1f);
 	//MAT->PlayAnimation(L"Walk", true);

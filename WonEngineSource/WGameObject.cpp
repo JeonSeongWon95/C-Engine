@@ -1,16 +1,16 @@
-#include "GameObject.h"
-#include "Transform.h"
+#include "WGameObject.h"
+#include "WTransform.h"
 
-Won::GameObject::GameObject()
+Won::WGameObject::WGameObject()
 	:ObjectState(eState::Active)
 {
 	Components.resize((int)eComponentType::End);
 	AddTransform();
 }
 
-Won::GameObject::~GameObject()
+Won::WGameObject::~WGameObject()
 {
-	for (Component* NewComponent : Components)
+	for (WComponent* NewComponent : Components)
 	{
 		delete NewComponent;
 		NewComponent = nullptr;
@@ -18,7 +18,7 @@ Won::GameObject::~GameObject()
 
 	Components.clear();
 }
-void Won::GameObject::Initialize()
+void Won::WGameObject::Initialize()
 {
 	for (auto NewComponent : Components)
 	{
@@ -30,7 +30,7 @@ void Won::GameObject::Initialize()
 
 }
 
-void Won::GameObject::Update()
+void Won::WGameObject::Update()
 {
 	for (auto NewComponent : Components)
 	{
@@ -41,7 +41,7 @@ void Won::GameObject::Update()
 	}
 
 }
-void Won::GameObject::LateUpdate()
+void Won::WGameObject::LateUpdate()
 {
 	for (auto NewComponent : Components)
 	{
@@ -51,7 +51,7 @@ void Won::GameObject::LateUpdate()
 		NewComponent->LateUpdate();
 	}
 }
-void Won::GameObject::Render(HDC NewDC)
+void Won::WGameObject::Render(HDC NewDC)
 {
 	for(auto NewComponent : Components)
 	{
@@ -63,8 +63,8 @@ void Won::GameObject::Render(HDC NewDC)
 
 }
 
-void Won::GameObject::AddTransform()
+void Won::WGameObject::AddTransform()
 {
-	Transform* Tr = AddComponent<Transform>();
-	Tr->SetName(L"Transform");
+	WTransform* Tr = AddComponent<WTransform>();
+	Tr->SetName(L"WTransform");
 }

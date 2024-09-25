@@ -2,7 +2,7 @@
 #include "../WonEngineSource/WAnimation.h"
 
 Won::WAnimator::WAnimator()
-	: Component(eComponentType::Animator)
+	: WComponent(eComponentType::Animator)
 	, mAnimations{}
 	, mActiveAnimation(nullptr)
 	, mLoop(false)
@@ -70,8 +70,8 @@ void Won::WAnimator::Render(HDC NewDC)
 	}
 }
 
-void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText, mVector2<float> StartPosition,
-	mVector2<float> SpriteSize, mVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
+void Won::WAnimator::CreateAnimation(const std::wstring& Name, WTexture* NewText, sVector2<float> StartPosition,
+	sVector2<float> SpriteSize, sVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
 {
 	WAnimation* findanim = FindAnimation(Name);
 
@@ -142,7 +142,7 @@ void Won::WAnimator::PlayAnimation(const std::wstring& Name, bool bLoop)
 	mLoop = bLoop;
 }
 
-void Won::WAnimator::SetRemoveColor(mVector3<int> Newcolor)
+void Won::WAnimator::SetRemoveColor(sVector3<int> Newcolor)
 {
 	if (mActiveAnimation)
 		mActiveAnimation->SetRemoveColor(Newcolor);

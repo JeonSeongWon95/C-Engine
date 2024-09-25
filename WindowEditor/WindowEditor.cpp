@@ -5,6 +5,7 @@
 #include "../WonEngineSource/WonApplication.h"
 #include "../WonEngine/WonEngine/LoadScene_Level.h"
 #include "../WonEngine/WonEngine/LoadResources.h"
+#include "../WonEngineSource/WSceneManager.h"
 #include <crtdbg.h>
 
 
@@ -139,9 +140,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
         0, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
 
-    HWND hWndToo = CreateWindowW(L"TILEMAP", L"TileMap", WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
-
     Engine.Initialize(hWnd, Width, Height);
 
     if (!hWnd)
@@ -160,18 +158,24 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     int a = 0;
     srand((unsigned int)(&a));
 
-    Won::WTexture* texture
-        = Won::ResourceManager::Find<Won::WTexture>(L"Ob");
+    if(Won::WSceneManager::GetActiveScene()->GetName() == L"TileScene")
+    {
+        HWND hWndToo = CreateWindowW(L"TILEMAP", L"TileMap", WS_OVERLAPPEDWINDOW,
+            CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);
 
-    RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
-    AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
+        Won::WTexture* texture
+            = Won::WResourceManager::Find<Won::WTexture>(L"Ob");
 
-    UINT toolWidth = rect.right - rect.left;
-    UINT toolHeight = rect.bottom - rect.top;
+        RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+        AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
-    SetWindowPos(hWndToo, nullptr, Width, 0, toolWidth, toolHeight, 0);
-    ShowWindow(hWndToo, true);
-    UpdateWindow(hWndToo);
+        UINT toolWidth = rect.right - rect.left;
+        UINT toolHeight = rect.bottom - rect.top;
+
+        SetWindowPos(hWndToo, nullptr, Width, 0, toolWidth, toolHeight, 0);
+        ShowWindow(hWndToo, true);
+        UpdateWindow(hWndToo);
+    }
 
     return TRUE;
 }

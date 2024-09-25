@@ -1,8 +1,8 @@
 #include "WEnemyScript.h"
-#include "GameObject.h"
-#include "Transform.h"
-#include "Timer.h"
-#include "Input.h"
+#include "WGameObject.h"
+#include "WTransform.h"
+#include "WTime.h"
+#include "WInput.h"
 #include "WAnimator.h"
 #include "../WonEngineSource/WonObject.h"
 
@@ -33,7 +33,7 @@ void Won::WEnemyScript::Update()
 		Anim = GetOwner()->GetComponent<WAnimator>();
 	}
 
-	mDeathTimer += Timer::GetDeltaSeconds();
+	mDeathTimer += WTime::GetDeltaSeconds();
 
 	if(mDeathTimer > 10.0f)
 	{
@@ -63,7 +63,7 @@ void Won::WEnemyScript::Render(HDC NewDC)
 
 void Won::WEnemyScript::Idle()
 {
-	mTimer += Timer::GetDeltaSeconds();
+	mTimer += WTime::GetDeltaSeconds();
 
 	if (mTimer > 2.0f)
 	{
@@ -92,17 +92,17 @@ void Won::WEnemyScript::Idle()
 
 void Won::WEnemyScript::Walk()
 {
-	Transform* tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> pos = tr->GetPosition();
-	mTimer += Timer::GetDeltaSeconds();
+	WTransform* tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> pos = tr->GetPosition();
+	mTimer += WTime::GetDeltaSeconds();
 
 	if (Direction == eEnemyDirection::LEFT)
 	{
-		pos.X -= 100.f * Timer::GetDeltaSeconds();
+		pos.X -= 100.f * WTime::GetDeltaSeconds();
 	}
 	else if (Direction == eEnemyDirection::RIGHT)
 	{
-		pos.X += 100.f * Timer::GetDeltaSeconds();
+		pos.X += 100.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);

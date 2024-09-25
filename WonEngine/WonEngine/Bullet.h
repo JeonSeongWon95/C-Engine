@@ -1,10 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "WGameObject.h"
 
 
 namespace Won
 {
-    class Bullet : public GameObject
+    class Bullet : public WGameObject
     {
     public:
         Bullet();

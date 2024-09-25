@@ -5,11 +5,11 @@
 
 namespace Won
 {
-	class ResourceManager
+	class WResourceManager
 	{
 	public:
-		ResourceManager();
-		~ResourceManager();
+		WResourceManager();
+		~WResourceManager();
 
 		template<typename T>
 		static T* Find(const std::wstring& FileName)
@@ -25,7 +25,7 @@ namespace Won
 		template<typename T>
 		static T* Load(const std::wstring& FileName,const std::wstring& Path)
 		{
-			T* resource = ResourceManager::Find<T>(FileName);
+			T* resource = WResourceManager::Find<T>(FileName);
 
 			if (resource != nullptr)
 				return resource;
@@ -38,7 +38,7 @@ namespace Won
 			resource->SetName(FileName);
 			resource->SetPath(Path);
 
-			ResourceManager::Resources.insert(std::make_pair(FileName, resource));
+			WResourceManager::Resources.insert(std::make_pair(FileName, resource));
 
 			return resource;
 		}

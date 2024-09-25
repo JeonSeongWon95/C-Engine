@@ -1,8 +1,8 @@
 #include "WCameraScript.h"
-#include "Transform.h"
-#include "Input.h"
-#include "GameObject.h"
-#include "Timer.h"
+#include "WTransform.h"
+#include "WInput.h"
+#include "WGameObject.h"
+#include "WTime.h"
 
 Won::WCameraScript::WCameraScript()
 {
@@ -19,24 +19,24 @@ void Won::WCameraScript::Initialize()
 
 void Won::WCameraScript::Update()
 {
-	Transform* tr = GetOwner()->GetComponent<Transform>();
-	mVector2<float> pos = tr->GetPosition();
+	WTransform* tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> pos = tr->GetPosition();
 
-	if (Input::GetKey(KeyType::LEFT))
+	if (WInput::GetKey(KeyType::LEFT))
 	{
-		pos.X -= 100.f * Timer::GetDeltaSeconds();
+		pos.X -= 100.f * WTime::GetDeltaSeconds();
 	}
-	if (Input::GetKey(KeyType::RIGHT))
+	if (WInput::GetKey(KeyType::RIGHT))
 	{
-		pos.X += 100.f * Timer::GetDeltaSeconds();
+		pos.X += 100.f * WTime::GetDeltaSeconds();
 	}
-	if (Input::GetKey(KeyType::UP))
+	if (WInput::GetKey(KeyType::UP))
 	{
-		pos.Y -= 100.f * Timer::GetDeltaSeconds();
+		pos.Y -= 100.f * WTime::GetDeltaSeconds();
 	}
-	if (Input::GetKey(KeyType::DOWN))
+	if (WInput::GetKey(KeyType::DOWN))
 	{
-		pos.Y += 100.f * Timer::GetDeltaSeconds();
+		pos.Y += 100.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);

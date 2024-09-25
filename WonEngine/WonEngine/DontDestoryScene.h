@@ -1,9 +1,9 @@
 #pragma once
-#include "Scene_Level.h"
+#include "WScene.h"
 
 namespace Won
 {
-    class DontDestoryScene : public Scene_Level
+    class DontDestoryScene : public WScene
     {
 	public:
 		DontDestoryScene();

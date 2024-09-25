@@ -1,33 +1,33 @@
-#include "Timer.h"
+#include "WTime.h"
 
-LARGE_INTEGER Won::Timer::TotalFrequency = {0, };
-LARGE_INTEGER Won::Timer::CurrentFrequency = { 0, };
-LARGE_INTEGER Won::Timer::PreFrequency = { 0, };
-float Won::Timer::DeltaSeconds = 0;
+LARGE_INTEGER Won::WTime::TotalFrequency = {0, };
+LARGE_INTEGER Won::WTime::CurrentFrequency = { 0, };
+LARGE_INTEGER Won::WTime::PreFrequency = { 0, };
+float Won::WTime::DeltaSeconds = 0;
 
 
-Won::Timer::Timer()
+Won::WTime::WTime()
 {
 }
 
-Won::Timer::~Timer()
+Won::WTime::~WTime()
 {
 }
 
-void Won::Timer::Initialize()
+void Won::WTime::Initialize()
 {
 	QueryPerformanceFrequency(&TotalFrequency);
 	QueryPerformanceCounter(&CurrentFrequency);
 }
 
-void Won::Timer::Update()
+void Won::WTime::Update()
 {
 	PreFrequency.QuadPart = CurrentFrequency.QuadPart;
 	QueryPerformanceCounter(&CurrentFrequency);
 	DeltaSeconds = (static_cast<float>(CurrentFrequency.QuadPart - PreFrequency.QuadPart) / static_cast<float>(TotalFrequency.QuadPart));
 }
 
-void Won::Timer::Render(HDC NewDC)
+void Won::WTime::Render(HDC NewDC)
 {
 	static float DeltaTime = 0;
 	DeltaTime += DeltaSeconds;

@@ -1,12 +1,12 @@
-#include "ResourceManager.h"
+#include "WResourceManager.h"
 
-std::map<std::wstring, Won::WResource*> Won::ResourceManager::Resources = {};
+std::map<std::wstring, Won::WResource*> Won::WResourceManager::Resources = {};
 
-Won::ResourceManager::ResourceManager()
+Won::WResourceManager::WResourceManager()
 {
 }
 
-Won::ResourceManager::~ResourceManager()
+Won::WResourceManager::~WResourceManager()
 {
 	for(std::map<std::wstring, WResource*>::iterator iter = Resources.begin();
 		iter != Resources.end();)

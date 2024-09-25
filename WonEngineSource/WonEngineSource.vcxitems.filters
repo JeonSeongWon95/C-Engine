@@ -1,25 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scene_Level.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Scene_LevelManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WonApplication.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)Transform.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WTransform.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WSpriteRenderComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)Entry.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)GameObject.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Actor.cpp">
-      <Filter>GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Component.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WonMath.cpp">
@@ -33,7 +30,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ResourceManager.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WResourceManager.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WScript.cpp">
@@ -49,46 +46,46 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WAnimation.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Input.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WInput.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Timer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WTime.cpp">
       <Filter>Common</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)Collider.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WCollider.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)BoxCollider2D.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WBoxCollider2D.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)SphereCollider2D.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WSphereCollider2D.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ColliderManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)TileRenderer.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)WColliderManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WTileRenderer.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WRigidbody.cpp">
       <Filter>Components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scene_Level.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Scene_LevelManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WonApplication.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)Transform.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WTransform.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)SpriteRenderComponent.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WSpriteRenderComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)Entry.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)GameObject.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Actor.h">
-      <Filter>GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Component.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WonMath.h">
@@ -108,7 +105,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ResourceManager.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WResourceManager.h">
       <Filter>Resource</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)WScript.h">
@@ -124,23 +121,26 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WAnimation.h">
       <Filter>Resource</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Input.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WInput.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Timer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WTime.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)Collider.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WCollider.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)BoxCollider2D.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WBoxCollider2D.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)SphereCollider2D.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WSphereCollider2D.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ColliderManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)TileRenderer.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)WColliderManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WTileRenderer.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WRigidbody.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

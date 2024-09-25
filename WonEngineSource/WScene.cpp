@@ -1,8 +1,8 @@
-#include "Scene_Level.h"
-#include "GameObject.h"
+#include "WScene.h"
+#include "WGameObject.h"
 #include "WLayer.h"
 
-Won::Scene_Level::Scene_Level()
+Won::WScene::WScene()
 	:Layers{}
 {
 	Layers.resize((UINT)eLayerType::Max);
@@ -13,7 +13,7 @@ Won::Scene_Level::Scene_Level()
 	}
 }
 
-Won::Scene_Level::~Scene_Level()
+Won::WScene::~WScene()
 {
 	for (WLayer* Layer : Layers)
 	{
@@ -23,7 +23,7 @@ Won::Scene_Level::~Scene_Level()
 	Layers.clear();
 }
 
-void Won::Scene_Level::Initialize()
+void Won::WScene::Initialize()
 {
 	for (WLayer* Layer : Layers)
 	{
@@ -32,7 +32,7 @@ void Won::Scene_Level::Initialize()
 	}
 }
 
-void Won::Scene_Level::Update()
+void Won::WScene::Update()
 {
 
 	for(WLayer* Layer : Layers)
@@ -42,7 +42,7 @@ void Won::Scene_Level::Update()
 	}
 }
 
-void Won::Scene_Level::LateUpdate()
+void Won::WScene::LateUpdate()
 {
 
 	for (WLayer* Layer : Layers)
@@ -53,7 +53,7 @@ void Won::Scene_Level::LateUpdate()
 
 }
 
-void Won::Scene_Level::Render(HDC NewDC)
+void Won::WScene::Render(HDC NewDC)
 {
 	for (WLayer* Layer : Layers)
 	{
@@ -62,7 +62,7 @@ void Won::Scene_Level::Render(HDC NewDC)
 	}
 }
 
-void Won::Scene_Level::Destroy()
+void Won::WScene::Destroy()
 {
 	for (WLayer* Layer : Layers)
 	{
@@ -71,20 +71,22 @@ void Won::Scene_Level::Destroy()
 	}
 }
 
-void Won::Scene_Level::OnEnter()
+void Won::WScene::OnEnter()
 {
+	
 }
 
-void Won::Scene_Level::OnExit()
+void Won::WScene::OnExit()
 {
+	
 }
 
-void Won::Scene_Level::EraseGameObject(GameObject* NewGameObject)
+void Won::WScene::EraseGameObject(WGameObject* NewGameObject)
 {
 	Layers[(UINT)NewGameObject->GetLayerType()]->EraseGameObjcet(NewGameObject);
 }
 
-void Won::Scene_Level::AddGameObject(GameObject* NewObject, eLayerType Lt)
+void Won::WScene::AddGameObject(WGameObject* NewObject, eLayerType Lt)
 {
 	Layers[(UINT)Lt]->AddGameObject(NewObject);
 }

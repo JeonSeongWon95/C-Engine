@@ -17,12 +17,12 @@ namespace Won
         virtual void Render(HDC NewDC) override;
 
         void SetPlayer(class Player* NewPlayer) { Target = NewPlayer; }
-        void SetTargetPos(mVector2<float> NewPos) { Pos = NewPos; }
+        void SetTargetPos(sVector2<float> NewPos) { Pos = NewPos; }
 
 
     private:
         Player* Target;
-        mVector2<float> Pos;
+        sVector2<float> Pos;
         WPlayerScript::ePlayerDirection Dr;
         float mDeathTimer;
     };

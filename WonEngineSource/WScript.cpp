@@ -1,7 +1,7 @@
 #include "WScript.h"
 
 Won::WScript::WScript()
-	:Component(eComponentType::Script)
+	:WComponent(eComponentType::Script)
 {
 }
 
