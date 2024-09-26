@@ -167,7 +167,7 @@ void Won::WPlayerScript::Idle()
 			mState = ePlayerState::ChangeSize;
 			Size = ePlayerSize::Small;
 		}
-		if (WInput::GetKeyDown(KeyType::LBUTTON))
+		if (WInput::GetKeyDown(KeyType::Z))
 		{
 			Anim->PlayAnimation(L"Attack", false);
 		}
@@ -251,7 +251,7 @@ void Won::WPlayerScript::Fire()
 	MAT->CreateAnimation(L"Flying", MonsterTexture, sVector2<float>(170, 75), sVector2<float>(10, 10), sVector2<float>(0, 0), 4, 0.1f);
 	MAT->PlayAnimation(L"Flying", true);
 
-	if (WInput::GetKeyUp(KeyType::LBUTTON))
+	if (WInput::GetKeyUp(KeyType::Z))
 	{
 		if (Direction == ePlayerDirection::LEFT)
 		{

@@ -3,6 +3,8 @@
 #include "WTime.h"
 #include "WSceneManager.h"
 #include "WColliderManager.h"
+#include "WUIManager.h"
+#include "WFmod.h"
 
 namespace Won
 {
@@ -27,9 +29,10 @@ namespace Won
 	{
 		abjustwindowRect(NewHWND, NewWidth, NewHeight);
 		createBuffer(NewWidth, NewHeight);
-
 		initializeEtc();
+		WFmod::Initialize();
 		WColliderManager::Initialize();
+		WUIManager::Initialize();
 		WSceneManager::Initialize();
 	}
 
@@ -44,6 +47,7 @@ namespace Won
 	{
 		WTime::Update();
 		WColliderManager::Update();
+		WUIManager::Update();
 		WInput::Update();
 		WSceneManager::Update();
 	}
@@ -51,6 +55,7 @@ namespace Won
 	void WonApplication::LateUpdate()
 	{
 		WColliderManager::LateUpdate();
+		WUIManager::LateUpdate();
 		WSceneManager::LateUpdate();
 	}
 
@@ -60,6 +65,7 @@ namespace Won
 
 		WTime::Render(shdc);
 		WColliderManager::Render(shdc);
+		WUIManager::Render(shdc);
 		WSceneManager::Render(shdc);
 
 		CopyBuffer(shdc, ahdc);

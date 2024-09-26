@@ -2,6 +2,7 @@
 #include "WCollider.h"
 #include "WGameObject.h"
 #include "WRigidbody.h"
+#include "WTransform.h"
 
 Won::WFloorScript::WFloorScript()
 {
@@ -29,6 +30,7 @@ void Won::WFloorScript::Render(HDC NewDC)
 
 void Won::WFloorScript::OnColliderEnter(WCollider* Other)
 {
+	
 	WRigidbody* PlayerRB = Other->GetOwner()->GetComponent<WRigidbody>();
 	PlayerRB->SetIsGround(true);
 

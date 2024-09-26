@@ -21,6 +21,7 @@
 #include "WRigidbody.h"
 #include "Floor.h"
 #include "WFloorScript.h"
+#include "WUIManager.h"
 
 Won::PlayScene_Level::PlayScene_Level()
 {
@@ -33,32 +34,32 @@ Won::PlayScene_Level::~PlayScene_Level()
 void Won::PlayScene_Level::Initialize()
 {
 
-	FILE* Pfile = nullptr;
-	_wfopen_s(&Pfile, L"../Test", L"rb");
+	//FILE* Pfile = nullptr;
+	//_wfopen_s(&Pfile, L"../Test", L"rb");
 
-	if (Pfile == nullptr)
-		return;
+	//if (Pfile == nullptr)
+	//	return;
 
-	sVector2<int> SheetIndex;
-	sVector2<int> TileIndex;
+	//sVector2<int> SheetIndex;
+	//sVector2<int> TileIndex;
 
-	while (!feof(Pfile))
-	{
+	//while (!feof(Pfile))
+	//{
 
-		fread(&SheetIndex, sizeof(SheetIndex), 1, Pfile);
-		fread(&TileIndex, sizeof(TileIndex), 1, Pfile);
+	//	fread(&SheetIndex, sizeof(SheetIndex), 1, Pfile);
+	//	fread(&TileIndex, sizeof(TileIndex), 1, Pfile);
 
-		TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
-		WTransform* ObjectTransform = Object->GetComponent<WTransform>();
-		ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-		WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
-		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
-		ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
-		TileRender->SetSheetIndex(SheetIndex);
+	//	TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
+	//	WTransform* ObjectTransform = Object->GetComponent<WTransform>();
+	//	ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+	//	WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
+	//	TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
+	//	ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
+	//	TileRender->SetSheetIndex(SheetIndex);
 
-	}
+	//}
 
-	fclose(Pfile);
+	//fclose(Pfile);
 
 	//Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
 	//WSpriteRenderComponent* BSRC = BG->AddComponent<WSpriteRenderComponent>();
@@ -87,7 +88,7 @@ void Won::PlayScene_Level::Initialize()
 	ChRg->Setmass(1.5f);
 
 	WBoxCollider2D* PlayerCollider = Ch->AddComponent<WBoxCollider2D>();
-	PlayerCollider->Setoffset(sVector2<float>(-18.0f, -25.0f));
+	//PlayerCollider->Setoffset(sVector2<float>(-18.0f, -25.0f));
 	PlayerCollider->SetSize(sVector2<float>(50.0f, 50.0f));
 
 	WTransform* CTR = Ch->GetComponent<WTransform>();
@@ -159,9 +160,12 @@ void Won::PlayScene_Level::OnEnter()
 {
 	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Character, true);
 	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Floor, true);
+
+	WUIManager::Push(eUIType::Button);
 }
 
 void Won::PlayScene_Level::OnExit()
 {
 	WColliderManager::Clear();
+	WUIManager::Pop(eUIType::Button);
 }

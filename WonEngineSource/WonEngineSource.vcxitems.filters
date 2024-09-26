@@ -23,7 +23,6 @@
       <Filter>Common</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)WLayer.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
@@ -68,8 +67,28 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WRigidbody.cpp">
       <Filter>Components</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)WUIManager.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)WUIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIBase.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIManager.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WonObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WButton.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WFmod.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WAudioClip.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WAudioSource.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WAudioListener.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)WScene.h" />
@@ -100,7 +119,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WonEnum.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -145,8 +163,28 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WRigidbody.h">
       <Filter>Components</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)WUIManager.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)WUIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIManager.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WonObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WButton.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WFmod.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WAudioClip.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WAudioListener.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WAudioSource.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -160,6 +198,9 @@
     </Filter>
     <Filter Include="Resource">
       <UniqueIdentifier>{d02817e1-047d-4af5-8f8d-0b8271e58920}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{9ada0bee-4f8c-47ed-bfa5-036e19ad0adb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

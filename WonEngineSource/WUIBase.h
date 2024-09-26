@@ -8,7 +8,7 @@ namespace Won
     {
     public:
         WUIBase();
-        ~WUIBase();
+        virtual ~WUIBase();
 
         void Initialize();
         void Active();
@@ -18,10 +18,22 @@ namespace Won
         void UIClear();
 
         bool IsFullScreen() { return mIsFullScreen; }
-        void IsActive() { mEnable = false; }
+        void IsActive();
         void SetActive(bool NewBool) { mEnable = NewBool; }
         void SetIsFullScreen(bool NewBool) { mIsFullScreen = NewBool; }
         eUIType GetUIType() { return mType; }
+
+        virtual void OnActive();
+        virtual void OnIsActive();
+        virtual void OnInit();
+        virtual void OnUpdate();
+        virtual void OnLateUpdate();
+        virtual void OnRender(HDC NewDC);
+        virtual void Onclear();
+
+    protected:
+        sVector2<float> mPosition;
+        sVector2<float> mSize;
 
     private:
         bool mIsFullScreen;

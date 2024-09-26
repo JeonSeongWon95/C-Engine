@@ -1,5 +1,6 @@
 #include "WUIManager.h"
 #include "WUIBase.h"
+#include "WButton.h"
 
 Won::WUIBase* Won::WUIManager::mActiveUI = nullptr;
 std::unordered_map<Won::eUIType, Won::WUIBase*> Won::WUIManager::AllUIs = {};
@@ -8,6 +9,8 @@ std::queue<Won::eUIType> Won::WUIManager::mRequestUIs = {};
 
 void Won::WUIManager::Initialize()
 {
+	WButton* Button = new WButton();
+	AllUIs.insert(std::make_pair(eUIType::Button, Button));
 }
 
 void Won::WUIManager::OnLoad(eUIType type)
@@ -113,5 +116,46 @@ void Won::WUIManager::Push(eUIType type)
 
 void Won::WUIManager::Pop(eUIType type)
 {
+	if (mPresentUIs.empty())
+		return;
 
+	std::stack<WUIBase*> CopyStack = {};
+
+	while (!mPresentUIs.empty())
+	{
+		WUIBase* UI = mPresentUIs.top();
+		mPresentUIs.pop();
+
+		if (UI->GetUIType() == type)
+		{
+			if(UI->IsFullScreen())
+			{
+				std::stack<WUIBase*> CopyPresentUIs = mPresentUIs;
+
+				while (!CopyPresentUIs.empty())
+				{
+					WUIBase* UB = CopyPresentUIs.top();
+
+					if (UB)
+					{
+						UB->IsActive();
+						CopyPresentUIs.pop();
+					}
+				}
+
+			}
+
+			UI->UIClear();
+			break;
+		}
+
+		CopyStack.push(UI);
+	}
+
+	while (!CopyStack.empty())
+	{
+		WUIBase* UI = CopyStack.top();
+		mPresentUIs.push(UI);
+		CopyStack.pop();
+	}
 }

@@ -19,7 +19,6 @@ namespace Won
 		static void Push(eUIType type);
 		static void Pop(eUIType type);
 
-
 	private:
 		static WUIBase* mActiveUI;
 		static std::unordered_map<eUIType, WUIBase*> AllUIs;

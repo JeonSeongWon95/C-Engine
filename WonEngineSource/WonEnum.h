@@ -19,6 +19,8 @@ namespace Won
 	enum class eComponentType
 	{
 		WTransform,
+		AudioListener,
+		AudioSource,
 		WCollider,
 		Rigidbody,
 		Script,
@@ -39,6 +41,8 @@ namespace Won
 
 	enum class eUIType
 	{
+		None,
+		Button,
 		End
 	};
 

@@ -5,6 +5,7 @@
 #include "../WonEngineSource/WTransform.h"
 #include "../WonEngineSource/WRender.h"
 #include "../WonEngineSource/WTexture.h"
+#include "WCollider.h"
 
 Won::WAnimation::WAnimation()
 	: WResource(eResourceType::Animation)
@@ -120,6 +121,10 @@ void Won::WAnimation::Render(HDC NewDC)
 	Sprite* CurrentSprite = Sprites[mIndex];
 	HDC ImageDC = MainTexture->GetHDC();
 	WTexture::TextureType Type = MainTexture->GetTextureType();
+	WCollider* Col = GO->GetComponent<WCollider>();
+
+	Col->Setoffset(sVector2<float>(-(CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X)
+		, -(CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y)));
 
 	if (MainCamera != nullptr)
 	{
