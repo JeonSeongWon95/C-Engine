@@ -10,10 +10,14 @@ namespace Won
         WScript();
         virtual ~WScript();
 
-       virtual void Initialize() override;
-       virtual void Update() override;
-       virtual void LateUpdate() override;
-       virtual void Render(HDC NewDC) override;
+       void Initialize() override;
+       void Update() override;
+       void LateUpdate() override;
+       void Render(HDC NewDC) override;
+
+       virtual void OnColliderEnter(class WCollider* Other);
+       virtual void OnColliderStay(WCollider* Other);
+       virtual void OnColliderExit(WCollider* Other);
 
     };
 }

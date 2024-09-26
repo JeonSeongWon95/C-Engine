@@ -9,6 +9,8 @@
 #include <cstdint>
 #include <functional>
 #include <math.h>
+#include <stack>
+#include <queue>
 #include "WonMath.h"
 #include <bitset>
 #include <unordered_map>

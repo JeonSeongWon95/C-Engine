@@ -1,14 +1,13 @@
 #pragma once
 #include "WScript.h"
 
-
 namespace Won
 {
-    class WCameraScript : public WScript
+    class WFloorScript : public WScript
     {
     public:
-        WCameraScript();
-        ~WCameraScript();
+        WFloorScript();
+        ~WFloorScript();
 
         void Initialize() override;
         void Update() override;
@@ -20,3 +19,4 @@ namespace Won
         void OnColliderExit(WCollider* Other) override;
     };
 }
+

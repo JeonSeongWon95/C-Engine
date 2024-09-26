@@ -59,3 +59,15 @@ void Won::WBulletScript::Render(HDC NewDC)
 {
 
 }
+
+void Won::WBulletScript::OnColliderEnter(WCollider* Other)
+{
+}
+
+void Won::WBulletScript::OnColliderStay(WCollider* Other)
+{
+}
+
+void Won::WBulletScript::OnColliderExit(WCollider* Other)
+{
+}

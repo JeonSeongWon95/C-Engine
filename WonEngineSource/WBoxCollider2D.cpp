@@ -55,12 +55,15 @@ void Won::WBoxCollider2D::Render(HDC NewDC)
 
 void Won::WBoxCollider2D::OnColliderEnter(WCollider* Other)
 {
+	WCollider::OnColliderEnter(Other);
 }
 
 void Won::WBoxCollider2D::OnColliderStay(WCollider* Other)
 {
+	WCollider::OnColliderStay(Other);
 }
 
 void Won::WBoxCollider2D::OnColliderExit(WCollider* Other)
 {
+	WCollider::OnColliderExit(Other);
 }

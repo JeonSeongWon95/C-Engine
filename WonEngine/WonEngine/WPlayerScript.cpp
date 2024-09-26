@@ -11,6 +11,7 @@
 #include "WResourceManager.h"
 #include "Player.h"
 #include "WBoxCollider2D.h"
+#include "WRigidbody.h"
 
 
 Won::WPlayerScript::WPlayerScript()
@@ -64,8 +65,33 @@ void Won::WPlayerScript::Render(HDC NewDC)
 {
 }
 
+void Won::WPlayerScript::OnColliderEnter(WCollider* Other)
+{
+}
+
+void Won::WPlayerScript::OnColliderStay(WCollider* Other)
+{
+}
+
+void Won::WPlayerScript::OnColliderExit(WCollider* Other)
+{
+}
+
 void Won::WPlayerScript::Idle()
 {
+	WRigidbody* RG = GetOwner()->GetComponent<WRigidbody>();
+	if(WInput::GetKey(KeyType::UP))
+	{
+		
+		if (RG->IsGround())
+		{
+			sVector2<float> Vel = RG->GetVelocity();
+			Vel += sVector2<float>(0, -500.0f);
+			RG->SetVelocity(Vel);
+			RG->SetIsGround(false);
+		}
+	}
+
 	if (Size == ePlayerSize::Small)
 	{
 		if (WInput::GetKey(KeyType::LEFT))
@@ -155,13 +181,17 @@ void Won::WPlayerScript::Walk()
 	WTransform* tr = GetOwner()->GetComponent<WTransform>();
 	sVector2<float> pos = tr->GetPosition();
 
+	WRigidbody* Rg = GetOwner()->GetComponent<WRigidbody>();
+
 	if (WInput::GetKey(KeyType::LEFT))
 	{
-		pos.X -= 100.f * WTime::GetDeltaSeconds();
+		//pos.X -= 100.f * WTime::GetDeltaSeconds();
+		Rg->AddForce(sVector2<float>(-200.0f, 0.0f));
 	}
 	if (WInput::GetKey(KeyType::RIGHT))
 	{
-		pos.X += 100.f * WTime::GetDeltaSeconds();
+		//pos.X += 100.f * WTime::GetDeltaSeconds();
+		Rg->AddForce(sVector2<float>(200.0f, 0.0f));
 	}
 
 	tr->SetPos(pos);

@@ -68,6 +68,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WRigidbody.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)WScene.h" />
@@ -143,6 +145,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WRigidbody.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIBase.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">

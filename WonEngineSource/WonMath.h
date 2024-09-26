@@ -22,16 +22,16 @@ namespace Won
 			Y = NewY;
 		}
 
-		static float Dot(sVector2& v)
+		float Dot(const sVector2<T>& v) const
 		{
-			return X * v.X + Y * v.Y;
-
+			return (X * v.X) + (Y * v.Y);
 		}
 
-		static float Cross(sVector2& v)
+		float Cross(const sVector2<T>& v)
 		{
 			return X * v.Y + Y * v.X;
 		}
+
 		sVector2 operator-()
 		{
 			return sVector2(-X,-Y);
@@ -59,6 +59,10 @@ namespace Won
 		sVector2 operator+=(sVector2 Other)
 		{
 			return sVector2(X += Other.X, Y += Other.Y);
+		}
+		sVector2 operator-=(sVector2 Other)
+		{
+			return sVector2(X -= Other.X, Y -= Other.Y);
 		}
 
 		float Lenth()

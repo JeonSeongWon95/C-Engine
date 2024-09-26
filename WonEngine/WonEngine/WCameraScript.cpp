@@ -50,3 +50,15 @@ void Won::WCameraScript::Render(HDC NewDC)
 {
 
 }
+
+void Won::WCameraScript::OnColliderEnter(WCollider* Other)
+{
+}
+
+void Won::WCameraScript::OnColliderStay(WCollider* Other)
+{
+}
+
+void Won::WCameraScript::OnColliderExit(WCollider* Other)
+{
+}

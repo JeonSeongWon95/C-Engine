@@ -18,6 +18,9 @@
 #include "WSphereCollider2D.h"
 #include "TileObject.h"
 #include "WTileRenderer.h"
+#include "WRigidbody.h"
+#include "Floor.h"
+#include "WFloorScript.h"
 
 Won::PlayScene_Level::PlayScene_Level()
 {
@@ -70,12 +73,20 @@ void Won::PlayScene_Level::Initialize()
 	//CATS->PlayAnimation(L"Attack", true);
 	//CATS->SetRemoveColor(mVector3<int>(0, 0, 0));
 
-	
+	Floor* floor = InstanceSpawn<Floor>(eLayerType::Floor);
+	WTransform* floorTr = floor->GetComponent<WTransform>();
+	floor->AddComponent<WFloorScript>();
+	WBoxCollider2D* floorBx = floor->AddComponent<WBoxCollider2D>();
+	floorTr->SetPos(sVector2<float>(0, 550.0f));
+	floorBx->SetSize(sVector2<float>(1000.0f, 50.0f));
+
 
 	Player* Ch = InstanceSpawn<Player>(eLayerType::Player);
 	WPlayerScript* chScr =  Ch->AddComponent<WPlayerScript>();
+	WRigidbody* ChRg = Ch->AddComponent<WRigidbody>();
+	ChRg->Setmass(1.5f);
 
-	WSphereCollider2D* PlayerCollider = Ch->AddComponent<WSphereCollider2D>();
+	WBoxCollider2D* PlayerCollider = Ch->AddComponent<WBoxCollider2D>();
 	PlayerCollider->Setoffset(sVector2<float>(-18.0f, -25.0f));
 	PlayerCollider->SetSize(sVector2<float>(50.0f, 50.0f));
 
@@ -108,7 +119,7 @@ void Won::PlayScene_Level::Initialize()
 	Enemy* Monster = InstanceSpawn<Enemy>(eLayerType::Character);
 	Monster->AddComponent<WEnemyScript>();
 
-	WSphereCollider2D* MB = Monster->AddComponent<WSphereCollider2D>();
+	WBoxCollider2D* MB = Monster->AddComponent<WBoxCollider2D>();
 	MB->SetSize(sVector2<float>(50.0f, 50.0f));
 	MB->Setoffset(sVector2<float>(-15.0f, -15.0f));
 
@@ -147,6 +158,7 @@ void Won::PlayScene_Level::Render(HDC NewDC)
 void Won::PlayScene_Level::OnEnter()
 {
 	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Character, true);
+	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Floor, true);
 }
 
 void Won::PlayScene_Level::OnExit()

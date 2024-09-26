@@ -61,6 +61,18 @@ void Won::WEnemyScript::Render(HDC NewDC)
 {
 }
 
+void Won::WEnemyScript::OnColliderEnter(WCollider* Other)
+{
+}
+
+void Won::WEnemyScript::OnColliderStay(WCollider* Other)
+{
+}
+
+void Won::WEnemyScript::OnColliderExit(WCollider* Other)
+{
+}
+
 void Won::WEnemyScript::Idle()
 {
 	mTimer += WTime::GetDeltaSeconds();

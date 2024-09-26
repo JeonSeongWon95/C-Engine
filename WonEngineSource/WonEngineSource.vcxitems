@@ -43,6 +43,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)WTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)WUIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)WBoxCollider2D.cpp" />
@@ -72,5 +74,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)WTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)WUIManager.cpp" />
   </ItemGroup>
 </Project>

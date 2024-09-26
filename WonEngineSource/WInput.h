@@ -28,6 +28,7 @@ namespace Won
 			bool IsPressed;
 		};
 	public:
+
 		static void Initialize();
 		static void Update();
 		

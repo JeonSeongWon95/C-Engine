@@ -10,6 +10,7 @@ namespace Won
 		Environment,
 		Character,
 		Player,
+		Floor,
 		Effect,
 		Max = 16
 
@@ -34,6 +35,11 @@ namespace Won
 		Audio,
 		Animation,
 		None
+	};
+
+	enum class eUIType
+	{
+		End
 	};
 
 }

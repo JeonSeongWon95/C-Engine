@@ -97,17 +97,17 @@ void Won::ToolScene::Render(HDC NewDC)
 
 	for (int i = 0; i < 50; ++i)
 	{
-		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>((16 * 3 * i), 0));
+		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(static_cast<float>((16 * 3 * i)), 0));
 
-		MoveToEx(NewDC, Pos.X, 0, NULL);
-		LineTo(NewDC, Pos.X, 1000);
+		MoveToEx(NewDC, static_cast<int>(Pos.X), 0, NULL);
+		LineTo(NewDC, static_cast<int>(Pos.X), 1000);
 	}
 	for (int i = 0; i < 50; ++i)
 	{
-		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(0, (16 * 3 * i)));
+		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(0, (static_cast<float>(16 * 3 * i))));
 
-		MoveToEx(NewDC, 0, Pos.Y, NULL);
-		LineTo(NewDC, 1000, Pos.Y);
+		MoveToEx(NewDC, 0, static_cast<int>(Pos.Y), NULL);
+		LineTo(NewDC, 1000, static_cast<int>(Pos.Y));
 	}
 }
 
@@ -210,8 +210,8 @@ void Won::ToolScene::Save()
 		
 		WTileRenderer* TileRender = GB->GetComponent<WTileRenderer>();
 		WTransform* ObjectTransform = GB->GetComponent<WTransform>();
-		TileIndex.X = ObjectTransform->GetPosition().X / TileRender->GetSize().X;
-		TileIndex.Y = ObjectTransform->GetPosition().Y / TileRender->GetSize().Y;
+		TileIndex.X = static_cast<int>(ObjectTransform->GetPosition().X / TileRender->GetSize().X);
+		TileIndex.Y = static_cast<int>(ObjectTransform->GetPosition().Y / TileRender->GetSize().Y);
 		SheetIndex.X = TileRender->GetSheetIndex().X;
 		SheetIndex.Y = TileRender->GetSheetIndex().Y;
 
@@ -272,8 +272,8 @@ LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 		GetCursorPos(&Cursorpos);
 		ScreenToClient(hWnd, &Cursorpos);
 
-		MousePos.X = Cursorpos.x;
-		MousePos.Y = Cursorpos.y;
+		MousePos.X = static_cast<float>(Cursorpos.x);
+		MousePos.Y = static_cast<float>(Cursorpos.y);
 
 		mStartPosition.X = static_cast<int>(MousePos.X / 16);
 		mStartPosition.Y = static_cast<int>(MousePos.Y / 16);

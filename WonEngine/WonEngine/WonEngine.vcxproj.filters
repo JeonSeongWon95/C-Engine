@@ -45,6 +45,12 @@
     <ClInclude Include="WCameraScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
+    <ClInclude Include="Floor.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WFloorScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ChildComponent">
@@ -98,6 +104,12 @@
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="WCameraScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="Floor.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WFloorScript.cpp">
       <Filter>ChildComponent</Filter>
     </ClCompile>
   </ItemGroup>

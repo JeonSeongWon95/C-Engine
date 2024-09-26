@@ -133,6 +133,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Floor.h" />
     <ClInclude Include="WBulletScript.h" />
     <ClInclude Include="WCameraScript.h" />
     <ClInclude Include="DontDestoryScene.h" />
@@ -147,10 +148,12 @@
     <ClInclude Include="TitleScene_Level.h" />
     <ClInclude Include="ToolScene.h" />
     <ClInclude Include="WEnemyScript.h" />
+    <ClInclude Include="WFloorScript.h" />
     <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Floor.cpp" />
     <ClCompile Include="WBulletScript.cpp" />
     <ClCompile Include="WCameraScript.cpp" />
     <ClCompile Include="DontDestoryScene.cpp" />
@@ -163,6 +166,7 @@
     <ClCompile Include="TitleScene_Level.cpp" />
     <ClCompile Include="ToolScene.cpp" />
     <ClCompile Include="WEnemyScript.cpp" />
+    <ClCompile Include="WFloorScript.cpp" />
     <ClCompile Include="WPlayerScript.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
