@@ -5,7 +5,9 @@
 #include "WInput.h"
 #include "WAnimator.h"
 #include "../WonEngineSource/WonObject.h"
-
+#include "WCollider.h"
+#include "Player.h"
+#include "WPlayerScript.h"
 
 Won::WEnemyScript::WEnemyScript()
 	:mState(eEnemyState::IdleState)
@@ -33,13 +35,6 @@ void Won::WEnemyScript::Update()
 		Anim = GetOwner()->GetComponent<WAnimator>();
 	}
 
-	mDeathTimer += WTime::GetDeltaSeconds();
-
-	if(mDeathTimer > 10.0f)
-	{
-		Destroy(GetOwner());
-	}
-
 	switch (mState)
 	{
 	case eEnemyState::IdleState:
@@ -63,6 +58,26 @@ void Won::WEnemyScript::Render(HDC NewDC)
 
 void Won::WEnemyScript::OnColliderEnter(WCollider* Other)
 {
+	if(Other->GetOwner()->GetLayerType() == eLayerType::Player)
+	{
+		WTransform* PlayerTr = Other->GetOwner()->GetComponent<WTransform>();
+		WTransform* MyTr = this->GetOwner()->GetComponent<WTransform>();
+		
+		float PlayerFoot = PlayerTr->GetPosition().Y + Other->GetSize().Y;
+		float MyHeight = MyTr->GetPosition().Y;
+
+		if (PlayerFoot < MyHeight)
+		{
+			WAnimator* MyAnim = GetOwner()->GetComponent<WAnimator>();
+			MyAnim->PlayAnimation(L"Dead", false);
+		}
+		else
+		{
+			WPlayerScript* PlayerScript = Other->GetOwner()->GetComponent<WPlayerScript>();
+			PlayerScript->AddDamage();
+		}
+	}
+	
 }
 
 void Won::WEnemyScript::OnColliderStay(WCollider* Other)
@@ -123,5 +138,18 @@ void Won::WEnemyScript::Walk()
 	{
 		mTimer = 0.f;
 		mState = eEnemyState::IdleState;
+	}
+}
+
+void Won::WEnemyScript::Dead()
+{
+	mDeathTimer += WTime::GetDeltaSeconds();
+
+	if (mDeathTimer > 1)
+	{
+		mDeathTimer = 0;
+
+		Destroy(GetOwner());
+
 	}
 }

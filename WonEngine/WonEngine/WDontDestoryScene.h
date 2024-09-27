@@ -3,11 +3,11 @@
 
 namespace Won
 {
-    class DontDestoryScene : public WScene
+    class WDontDestoryScene : public WScene
     {
 	public:
-		DontDestoryScene();
-		~DontDestoryScene();
+		WDontDestoryScene();
+		~WDontDestoryScene();
 
 		void Initialize() override;
 		void Update() override;

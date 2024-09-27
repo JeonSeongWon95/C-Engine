@@ -1,6 +1,7 @@
 #include "WUIManager.h"
 #include "WUIBase.h"
 #include "WButton.h"
+#include "WHUD.h"
 
 Won::WUIBase* Won::WUIManager::mActiveUI = nullptr;
 std::unordered_map<Won::eUIType, Won::WUIBase*> Won::WUIManager::AllUIs = {};
@@ -9,8 +10,11 @@ std::queue<Won::eUIType> Won::WUIManager::mRequestUIs = {};
 
 void Won::WUIManager::Initialize()
 {
-	WButton* Button = new WButton();
-	AllUIs.insert(std::make_pair(eUIType::Button, Button));
+	WButton* NewButton = new WButton();
+	AllUIs.insert(std::make_pair(eUIType::Button, NewButton));
+
+	WHUD* NewHUD = new WHUD();
+	AllUIs.insert(std::make_pair(eUIType::HUD, NewHUD));
 }
 
 void Won::WUIManager::OnLoad(eUIType type)
@@ -84,6 +88,7 @@ void Won::WUIManager::OnCompleted(WUIBase* UI)
 	if (UI == nullptr) 
 		return;
 
+	UI->OnInit();
 	UI->Active();
 
 	if(UI->IsFullScreen())
@@ -107,6 +112,26 @@ void Won::WUIManager::OnCompleted(WUIBase* UI)
 
 void Won::WUIManager::OnFail()
 {
+}
+
+void Won::WUIManager::Release()
+{
+	for(auto& iter : AllUIs)
+	{
+		delete iter.second;
+		iter.second = nullptr;
+	}
+
+	while(mRequestUIs.size() > 0)
+	{
+		mRequestUIs.pop();
+	}
+
+	while(mPresentUIs.size() > 0)
+	{
+		mPresentUIs.pop();
+	}
+
 }
 
 void Won::WUIManager::Push(eUIType type)

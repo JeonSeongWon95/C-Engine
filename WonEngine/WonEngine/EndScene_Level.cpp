@@ -7,8 +7,10 @@
 #include "WResourceManager.h"
 #include "WTexture.h"
 #include "WInput.h"
+#include "WTime.h"
 
 Won::EndScene_Level::EndScene_Level()
+	:mReStartTimer(0)
 {
 }
 
@@ -33,9 +35,12 @@ void Won::EndScene_Level::Update()
 {
 	WScene::Update();
 
-	if (WInput::GetKey(KeyType::A))
+	mReStartTimer += WTime::GetDeltaSeconds();
+
+	if (mReStartTimer > 8)
 	{
-		WSceneManager::LoadScene_Level(L"PlayLevel");
+		mReStartTimer = 0;
+		WSceneManager::LoadScene(L"PlayLevel");
 	}
 }
 

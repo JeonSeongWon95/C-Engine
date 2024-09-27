@@ -1,4 +1,4 @@
-#include "TitleScene_Level.h"
+#include "WTitleScene.h"
 #include "Player.h"
 #include "WonObject.h"
 #include "WSpriteRenderComponent.h"
@@ -6,16 +6,17 @@
 #include "WTexture.h"
 #include "WCamera.h"
 #include "WInput.h"
+#include "WUIManager.h"
 
-Won::TitleScene_Level::TitleScene_Level()
+Won::WTitleScene::WTitleScene()
 {
 }
 
-Won::TitleScene_Level::~TitleScene_Level()
+Won::WTitleScene::~WTitleScene()
 {
 }
 
-void Won::TitleScene_Level::Initialize()
+void Won::WTitleScene::Initialize()
 {
 	//GameObject* Camera = InstanceSpawn<GameObject>(LayerType::None);
 	//WCamera* CameraComponent = Camera->AddComponent<WCamera>();
@@ -41,31 +42,33 @@ void Won::TitleScene_Level::Initialize()
 	//SRCS->SetTextureSize(rectS.right - rectS.left, rectS.bottom - rectS.top);
 }
 
-void Won::TitleScene_Level::Update()
+void Won::WTitleScene::Update()
 {
 	WScene::Update();
 
-	if (WInput::GetKey(KeyType::A))
+	if (WInput::GetKey(KeyType::ENTER))
 	{
-		WSceneManager::LoadScene_Level(L"EndLevel");
+		WSceneManager::LoadScene(L"PlayLevel");
 	}
 }
 
-void Won::TitleScene_Level::LateUpdate()
+void Won::WTitleScene::LateUpdate()
 {
 	WScene::LateUpdate();
 
 }
 
-void Won::TitleScene_Level::Render(HDC NewDC)
+void Won::WTitleScene::Render(HDC NewDC)
 {
 	WScene::Render(NewDC);
 }
 
-void Won::TitleScene_Level::OnEnter()
+void Won::WTitleScene::OnEnter()
 {
+	WUIManager::Push(eUIType::HUD);
 }
 
-void Won::TitleScene_Level::OnExit()
+void Won::WTitleScene::OnExit()
 {
+	WUIManager::Pop(eUIType::HUD);
 }

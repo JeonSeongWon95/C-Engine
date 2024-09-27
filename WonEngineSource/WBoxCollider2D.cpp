@@ -42,10 +42,10 @@ void Won::WBoxCollider2D::Render(HDC NewDC)
 	sVector2<float> Size = GetSize();
 
 	Rectangle(NewDC
-		, static_cast<int>(Pos.X + Offset.X)
-		, static_cast<int>(Pos.Y + Offset.Y)
-		, static_cast<int>(Pos.X + Offset.X + Size.X)
-		, static_cast<int>(Pos.Y + Offset.Y + Size.Y));
+		, static_cast<int>(Pos.X)
+		, static_cast<int>(Pos.Y)
+		, static_cast<int>(Pos.X + Size.X)
+		, static_cast<int>(Pos.Y + Size.Y));
 
 	SelectObject(NewDC, OldBrush);
 	SelectObject(NewDC, OldPen);

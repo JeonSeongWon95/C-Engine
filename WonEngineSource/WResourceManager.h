@@ -43,6 +43,14 @@ namespace Won
 			return resource;
 		}
 
+		static void Release()
+		{
+			for(auto& iter : Resources)
+			{
+				delete iter.second;
+				iter.second = nullptr;
+			}
+		}
 
 	private:
 		static std::map<std::wstring, WResource*> Resources;

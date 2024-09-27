@@ -70,6 +70,7 @@ void Won::WButton::OnRender(HDC NewDC)
 
 void Won::WButton::Onclear()
 {
+
 }
 
 void Won::WButton::OnClicked()

@@ -1,64 +1,56 @@
 #include "WSceneManager.h"
 #include "WScene.h"
-#include "../WonEngine/WonEngine/DontDestoryScene.h"
+#include "../WonEngine/WonEngine/WDontDestoryScene.h"
 #include "WGameObject.h"
 #include "WLayer.h"
 
-std::map<std::wstring, Won::WScene*> Won::WSceneManager::Scene_Levels = {};
-Won::WScene* Won::WSceneManager::ActiveScene_Level = nullptr;
-Won::WScene* Won::WSceneManager::DontDestoryScene_Level = nullptr;
-
-Won::WSceneManager::WSceneManager()
-{
-}
-
-Won::WSceneManager::~WSceneManager()
-{
-	for(std::map<std::wstring, Won::WScene*>::iterator iter = Scene_Levels.begin();
-		iter != Scene_Levels.end();)
-	{
-		delete iter->second;
-		iter = Scene_Levels.erase(iter);
-	}
-	
-	delete DontDestoryScene_Level;
-	Scene_Levels.clear();
-}
+std::map<std::wstring, Won::WScene*> Won::WSceneManager::Scenes = {};
+Won::WScene* Won::WSceneManager::ActiveScene = nullptr;
+Won::WScene* Won::WSceneManager::DontDestoryScene = nullptr;
 
 void Won::WSceneManager::Initialize()
 {
-	DontDestoryScene_Level = CreateScene_Level<DontDestoryScene>(L"DontDestoryScene");
+	DontDestoryScene = CreateScene<WDontDestoryScene>(L"DontDestoryScene");
 }
 
 void Won::WSceneManager::Update()
 {
-	ActiveScene_Level->Update();
-	DontDestoryScene_Level->Update();
+	ActiveScene->Update();
+	DontDestoryScene->Update();
 }
 
 void Won::WSceneManager::LateUpdate()
 {
-	ActiveScene_Level->LateUpdate();
-	DontDestoryScene_Level->LateUpdate();
+	ActiveScene->LateUpdate();
+	DontDestoryScene->LateUpdate();
 }
 
 void Won::WSceneManager::Render(HDC NewDC)
 {
-	ActiveScene_Level->Render(NewDC);
-	DontDestoryScene_Level->Render(NewDC);
+	ActiveScene->Render(NewDC);
+	DontDestoryScene->Render(NewDC);
 }
 
 void Won::WSceneManager::Destroy()
 {
-	ActiveScene_Level->Destroy();
-	DontDestoryScene_Level->Destroy();
+	ActiveScene->Destroy();
+	DontDestoryScene->Destroy();
+}
+
+void Won::WSceneManager::Release()
+{
+	for (auto& iter : Scenes)
+	{
+		delete iter.second;
+		iter.second = nullptr;
+	}
 }
 
 std::vector<Won::WGameObject*> Won::WSceneManager::GetGameObjects(eLayerType NewLayer)
 {
 
-	std::vector<Won::WGameObject*> GameObj = ActiveScene_Level->GetLayer(NewLayer)->GetGameObject();
-	std::vector<Won::WGameObject*> DontObj = DontDestoryScene_Level->GetLayer(NewLayer)->GetGameObject();
+	std::vector<Won::WGameObject*> GameObj = ActiveScene->GetLayer(NewLayer)->GetGameObject();
+	std::vector<Won::WGameObject*> DontObj = DontDestoryScene->GetLayer(NewLayer)->GetGameObject();
 
 	GameObj.insert(GameObj.end(), DontObj.begin(), DontObj.end());
 

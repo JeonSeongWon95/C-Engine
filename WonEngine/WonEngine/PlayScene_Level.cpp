@@ -79,6 +79,7 @@ void Won::PlayScene_Level::Initialize()
 	floor->AddComponent<WFloorScript>();
 	WBoxCollider2D* floorBx = floor->AddComponent<WBoxCollider2D>();
 	floorTr->SetPos(sVector2<float>(0, 550.0f));
+	floorTr->SetScale(sVector2<float>(1, 500));
 	floorBx->SetSize(sVector2<float>(1000.0f, 50.0f));
 
 
@@ -99,30 +100,30 @@ void Won::PlayScene_Level::Initialize()
 	WAnimator* CAT = Ch->AddComponent<WAnimator>();
 
 	CAT->CreateAnimation(L"RightWalk", CharcterTexture, sVector2<float>(0, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 4, 0.1f);
-	CAT->CreateAnimation(L"LeftWalk", CharcterTexture, sVector2<float>(568, 222), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 4, 0.1f, true);
+	CAT->CreateAnimation(L"LeftWalk", CharcterTexture, sVector2<float>(570, 221), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 4, 0.1f, true);
 	CAT->CreateAnimation(L"RightIdle", CharcterTexture, sVector2<float>(0, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.2f);
-	CAT->CreateAnimation(L"LeftIdle", CharcterTexture, sVector2<float>(568, 222), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.2f, true);
+	CAT->CreateAnimation(L"LeftIdle", CharcterTexture, sVector2<float>(570, 221), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.2f, true);
 	CAT->CreateAnimation(L"ChangeToRightBigger", CharcterTexture, sVector2<float>(18.5, 73), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.1f);
 	CAT->CreateAnimation(L"ChangeToLeftBigger", CharcterTexture, sVector2<float>(550.5, 286), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.1f, true);
 	CAT->CreateAnimation(L"ChangeToRightSmall", CharcterTexture, sVector2<float>(37, 73), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.1f, true);
 	CAT->CreateAnimation(L"ChangeToLeftSmall", CharcterTexture, sVector2<float>(532, 286), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.1f);
 	CAT->CreateAnimation(L"BiggerRightWalk", CharcterTexture, sVector2<float>(0, 33), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 4, 0.1f);
-	CAT->CreateAnimation(L"BiggerLeftWalk", CharcterTexture, sVector2<float>(568, 247), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 4, 0.1f, true);
+	CAT->CreateAnimation(L"BiggerLeftWalk", CharcterTexture, sVector2<float>(570, 247), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 4, 0.1f, true);
 	CAT->CreateAnimation(L"BiggerRightIdle", CharcterTexture, sVector2<float>(0, 33), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 1, 0.2f);
-	CAT->CreateAnimation(L"BiggerLeftIdle", CharcterTexture, sVector2<float>(568, 247), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 1, 0.2f, true);
+	CAT->CreateAnimation(L"BiggerLeftIdle", CharcterTexture, sVector2<float>(570, 247), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 1, 0.2f, true);
+	CAT->CreateAnimation(L"Dead", CharcterTexture, sVector2<float>(111, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 32), 1, 0.2f);
 	CAT->CreateAnimation(L"Attack", CharcterTexture, sVector2<float>(135, 73), sVector2<float>(20, 32), sVector2<float>(10, 32), 1, 0.1f);
-	
 	CAT->GetStartEvent(L"Attack") = std::bind(&WPlayerScript::Fire, chScr);
+	CAT->GetStartEvent(L"Dead") = std::bind(&WPlayerScript::Dead, chScr);
 	CAT->PlayAnimation(L"RightIdle", false);
 
-	DestoryOnLoadScene(Ch);
+	//DestoryOnLoadScene(Ch);
 
 	Enemy* Monster = InstanceSpawn<Enemy>(eLayerType::Character);
-	Monster->AddComponent<WEnemyScript>();
+	WEnemyScript* MonsterScript = Monster->AddComponent<WEnemyScript>();
 
 	WBoxCollider2D* MB = Monster->AddComponent<WBoxCollider2D>();
 	MB->SetSize(sVector2<float>(50.0f, 50.0f));
-	MB->Setoffset(sVector2<float>(-15.0f, -15.0f));
 
 	WTransform* MTR = Monster->GetComponent<WTransform>();
 	MTR->SetScale(sVector2<float>(3.0f, 3.0f));
@@ -131,6 +132,8 @@ void Won::PlayScene_Level::Initialize()
 	WTexture* MonsterTexture = WResourceManager::Find<WTexture>(L"Ee");
 	WAnimator* MAT = Monster->AddComponent<WAnimator>();
 	MAT->CreateAnimation(L"Walk", MonsterTexture, sVector2<float>(0, 15), sVector2<float>(18.5, 18), sVector2<float>(0, 0), 2, 0.1f);
+	MAT->CreateAnimation(L"Dead", MonsterTexture, sVector2<float>(37, 15), sVector2<float>(18.5, 18), sVector2<float>(0, 0), 1, 0.1f);
+	MAT->GetCompleteEvent(L"Dead") = std::bind(&WEnemyScript::Dead, MonsterScript);
 	MAT->PlayAnimation(L"Walk", true);
 
 	WScene::Initialize();
@@ -140,10 +143,10 @@ void Won::PlayScene_Level::Update()
 {
 	WScene::Update();
 
-	if(WInput::GetKey(KeyType::A))
-	{
-		WSceneManager::LoadScene_Level(L"TitleLevel");
-	}
+	//if(WInput::GetKey(KeyType::A))
+	//{
+	//	WSceneManager::LoadScene(L"TitleLevel");
+	//}
 }
 
 void Won::PlayScene_Level::LateUpdate()
@@ -161,11 +164,11 @@ void Won::PlayScene_Level::OnEnter()
 	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Character, true);
 	WColliderManager::SetColliderEnable(eLayerType::Player, eLayerType::Floor, true);
 
-	WUIManager::Push(eUIType::Button);
+	//WUIManager::Push(eUIType::Button);
 }
 
 void Won::PlayScene_Level::OnExit()
 {
 	WColliderManager::Clear();
-	WUIManager::Pop(eUIType::Button);
+	//WUIManager::Pop(eUIType::Button);
 }

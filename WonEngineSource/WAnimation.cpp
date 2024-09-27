@@ -123,8 +123,8 @@ void Won::WAnimation::Render(HDC NewDC)
 	WTexture::TextureType Type = MainTexture->GetTextureType();
 	WCollider* Col = GO->GetComponent<WCollider>();
 
-	Col->Setoffset(sVector2<float>(-(CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X)
-		, -(CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y)));
+	//Col->Setoffset(sVector2<float>(-(CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X)
+	//	, -(CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y)));
 
 	if (MainCamera != nullptr)
 	{
@@ -141,8 +141,8 @@ void Won::WAnimation::Render(HDC NewDC)
 		func.SourceConstantAlpha = 255;
 
 		AlphaBlend(NewDC
-			, static_cast<int>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
-			, static_cast<int>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
+			, static_cast<int>(Pos.X)
+			, static_cast<int>(Pos.Y)
 			, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
 			, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
 			, ImageDC
@@ -150,6 +150,17 @@ void Won::WAnimation::Render(HDC NewDC)
 			, static_cast<int>(CurrentSprite->sStartPostion.Y)
 			, static_cast<int>(CurrentSprite->sSize.X)
 			, static_cast<int>(CurrentSprite->sSize.Y), func);
+
+		//AlphaBlend(NewDC
+		//	, static_cast<int>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
+		//	, static_cast<int>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
+		//	, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
+		//	, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
+		//	, ImageDC
+		//	, static_cast<int>(CurrentSprite->sStartPostion.X)
+		//	, static_cast<int>(CurrentSprite->sStartPostion.Y)
+		//	, static_cast<int>(CurrentSprite->sSize.X)
+		//	, static_cast<int>(CurrentSprite->sSize.Y), func);
 	}
 	else if (Type == WTexture::TextureType::png)
 	{

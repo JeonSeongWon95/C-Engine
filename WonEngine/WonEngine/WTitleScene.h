@@ -4,11 +4,11 @@
 
 namespace Won
 {
-    class TitleScene_Level : public WScene
+    class WTitleScene : public WScene
     {
     public:
-        TitleScene_Level();
-        ~TitleScene_Level();
+        WTitleScene();
+        ~WTitleScene();
 
         void Initialize() override;
         void Update() override;

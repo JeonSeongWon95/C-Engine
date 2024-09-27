@@ -3,7 +3,7 @@
 #include "framework.h"
 #include "WindowEditor.h"
 #include "../WonEngineSource/WonApplication.h"
-#include "../WonEngine/WonEngine/LoadScene_Level.h"
+#include "../WonEngine/WonEngine/LoadScenes.h"
 #include "../WonEngine/WonEngine/LoadResources.h"
 #include "../WonEngineSource/WSceneManager.h"
 #include <crtdbg.h>
@@ -43,7 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     
     //메모리 숫자를 넣으면 해당 순번에 생성된 메모리가 어디서 생성되었는지 알려줌.
-    //_CrtSetBreakAlloc(232);
+    //_CrtSetBreakAlloc(902);
 
     // TODO: Place code here.
 
@@ -87,6 +87,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
     }
 
+    Engine.Release();
     Gdiplus::GdiplusShutdown(gpToken);
 
     return (int)msg.wParam;
@@ -153,7 +154,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     Gdiplus::GdiplusStartup(&gpToken, &gdsi, NULL);
     Won::LoadResources();
-    Won::LoadScene_Levels();
+    Won::LoadScenes();
 
     int a = 0;
     srand((unsigned int)(&a));
@@ -166,7 +167,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
         Won::WTexture* texture
             = Won::WResourceManager::Find<Won::WTexture>(L"Ob");
 
-        RECT rect = { 0, 0, texture->GetWidth(), texture->GetHeight() };
+        RECT rect = { 0, 0, static_cast<int>(texture->GetWidth()), static_cast<int>(texture->GetHeight()) };
         AdjustWindowRect(&rect, WS_OVERLAPPEDWINDOW, false);
 
         UINT toolWidth = rect.right - rect.left;

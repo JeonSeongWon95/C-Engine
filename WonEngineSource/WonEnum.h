@@ -42,6 +42,7 @@ namespace Won
 	enum class eUIType
 	{
 		None,
+		HUD,
 		Button,
 		End
 	};

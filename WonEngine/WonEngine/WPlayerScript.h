@@ -44,6 +44,8 @@ namespace Won
         void Jump();
         void Change();
         void Fire();
+        void AddDamage();
+        void Dead();
 
         ePlayerDirection& GetPlayerDirection() { return Direction ;}
 
@@ -52,6 +54,9 @@ namespace Won
         ePlayerDirection Direction;
         ePlayerSize Size;
         class WAnimator* Anim;
+        UINT mPlayerHealth;
+        bool mPlayerIsHit;
+        float mHitTimer;
 
     };
 }

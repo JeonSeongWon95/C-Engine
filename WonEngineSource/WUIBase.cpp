@@ -76,4 +76,5 @@ void Won::WUIBase::OnRender(HDC NewDC)
 
 void Won::WUIBase::Onclear()
 {
+
 }

@@ -1,5 +1,5 @@
 #include "TileScene.h"
-
+#include "WUIManager.h"
 
 Won::TileScene::TileScene()
 {
@@ -11,7 +11,6 @@ Won::TileScene::~TileScene()
 
 void Won::TileScene::Initialize()
 {
-
 
 }
 
@@ -32,8 +31,10 @@ void Won::TileScene::Render(HDC NewDC)
 
 void Won::TileScene::OnEnter()
 {
+	
 }
 
 void Won::TileScene::OnExit()
 {
+	
 }

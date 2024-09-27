@@ -148,38 +148,48 @@ copy "$(SolutionDir)../\External\Library\Fmod\Debug\fmodstudioL.dll" "$(Solution
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Block.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="Coin.h" />
+    <ClInclude Include="DeadScene.h" />
     <ClInclude Include="Floor.h" />
+    <ClInclude Include="Flower.h" />
+    <ClInclude Include="Mushroom.h" />
     <ClInclude Include="WBulletScript.h" />
     <ClInclude Include="WCameraScript.h" />
-    <ClInclude Include="DontDestoryScene.h" />
+    <ClInclude Include="WDontDestoryScene.h" />
     <ClInclude Include="EndScene_Level.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="LoadResources.h" />
-    <ClInclude Include="LoadScene_Level.h" />
+    <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene_Level.h" />
     <ClInclude Include="TileObject.h" />
     <ClInclude Include="TileScene.h" />
-    <ClInclude Include="TitleScene_Level.h" />
+    <ClInclude Include="WTitleScene.h" />
     <ClInclude Include="ToolScene.h" />
     <ClInclude Include="WEnemyScript.h" />
     <ClInclude Include="WFloorScript.h" />
     <ClInclude Include="WPlayerScript.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Block.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Coin.cpp" />
+    <ClCompile Include="DeadScene.cpp" />
     <ClCompile Include="Floor.cpp" />
+    <ClCompile Include="Flower.cpp" />
+    <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="WBulletScript.cpp" />
     <ClCompile Include="WCameraScript.cpp" />
-    <ClCompile Include="DontDestoryScene.cpp" />
+    <ClCompile Include="WDontDestoryScene.cpp" />
     <ClCompile Include="EndScene_Level.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene_Level.cpp" />
     <ClCompile Include="TileObject.cpp" />
     <ClCompile Include="TileScene.cpp" />
-    <ClCompile Include="TitleScene_Level.cpp" />
+    <ClCompile Include="WTitleScene.cpp" />
     <ClCompile Include="ToolScene.cpp" />
     <ClCompile Include="WEnemyScript.cpp" />
     <ClCompile Include="WFloorScript.cpp" />

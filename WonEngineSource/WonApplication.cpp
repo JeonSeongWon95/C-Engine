@@ -5,6 +5,7 @@
 #include "WColliderManager.h"
 #include "WUIManager.h"
 #include "WFmod.h"
+#include "WResourceManager.h"
 
 namespace Won
 {
@@ -23,6 +24,7 @@ namespace Won
 
 	WonApplication::~WonApplication()
 	{
+		
 	}
 
 	void WonApplication::Initialize(HWND NewHWND, int NewWidth, int NewHeight)
@@ -65,14 +67,20 @@ namespace Won
 
 		WTime::Render(shdc);
 		WColliderManager::Render(shdc);
-		WUIManager::Render(shdc);
 		WSceneManager::Render(shdc);
-
+		WUIManager::Render(shdc);
+		//Pos 재설정 추가
 		CopyBuffer(shdc, ahdc);
 	}
 	void WonApplication::Destroy()
 	{
 		WSceneManager::Destroy();
+	}
+	void WonApplication::Release()
+	{
+		WSceneManager::Release();
+		WResourceManager::Release();
+		WUIManager::Release();
 	}
 
 	void WonApplication::ClearBuffer()

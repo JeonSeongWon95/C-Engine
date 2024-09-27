@@ -15,6 +15,9 @@ namespace Won
         void Render(HDC NewDC) override;
         void OnEnter() override;
         void OnExit() override;
+
+    private:
+        float mReStartTimer;
     };
 }
 

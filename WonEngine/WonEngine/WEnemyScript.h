@@ -32,6 +32,7 @@ namespace Won
 
         void Idle();
         void Walk();
+        void Dead();
 
     private:
         eEnemyState mState;

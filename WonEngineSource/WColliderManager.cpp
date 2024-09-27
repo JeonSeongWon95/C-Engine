@@ -146,8 +146,8 @@ bool Won::WColliderManager::Intersect(WCollider* Left, WCollider* Right)
 	WTransform* LeftTransform = Left->GetOwner()->GetComponent<WTransform>();
 	WTransform* RightTransform = Right->GetOwner()->GetComponent<WTransform>();
 
-	sVector2<float> LeftPos = Left->GetOffset() + LeftTransform->GetPosition();
-	sVector2<float> RightPos = Right->GetOffset() + RightTransform->GetPosition();
+	sVector2<float> LeftPos = LeftTransform->GetPosition();
+	sVector2<float> RightPos = RightTransform->GetPosition();
 
 	sVector2<float> LeftSize = Left->GetSize();
 	sVector2<float> RightSize = Right->GetSize();
@@ -156,11 +156,10 @@ bool Won::WColliderManager::Intersect(WCollider* Left, WCollider* Right)
 	if (Left->GetColliderType() == WCollider::eColliderType::Box && Right->GetColliderType() == WCollider::eColliderType::Box)
 	{
 
-		if (fabs(LeftPos.X - RightPos.X) < fabs(LeftSize.X / 2.0f + RightSize.X / 2.0f) &&
-			fabs(LeftPos.Y - RightPos.Y) < fabs(LeftSize.Y / 2.0f + RightSize.Y / 2.0f))
-		{
-			return true;
-		}
+		//if (LeftPos.X <= RightPos.X + RightSize.X && )
+		//{
+		//	return true;
+		//}
 	}
 	else if(Left->GetColliderType() == WCollider::eColliderType::Sphere && Right->GetColliderType() == WCollider::eColliderType::Sphere)
 	{

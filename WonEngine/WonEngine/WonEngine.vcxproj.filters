@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="LoadScene_Level.h" />
+    <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="PlayScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="EndScene_Level.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="TitleScene_Level.h">
+    <ClInclude Include="WTitleScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
@@ -29,7 +29,7 @@
     <ClInclude Include="WBulletScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
-    <ClInclude Include="DontDestoryScene.h">
+    <ClInclude Include="WDontDestoryScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="TileScene.h">
@@ -51,6 +51,21 @@
     <ClInclude Include="WFloorScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
+    <ClInclude Include="DeadScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Mushroom.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Block.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Flower.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ChildComponent">
@@ -70,7 +85,7 @@
     <ClCompile Include="EndScene_Level.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="TitleScene_Level.cpp">
+    <ClCompile Include="WTitleScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
@@ -91,7 +106,7 @@
     <ClCompile Include="WBulletScript.cpp">
       <Filter>ChildComponent</Filter>
     </ClCompile>
-    <ClCompile Include="DontDestoryScene.cpp">
+    <ClCompile Include="WDontDestoryScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="TileScene.cpp">
@@ -111,6 +126,21 @@
     </ClCompile>
     <ClCompile Include="WFloorScript.cpp">
       <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="DeadScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Mushroom.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Flower.cpp">
+      <Filter>ChildObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
