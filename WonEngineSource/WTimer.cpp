@@ -6,6 +6,7 @@
 Won::WTimer::WTimer()
 	:mTime(0.0f)
 	,mRenderTime(300)
+	,mOffset(0)
 {
 }
 
@@ -27,7 +28,7 @@ void Won::WTimer::OnInit()
 
 void Won::WTimer::OnUpdate()
 {
-	mTime = WTime::GetDeltaSeconds();
+	mTime += WTime::GetDeltaSeconds();
 
 	if(mTime >= 1)
 	{
@@ -75,7 +76,7 @@ void Won::WTimer::OnRender(HDC NewDC)
 		}
 
 		TransparentBlt(NewDC
-			, static_cast<int>(StartPosition.X)
+			, static_cast<int>(StartPosition.X + mOffset)
 			, static_cast<int>(StartPosition.Y)
 			, static_cast<int>(mSize.X)
 			, static_cast<int>(mSize.Y)
@@ -86,7 +87,8 @@ void Won::WTimer::OnRender(HDC NewDC)
 			, static_cast<int>(CurrentNum->mSize.Y)
 			, RGB(255,0,255));
 
-		StartPosition.X += CurrentNum->mSize.X;
+		StartPosition.X += mSize.X;
+		mOffset += 5;
 
 		if (CurrentNum == hundredsNum)
 		{
@@ -104,6 +106,8 @@ void Won::WTimer::OnRender(HDC NewDC)
 			continue;
 		}
 	}
+
+	mOffset = 0;
 }
 
 void Won::WTimer::Onclear()

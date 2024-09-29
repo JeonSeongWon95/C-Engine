@@ -12,13 +12,6 @@ namespace Won
             WalkState,
             JumpState,
             AttackState,
-            ChangeSize
-        };
-
-        enum ePlayerDirection
-        {
-            LEFT,
-            RIGHT
         };
 
         enum ePlayerSize
@@ -45,19 +38,22 @@ namespace Won
         void Change();
         void Fire();
         void AddDamage();
+        void AddDamageEnd();
         void Dead();
 
-        ePlayerDirection& GetPlayerDirection() { return Direction ;}
+        eDirection GetPlayerDirection() { return Direction ;}
+        ePlayerSize GetPlayerSize() { return Size; }
 
     private:
         ePlayerState mState;
-        ePlayerDirection Direction;
+        eDirection Direction;
         ePlayerSize Size;
         class WAnimator* Anim;
         UINT mPlayerHealth;
         bool mPlayerIsHit;
         float mHitTimer;
-
+        float mDeadTimer;
+        bool mIsBigger;
     };
 }
 

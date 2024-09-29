@@ -8,6 +8,7 @@ namespace Won
 		BackGround,
 		Tilemap,
 		Environment,
+		Item,
 		Character,
 		Player,
 		Floor,
@@ -44,6 +45,25 @@ namespace Won
 		None,
 		HUD,
 		Button,
+		End
+	};
+
+	enum class eDirection
+	{
+		None,
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN,
+		END
+	};
+
+	enum class eItemType
+	{
+		None,
+		Mushroom,
+		Flower,
+		Star,
 		End
 	};
 

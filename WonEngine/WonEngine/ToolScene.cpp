@@ -11,7 +11,6 @@
 #include "WonApplication.h"
 
 Won::sVector2<int> Won::ToolScene::sStartPosition = Won::sVector2<int>(-1,-1);
-
 extern Won::WonApplication Engine;
 
 Won::ToolScene::ToolScene()
@@ -59,7 +58,7 @@ void Won::ToolScene::Update()
 			ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
 
 			WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
-			TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
+			TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Te"));
 
 			sVector2<float> Size = TileRender->GetSize();
 			sVector2<float> Scale = ObjectTransform->GetScale();
@@ -160,7 +159,7 @@ void Won::ToolScene::Load()
 		WTransform* ObjectTransform = Object->GetComponent<WTransform>();
 		ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
 		WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
-		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Ob"));
+		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Te"));
 		ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
 		TileRender->SetSheetIndex(SheetIndex);
 
@@ -237,19 +236,43 @@ LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
         PAINTSTRUCT ps;
         HDC hdc = BeginPaint(hWnd, &ps);
         // TODO: Add any drawing code that uses hdc here...
-        Won::WTexture* Image = Won::WResourceManager::Find<Won::WTexture>(L"Ob");
+        Won::WTexture* Image = Won::WResourceManager::Find<Won::WTexture>(L"Te");
 
-        TransparentBlt(hdc
-            , 0
-            , 0
-            , static_cast<int>(Image->GetWidth())
-            , static_cast<int>(Image->GetHeight())
-            , Image->GetHDC()
-            , 0
-            , 0
-            , Image->GetWidth()
-            , Image->GetHeight()
-            , RGB(255, 0, 255));
+		if (Image->IsAlpha())
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			func.SourceConstantAlpha = 255;
+
+
+			AlphaBlend(hdc
+				, 0
+				, 0
+				, static_cast<int>(Image->GetWidth())
+				, static_cast<int>(Image->GetHeight())
+				, Image->GetHDC()
+				, 0
+				, 0
+				, Image->GetWidth()
+				, Image->GetHeight(), func);
+		}
+		else
+		{
+
+			TransparentBlt(hdc
+				, 0
+				, 0
+				, static_cast<int>(Image->GetWidth())
+				, static_cast<int>(Image->GetHeight())
+				, Image->GetHDC()
+				, 0
+				, 0
+				, Image->GetWidth()
+				, Image->GetHeight()
+				, RGB(255, 0, 255));
+		}
 
 		for (int i = 0; i < 50; ++i)
 		{

@@ -2,8 +2,7 @@
 #include "WUIBase.h"
 
 namespace Won {
-    class WCount :
-        public WUIBase
+    class WCount : public WUIBase
     {
     public:
         WCount();
@@ -17,5 +16,9 @@ namespace Won {
         void OnRender(HDC NewDC) override;
         void Onclear() override;
 
+        void AddCount(UINT NewScore);
+
+    private:
+        UINT mCount;
     };
 }

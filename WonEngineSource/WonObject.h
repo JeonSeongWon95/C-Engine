@@ -21,7 +21,7 @@ namespace Won
 
 	}
 	template <typename T>
-	static T* InstanceSpawn(eLayerType Type, sVector2<float>* Location)
+	static T* InstanceSpawn(eLayerType Type, sVector2<float> Location)
 	{
 		T* NewObject = new T();
 		WTransform* TF = NewObject->GetComponent<WTransform>();

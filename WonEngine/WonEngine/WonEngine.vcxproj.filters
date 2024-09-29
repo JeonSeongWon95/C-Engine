@@ -2,10 +2,10 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClInclude Include="LoadScenes.h" />
-    <ClInclude Include="PlayScene_Level.h">
+    <ClInclude Include="WPlayScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
-    <ClInclude Include="EndScene_Level.h">
+    <ClInclude Include="WEndScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="WTitleScene.h">
@@ -66,6 +66,24 @@
     <ClInclude Include="Flower.h">
       <Filter>ChildObject</Filter>
     </ClInclude>
+    <ClInclude Include="WMushroomScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemBlock.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WBlockScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WSelectScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WItemBlockScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WCoinScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ChildComponent">
@@ -79,10 +97,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PlayScene_Level.cpp">
+    <ClCompile Include="WPlayScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="EndScene_Level.cpp">
+    <ClCompile Include="WEndScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
     <ClCompile Include="WTitleScene.cpp">
@@ -141,6 +159,24 @@
     </ClCompile>
     <ClCompile Include="Flower.cpp">
       <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WMushroomScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemBlock.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WBlockScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WSelectScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WItemBlockScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WCoinScript.cpp">
+      <Filter>ChildComponent</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

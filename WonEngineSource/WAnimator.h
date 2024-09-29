@@ -55,7 +55,7 @@ namespace Won
 
 
     private:
-       std::map<std::wstring, WAnimation*> mAnimations;
+       std::map<std::wstring, class WAnimation*> mAnimations;
        std::map<std::wstring, Events*> mAnimEvents;
        WAnimation* mActiveAnimation;
        bool mLoop;

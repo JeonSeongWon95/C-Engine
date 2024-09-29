@@ -2,7 +2,7 @@
 
 Won::WUIBase::WUIBase()
 	: mPosition(sVector2<float>(0,0))
-	, mSize(sVector2<float>(50.0f, 50.0f))
+	, mSize(sVector2<float>(1.0f, 1.0f))
 	, mIsFullScreen(false)
 	, mEnable(true)
     , mType(eUIType::None)

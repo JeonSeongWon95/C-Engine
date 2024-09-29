@@ -9,7 +9,7 @@
 Won::WBulletScript::WBulletScript()
 	:Target(nullptr)
 	,Pos(0,0)
-	,Dr(WPlayerScript::ePlayerDirection::RIGHT)
+	,Dr(eDirection::None)
 	,mDeathTimer(0.0f)
 {
 }

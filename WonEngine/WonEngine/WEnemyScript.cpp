@@ -8,11 +8,12 @@
 #include "WCollider.h"
 #include "Player.h"
 #include "WPlayerScript.h"
+#include "WHUD.h"
 
 Won::WEnemyScript::WEnemyScript()
 	:mState(eEnemyState::IdleState)
 	, Anim(nullptr)
-	, Direction(eEnemyDirection::RIGHT)
+	, Direction(eDirection::None)
 	, mTimer(0.f)
 	, mDeathTimer(0.f)
 {
@@ -64,11 +65,12 @@ void Won::WEnemyScript::OnColliderEnter(WCollider* Other)
 		WTransform* MyTr = this->GetOwner()->GetComponent<WTransform>();
 		
 		float PlayerFoot = PlayerTr->GetPosition().Y + Other->GetSize().Y;
-		float MyHeight = MyTr->GetPosition().Y;
+		float MyHeight = MyTr->GetPosition().Y + 10;
 
-		if (PlayerFoot < MyHeight)
+		if (PlayerFoot >= MyHeight)
 		{
 			WAnimator* MyAnim = GetOwner()->GetComponent<WAnimator>();
+			WHUD::AddScore(100);
 			MyAnim->PlayAnimation(L"Dead", false);
 		}
 		else
@@ -104,11 +106,11 @@ void Won::WEnemyScript::Idle()
 			break;
 		case 1:
 			mState = eEnemyState::WalkState;
-			Direction = eEnemyDirection::LEFT;
+			Direction = eDirection::LEFT;
 			break;
 		case 2:
 			mState = eEnemyState::WalkState;
-			Direction = eEnemyDirection::RIGHT;
+			Direction = eDirection::RIGHT;
 			break;
 		default:
 			break;
@@ -123,11 +125,11 @@ void Won::WEnemyScript::Walk()
 	sVector2<float> pos = tr->GetPosition();
 	mTimer += WTime::GetDeltaSeconds();
 
-	if (Direction == eEnemyDirection::LEFT)
+	if (Direction == eDirection::LEFT)
 	{
 		pos.X -= 100.f * WTime::GetDeltaSeconds();
 	}
-	else if (Direction == eEnemyDirection::RIGHT)
+	else if (Direction == eDirection::RIGHT)
 	{
 		pos.X += 100.f * WTime::GetDeltaSeconds();
 	}
@@ -148,8 +150,6 @@ void Won::WEnemyScript::Dead()
 	if (mDeathTimer > 1)
 	{
 		mDeathTimer = 0;
-
 		Destroy(GetOwner());
-
 	}
 }

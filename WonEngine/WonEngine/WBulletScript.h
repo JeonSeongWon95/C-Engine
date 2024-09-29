@@ -27,7 +27,7 @@ namespace Won
     private:
         Player* Target;
         sVector2<float> Pos;
-        WPlayerScript::ePlayerDirection Dr;
+        eDirection Dr;
         float mDeathTimer;
     };
 }

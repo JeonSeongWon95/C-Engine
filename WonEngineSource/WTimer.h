@@ -21,6 +21,7 @@ namespace Won
     private:
         float mTime;
         int mRenderTime;
+        float mOffset;
     };
 }
 

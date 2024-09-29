@@ -159,7 +159,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     int a = 0;
     srand((unsigned int)(&a));
 
-    if(Won::WSceneManager::GetActiveScene()->GetName() == L"TileScene")
+    if(Won::WSceneManager::GetActiveScene()->GetName() == L"ToolLevel")
     {
         HWND hWndToo = CreateWindowW(L"TILEMAP", L"TileMap", WS_OVERLAPPEDWINDOW,
             CW_USEDEFAULT, 0, Width, Height, nullptr, nullptr, hInstance, nullptr);

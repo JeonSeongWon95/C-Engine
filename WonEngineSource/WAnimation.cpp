@@ -123,9 +123,6 @@ void Won::WAnimation::Render(HDC NewDC)
 	WTexture::TextureType Type = MainTexture->GetTextureType();
 	WCollider* Col = GO->GetComponent<WCollider>();
 
-	//Col->Setoffset(sVector2<float>(-(CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X)
-	//	, -(CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y)));
-
 	if (MainCamera != nullptr)
 	{
 		Pos = MainCamera->CaluatePostion(Pos);
@@ -133,34 +130,43 @@ void Won::WAnimation::Render(HDC NewDC)
 
 	if (Type == WTexture::TextureType::Bmp)
 	{
+		
+		if(MainTexture->IsAlpha())
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			func.SourceConstantAlpha = 255;
 
-		BLENDFUNCTION func = {};
-		func.BlendOp = AC_SRC_OVER;
-		func.BlendFlags = 0;
-		func.AlphaFormat = AC_SRC_ALPHA;
-		func.SourceConstantAlpha = 255;
 
-		AlphaBlend(NewDC
-			, static_cast<int>(Pos.X)
-			, static_cast<int>(Pos.Y)
-			, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
-			, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
-			, ImageDC
-			, static_cast<int>(CurrentSprite->sStartPostion.X)
-			, static_cast<int>(CurrentSprite->sStartPostion.Y)
-			, static_cast<int>(CurrentSprite->sSize.X)
-			, static_cast<int>(CurrentSprite->sSize.Y), func);
+			AlphaBlend(NewDC
+				, static_cast<int>(Pos.X)
+				, static_cast<int>(Pos.Y)
+				, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
+				, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
+				, ImageDC
+				, static_cast<int>(CurrentSprite->sStartPostion.X)
+				, static_cast<int>(CurrentSprite->sStartPostion.Y)
+				, static_cast<int>(CurrentSprite->sSize.X)
+				, static_cast<int>(CurrentSprite->sSize.Y), func);
+		}
+		else
+		{
 
-		//AlphaBlend(NewDC
-		//	, static_cast<int>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
-		//	, static_cast<int>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
-		//	, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
-		//	, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
-		//	, ImageDC
-		//	, static_cast<int>(CurrentSprite->sStartPostion.X)
-		//	, static_cast<int>(CurrentSprite->sStartPostion.Y)
-		//	, static_cast<int>(CurrentSprite->sSize.X)
-		//	, static_cast<int>(CurrentSprite->sSize.Y), func);
+			TransparentBlt(NewDC
+				, static_cast<int>(Pos.X)
+				, static_cast<int>(Pos.Y)
+				, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
+				, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
+				, ImageDC
+				, static_cast<int>(CurrentSprite->sStartPostion.X)
+				, static_cast<int>(CurrentSprite->sStartPostion.Y)
+				, static_cast<int>(CurrentSprite->sSize.X)
+				, static_cast<int>(CurrentSprite->sSize.Y)
+				, RGB(255, 0, 255));
+		}
+
 	}
 	else if (Type == WTexture::TextureType::png)
 	{

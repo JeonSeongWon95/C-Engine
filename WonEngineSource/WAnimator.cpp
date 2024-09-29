@@ -156,7 +156,6 @@ bool Won::WAnimator::IsCompletedActiveAnimation()
 Won::WAnimator::Event& Won::WAnimator::GetStartEvent(const std::wstring& Name)
 {
 	Events* FindEv = FindEvents(Name);
-
 	return FindEv->mStartEvent;
 }
 

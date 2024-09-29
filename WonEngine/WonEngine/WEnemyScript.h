@@ -12,12 +12,6 @@ namespace Won
             WalkState
         };
 
-        enum eEnemyDirection
-        {
-            LEFT,
-            RIGHT
-        };
-
         WEnemyScript();
         virtual ~WEnemyScript();
 
@@ -36,7 +30,7 @@ namespace Won
 
     private:
         eEnemyState mState;
-        eEnemyDirection Direction;
+        eDirection Direction;
         class WAnimator* Anim;
         float mTimer;
         float mDeathTimer;

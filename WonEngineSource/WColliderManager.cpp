@@ -156,10 +156,11 @@ bool Won::WColliderManager::Intersect(WCollider* Left, WCollider* Right)
 	if (Left->GetColliderType() == WCollider::eColliderType::Box && Right->GetColliderType() == WCollider::eColliderType::Box)
 	{
 
-		//if (LeftPos.X <= RightPos.X + RightSize.X && )
-		//{
-		//	return true;
-		//}
+		if ((LeftSize.X/2 + RightSize.X/2) >= fabs((LeftPos.X + (LeftSize.X/2)) - (RightPos.X + (RightSize.X/2))) 
+			&& (LeftSize.Y / 2 + RightSize.Y / 2) >= fabs((LeftPos.Y + (LeftSize.Y/2)) - (RightPos.Y + (RightSize.Y/2))))
+		{
+			return true;
+		}
 	}
 	else if(Left->GetColliderType() == WCollider::eColliderType::Sphere && Right->GetColliderType() == WCollider::eColliderType::Sphere)
 	{

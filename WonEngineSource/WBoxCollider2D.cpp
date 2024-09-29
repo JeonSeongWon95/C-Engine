@@ -1,6 +1,7 @@
 #include "WBoxCollider2D.h"
 #include "WGameObject.h"
 #include "WTransform.h"
+#include "WRender.h"
 
 Won::WBoxCollider2D::WBoxCollider2D()
 {
@@ -40,6 +41,11 @@ void Won::WBoxCollider2D::Render(HDC NewDC)
 
 	sVector2<float> Offset = GetOffset();
 	sVector2<float> Size = GetSize();
+
+	if(MainCamera != nullptr)
+	{
+		Pos = MainCamera->CaluatePostion(Pos);
+	}
 
 	Rectangle(NewDC
 		, static_cast<int>(Pos.X)

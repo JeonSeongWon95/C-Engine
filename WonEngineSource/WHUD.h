@@ -1,5 +1,6 @@
 #pragma once
 #include "WUIBase.h"
+#include "includeHeader.h"
 
 namespace Won
 {
@@ -25,11 +26,13 @@ namespace Won
 
         static Number* GetNumber(UINT Num) { if (Num > 9) { return nullptr; } return mNumbers[Num]; }
         static class WTexture* GetTexture() { return mNumberTexture; }
+        static void AddScore(UINT NewScore);
+        static void AddCount(UINT NewScore);
 
 
     private:
         static std::vector<Number*> mNumbers;
-        std::vector<WUIBase*> mChildUI;
+        static std::vector<WUIBase*> mChildUI;
         static WTexture* mNumberTexture;
     };
 }

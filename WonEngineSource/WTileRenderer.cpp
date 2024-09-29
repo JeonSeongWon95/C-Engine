@@ -48,8 +48,8 @@ void Won::WTileRenderer::Render(HDC NewDC)
 
 	if (texture->GetTextureType() == WTexture::TextureType::Bmp)
 	{
-		if (!texture->IsAlpha())
-		{
+		//if (!texture->IsAlpha())
+		//{
 			TransparentBlt(NewDC
 				, static_cast<int>(vc.X)
 				, static_cast<int>(vc.Y)
@@ -60,27 +60,27 @@ void Won::WTileRenderer::Render(HDC NewDC)
 				, static_cast<int>(mSheetIndex.Y * mSize.Y)
 				, static_cast<int>(mSize.X)
 				, static_cast<int>(mSize.Y)
-				, RGB(255, 255, 255));
-		}
-		else
-		{
-			BLENDFUNCTION func = {};
-			func.BlendOp = AC_SRC_OVER;
-			func.BlendFlags = 0;
-			func.AlphaFormat = AC_SRC_ALPHA;
-			func.SourceConstantAlpha = 255;
+				, RGB(255, 0, 255));
+		//}
+		//else
+		//{
+		//	BLENDFUNCTION func = {};
+		//	func.BlendOp = AC_SRC_OVER;
+		//	func.BlendFlags = 0;
+		//	func.AlphaFormat = AC_SRC_ALPHA;
+		//	func.SourceConstantAlpha = 255;
 
-			AlphaBlend(NewDC
-				, static_cast<int>(vc.X)
-				, static_cast<int>(vc.Y)
-				, static_cast<int>(mSize.X * Sc.X)
-				, static_cast<int>(mSize.Y * Sc.Y)
-				, texture->GetHDC()
-				, static_cast<int>(mSheetIndex.X * mSize.X)
-				, static_cast<int>(mSheetIndex.Y * mSize.Y)
-				, static_cast<int>(mSize.X)
-				, static_cast<int>(mSize.Y)
-				, func);
-		}
+		//	AlphaBlend(NewDC
+		//		, static_cast<int>(vc.X)
+		//		, static_cast<int>(vc.Y)
+		//		, static_cast<int>(mSize.X * Sc.X)
+		//		, static_cast<int>(mSize.Y * Sc.Y)
+		//		, texture->GetHDC()
+		//		, static_cast<int>(mSheetIndex.X * mSize.X)
+		//		, static_cast<int>(mSheetIndex.Y * mSize.Y + 11)
+		//		, static_cast<int>(mSize.X)
+		//		, static_cast<int>(mSize.Y)
+		//		, func);
+		//}
 	}
 }

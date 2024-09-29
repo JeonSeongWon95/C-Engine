@@ -16,6 +16,7 @@ namespace Won
         void Update() override;
         void LateUpdate() override;
         void Render(HDC NewDC) override;
+        void SetTarget(WGameObject* Target) { mTarget = Target; }
 
 
     private:

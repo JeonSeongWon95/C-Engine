@@ -129,16 +129,16 @@ void Won::WInput::SetMousePosition()
 	GetCursorPos(&mousePos);
 	ScreenToClient(Engine.GetEngineWND(), &mousePos);
 
-	UINT width = Engine.GetWidth();
-	UINT height = Engine.GetHeight();
+	LONG width = Engine.GetWidth();
+	LONG height = Engine.GetHeight();
 
 	mMousePosition.X = -1.0f;
 	mMousePosition.Y = -1.0f;
 
 	if (mousePos.x > 0 && mousePos.x < width)
-		mMousePosition.X = mousePos.x;
+		mMousePosition.X = static_cast<float>(mousePos.x);
 
 	if (mousePos.y > 0 && mousePos.y < height)
-		mMousePosition.Y = mousePos.y;
+		mMousePosition.Y = static_cast<float>(mousePos.y);
 
 }

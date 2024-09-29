@@ -3,8 +3,7 @@
 
 namespace Won
 {
-    class WScore :
-        public WUIBase
+    class WScore : public WUIBase
     {
     public:
         WScore();
@@ -17,6 +16,11 @@ namespace Won
         void OnLateUpdate() override;
         void OnRender(HDC NewDC) override;
         void Onclear() override;
+
+        void AddScore(UINT NewScore) { mScore += NewScore; }
+
+    private:
+        UINT mScore;
 
     };
 }
