@@ -118,6 +118,7 @@ void Won::WUIManager::Release()
 {
 	for(auto& iter : AllUIs)
 	{
+		iter.second->Onclear();
 		delete iter.second;
 		iter.second = nullptr;
 	}

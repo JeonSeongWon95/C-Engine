@@ -18,6 +18,9 @@ namespace Won
         void OnRender(HDC NewDC) override;
         void Onclear() override;
 
+    private:
+        UINT mRound;
+
     };
 }
 

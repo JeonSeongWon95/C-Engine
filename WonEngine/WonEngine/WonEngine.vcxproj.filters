@@ -84,6 +84,28 @@
     <ClInclude Include="WCoinScript.h">
       <Filter>ChildComponent</Filter>
     </ClInclude>
+    <ClInclude Include="WWall.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WWallScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WFlag.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WFlagScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="WFlagBlockScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="WFlagBlock.h">
+      <Filter>ChildObject</Filter>
+    </ClInclude>
+    <ClInclude Include="WEndScript.h">
+      <Filter>ChildComponent</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ChildComponent">
@@ -178,5 +200,29 @@
     <ClCompile Include="WCoinScript.cpp">
       <Filter>ChildComponent</Filter>
     </ClCompile>
+    <ClCompile Include="WWall.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WWallScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WFlag.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WFlagScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WFlagBlockScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="WFlagBlock.cpp">
+      <Filter>ChildObject</Filter>
+    </ClCompile>
+    <ClCompile Include="WEndScript.cpp">
+      <Filter>ChildComponent</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WonEngine.rc" />
   </ItemGroup>
 </Project>

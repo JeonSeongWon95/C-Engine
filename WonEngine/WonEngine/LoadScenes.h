@@ -15,7 +15,7 @@ namespace Won
 		WSceneManager::CreateScene<WTitleScene>(L"TitleLevel");
 		//WSceneManager::CreateScene<ToolScene>(L"ToolLevel");
 
-		WSceneManager::LoadScene(L"PlayLevel");
+		WSceneManager::LoadScene(L"TitleLevel");
 
 	}
 }

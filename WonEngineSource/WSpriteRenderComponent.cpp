@@ -59,17 +59,41 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 
 	if (texture->GetTextureType() == WTexture::TextureType::Bmp)
 	{
-		TransparentBlt(NewDC
-			, static_cast<int>(vc.X)
-			, static_cast<int>(vc.Y)
-			, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
-			, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
-			, texture->GetHDC()
-			, static_cast<int>(CharacterRectangle.left)
-			, static_cast<int>(CharacterRectangle.top)
-			, static_cast<int>(CharacterRectangle.right)
-			, static_cast<int>(CharacterRectangle.bottom)
-			, RGB(RemoveRGB.X,RemoveRGB.Y,RemoveRGB.Z));
+		if (texture->IsAlpha())
+		{
+			BLENDFUNCTION func = {};
+			func.BlendOp = AC_SRC_OVER;
+			func.BlendFlags = 0;
+			func.AlphaFormat = AC_SRC_ALPHA;
+			func.SourceConstantAlpha = 255;
+
+
+			AlphaBlend(NewDC
+				, static_cast<int>(vc.X)
+				, static_cast<int>(vc.Y)
+				, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
+				, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
+				, texture->GetHDC()
+				, static_cast<int>(CharacterRectangle.left)
+				, static_cast<int>(CharacterRectangle.top)
+				, static_cast<int>(CharacterRectangle.right)
+				, static_cast<int>(CharacterRectangle.bottom)
+				, func);
+		}
+		else
+		{
+			TransparentBlt(NewDC
+				, static_cast<int>(vc.X)
+				, static_cast<int>(vc.Y)
+				, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
+				, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
+				, texture->GetHDC()
+				, static_cast<int>(CharacterRectangle.left)
+				, static_cast<int>(CharacterRectangle.top)
+				, static_cast<int>(CharacterRectangle.right)
+				, static_cast<int>(CharacterRectangle.bottom)
+				, RGB(RemoveRGB.X, RemoveRGB.Y, RemoveRGB.Z));
+		}
 	}
 	else if (texture->GetTextureType() == WTexture::TextureType::png)
 	{

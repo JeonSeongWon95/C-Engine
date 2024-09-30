@@ -11,7 +11,6 @@ namespace Won
 		Item,
 		Character,
 		Player,
-		Floor,
 		Effect,
 		Max = 16
 

@@ -85,7 +85,7 @@ namespace Won
 
 	void WonApplication::ClearBuffer()
 	{
-		HBRUSH GrayBrush = CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH GrayBrush = CreateSolidBrush(RGB(124, 134, 255));
 		HBRUSH OldBrush = (HBRUSH)SelectObject(shdc, GrayBrush);
 
 		Rectangle(shdc, -1, -1, Width + 1, Height + 1);

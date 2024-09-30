@@ -43,7 +43,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     
     //메모리 숫자를 넣으면 해당 순번에 생성된 메모리가 어디서 생성되었는지 알려줌.
-    //_CrtSetBreakAlloc(902);
+    //_CrtSetBreakAlloc(22886);
 
     // TODO: Place code here.
 

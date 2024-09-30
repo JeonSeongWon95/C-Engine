@@ -39,6 +39,8 @@ void Won::WCamera::LateUpdate()
 	if (mTarget)
 	{
 		WTransform* tr = mTarget->GetComponent<WTransform>();
+		if (tr == nullptr)
+			return;
 		mLookPosition = tr->GetPosition();
 	}
 	else

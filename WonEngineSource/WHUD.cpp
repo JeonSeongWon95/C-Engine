@@ -14,6 +14,7 @@ std::vector<Won::WHUD::WUIBase*> Won::WHUD::mChildUI = {};
 
 Won::WHUD::WHUD()
 {
+	SetUIType(eUIType::HUD);
 }
 
 Won::WHUD::~WHUD()
@@ -68,6 +69,8 @@ void Won::WHUD::OnInit()
 	mChildUI.push_back(Count);
 
 	WRound* Round = new WRound();
+	Round->SetSize(sVector2<float>(20, 20));
+	Round->SetPosition(sVector2<float>(460, 50));
 	mChildUI.push_back(Round);
 
 }
@@ -92,7 +95,10 @@ void Won::WHUD::OnRender(HDC NewDC)
 {
 	sVector2<float> Pos = { 0,0 };
 
-	MainCamera->CaluateTilePosition(Pos);
+	if (MainCamera != nullptr)
+	{
+		MainCamera->CaluateTilePosition(Pos);
+	}
 
 	TransparentBlt(NewDC
 		, Pos.X
@@ -121,12 +127,17 @@ void Won::WHUD::Onclear()
 		delete Num;
 	}
 
-	for (auto UI : mChildUI)
+	if (mChildUI.size() > 0)
 	{
-		UI->Onclear();
-		delete UI;
+		for (auto UI : mChildUI)
+		{
+
+			UI->Onclear();
+			delete UI;
+		}
 	}
 
+	mChildUI.clear();
 	mNumbers.clear();
 }
 

@@ -22,13 +22,14 @@ void Won::WEndScene::Initialize()
 {
 	WScene::Initialize();
 
-	Player* BackGround = InstanceSpawn<Player>(eLayerType::BackGround);
-	WSpriteRenderComponent* RenderComponent = BackGround->AddComponent<WSpriteRenderComponent>();
-	RECT rect = { 259,236, 517,472 };
-	RenderComponent->SetTexture(WResourceManager::Find<WTexture>(L"Ti"));
-	RenderComponent->SetRect(rect);
-	RenderComponent->SetStartPosition(sVector2<float>(0, 0));
-	RenderComponent->SetSize(sVector2<float>(3.f, 2.f));
+	Player* BG = InstanceSpawn<Player>(eLayerType::BackGround);
+	WSpriteRenderComponent* SRC = BG->AddComponent<WSpriteRenderComponent>();
+	SRC->SetTexture(WResourceManager::Find<WTexture>(L"Ti"));
+	RECT rect = { 260, 250, 260, 200 };
+	SRC->SetRect(rect);
+	SRC->SetStartPosition(sVector2<float>(0, 0));
+	SRC->SetName(L"SRC");
+	SRC->SetSize(sVector2<float>(1.0, 1.5));
 }
 
 void Won::WEndScene::Update()
@@ -37,10 +38,10 @@ void Won::WEndScene::Update()
 
 	mReStartTimer += WTime::GetDeltaSeconds();
 
-	if (mReStartTimer > 8)
+	if (mReStartTimer > 10)
 	{
 		mReStartTimer = 0;
-		WSceneManager::LoadScene(L"PlayLevel");
+		WSceneManager::LoadScene(L"TitleLevel");
 	}
 }
 

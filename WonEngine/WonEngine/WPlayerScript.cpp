@@ -302,15 +302,15 @@ void Won::WPlayerScript::Fire()
 
 void Won::WPlayerScript::AddDamage()
 {
+	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
+	sVector2<float> Pos = Tr->GetPosition();
+
 	if (mPlayerIsHit == false)
 	{
 		if (mPlayerHealth > 0)
 		{
 			mPlayerHealth -= 1;
 			mPlayerIsHit = true;
-
-			WTransform* Tr = GetOwner()->GetComponent<WTransform>();
-			sVector2<float> Pos = Tr->GetPosition();
 
 			if (Direction == eDirection::LEFT)
 			{
@@ -338,6 +338,10 @@ void Won::WPlayerScript::AddDamage()
 
 	if (mPlayerHealth <= 0)
 	{
+		WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
+		Tr->SetPos(sVector2<float>(Pos.X, Pos.Y - 50));
+		PlayerRB->SetVelocity(sVector2<float>(0, 0));
+		PlayerRB->SetIsGround(true);
 		Anim->PlayAnimation(L"Dead", false);
 	}
 }
@@ -352,6 +356,40 @@ void Won::WPlayerScript::Dead()
 {
 	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
 	PlayerRB->SetVelocity(sVector2<float>(0,0));
+}
+
+void Won::WPlayerScript::PickUpflag()
+{
+	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
+	PlayerRB->SetVelocity(sVector2<float>(0, 0));
+
+	if (Size == ePlayerSize::Bigger)
+	{
+		Anim->PlayAnimation(L"PickupflagBigger", false);
+		PlayerRB->SetVelocity(sVector2<float>(0, 500));
+	}
+	else
+	{
+		Anim->PlayAnimation(L"PickupflagSmall", false);
+		PlayerRB->SetVelocity(sVector2<float>(0, 500));
+	}
+}
+
+void Won::WPlayerScript::WalkRight()
+{
+	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
+	PlayerRB->SetVelocity(sVector2<float>(0, 0));
+
+	if (Size == ePlayerSize::Bigger)
+	{
+		Anim->PlayAnimation(L"BiggerRightWalk", true);
+		PlayerRB->SetVelocity(sVector2<float>(500, 0));
+	}
+	else
+	{
+		Anim->PlayAnimation(L"RightWalk", true);
+		PlayerRB->SetVelocity(sVector2<float>(500, 0));
+	}
 }
 
 

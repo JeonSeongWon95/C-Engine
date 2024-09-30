@@ -67,7 +67,7 @@ void Won::WEnemyScript::OnColliderEnter(WCollider* Other)
 		float PlayerFoot = PlayerTr->GetPosition().Y + Other->GetSize().Y;
 		float MyHeight = MyTr->GetPosition().Y + 10;
 
-		if (PlayerFoot >= MyHeight)
+		if (PlayerFoot <= MyHeight)
 		{
 			WAnimator* MyAnim = GetOwner()->GetComponent<WAnimator>();
 			WHUD::AddScore(100);

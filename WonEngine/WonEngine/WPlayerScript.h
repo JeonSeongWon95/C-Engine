@@ -40,6 +40,8 @@ namespace Won
         void AddDamage();
         void AddDamageEnd();
         void Dead();
+        void PickUpflag();
+        void WalkRight();
 
         eDirection GetPlayerDirection() { return Direction ;}
         ePlayerSize GetPlayerSize() { return Size; }

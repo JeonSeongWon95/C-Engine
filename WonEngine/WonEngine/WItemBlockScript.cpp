@@ -50,40 +50,6 @@ void Won::WItemBlockScript::Initialize()
 
 void Won::WItemBlockScript::Update()
 {
-	if (mIsHit)
-	{
-		WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> Pos = Transform->GetPosition();
-
-		if (Pos.Y >= mStartposition - 30.0f)
-		{
-			Pos.Y -= (100.0f * WTime::GetDeltaSeconds());
-			Transform->SetPos(Pos);
-		}
-		else
-		{
-			mIsHit = false;
-		}
-	}
-	else
-	{
-		WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> Pos = Transform->GetPosition();
-
-		if (Pos.Y <= mStartposition)
-		{
-			Pos.Y += (100.0f * WTime::GetDeltaSeconds());
-			Transform->SetPos(Pos);
-		}
-	}
-
-	mResetHit += WTime::GetDeltaSeconds();
-
-	if (mResetHit > 1)
-	{
-		mResetHit = 0;
-		mIsReset = false;
-	}
 }
 
 void Won::WItemBlockScript::LateUpdate()
@@ -161,22 +127,16 @@ void Won::WItemBlockScript::OnColliderEnter(WCollider* Other)
 		{
 			PlayerPos.Y = BlockPosMaxY;
 
-			if (PlayerScript->GetPlayerSize() == WPlayerScript::ePlayerSize::Small)
+			if (!mNoItem)
 			{
-				mIsHit = true;
-			}
-			else
-			{
-				if (!mNoItem)
-				{
-					WHUD::AddScore(100);
-					Mushroom* Mush = InstanceSpawn<Mushroom>(eLayerType::Character
-						, sVector2<float>(BlockPos.X, BlockPos.Y - 50.0f));
-				}
-
+				WHUD::AddScore(100);
+				Mushroom* Mush = InstanceSpawn<Mushroom>(eLayerType::Character
+					, sVector2<float>(BlockPos.X, BlockPos.Y - 50.0f));
 				mNoItem = true;
 			}
+			
 		}
+
 		PlayerVelocityY = 0;
 	}
 
