@@ -34,16 +34,16 @@ void Won::WMushroomScript::Initialize()
 void Won::WMushroomScript::Update()
 {
 	WTransform* tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> pos = tr->GetPosition();
+	Vector2 pos = tr->GetPosition();
 	
 
 	if (mDirection == eDirection::LEFT)
 	{
-		pos.X -= 50.f * WTime::GetDeltaSeconds();
+		pos.x -= 50.f * WTime::GetDeltaSeconds();
 	}
 	else if (mDirection == eDirection::RIGHT)
 	{
-		pos.X += 50.f * WTime::GetDeltaSeconds();
+		pos.x += 50.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);

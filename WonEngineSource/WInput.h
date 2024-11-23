@@ -35,7 +35,7 @@ namespace Won
 		__forceinline static bool GetKeyDown(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Down; }
 		__forceinline static bool GetKeyUp(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Up; }
 		__forceinline static bool GetKey(KeyType Key) { return Keys[(unsigned int)Key].State == KeyState::Pressed; }
-		static sVector2<float> GetMousePosition() { return mMousePosition; }
+		static Vector2 GetMousePosition() { return mMousePosition; }
 
 
 	private:
@@ -50,6 +50,6 @@ namespace Won
 
 
 		static std::vector<aKey> Keys;
-		static sVector2<float> mMousePosition;
+		static Vector2 mMousePosition;
 	};
 }

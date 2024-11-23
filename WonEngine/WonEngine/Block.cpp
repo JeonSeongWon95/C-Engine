@@ -16,13 +16,13 @@ Won::Block::~Block()
 void Won::Block::Initialize()
 {
 	WBoxCollider2D* blockCollider = AddComponent<WBoxCollider2D>();
-	blockCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	blockCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WBlockScript* blockScript = AddComponent<WBlockScript>();
 
 	WTexture* blockTexture = WResourceManager::Find<WTexture>(L"Bl");
 	WAnimator* blockAnimator = AddComponent<WAnimator>();
-	blockAnimator->CreateAnimation(L"Idle", blockTexture, sVector2<float>(272, 112), sVector2<float>(16, 16), sVector2<float>(0, 0), 1, 0.1f);
+	blockAnimator->CreateAnimation(L"Idle", blockTexture, Vector2(272, 112), Vector2(16, 16), Vector2(0, 0), 1, 0.1f);
 	blockAnimator->PlayAnimation(L"Idle", false);
 
 	WGameObject::Initialize();

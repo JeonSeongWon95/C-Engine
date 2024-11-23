@@ -104,6 +104,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)WRound.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)WGraphicDevice_DX11.cpp">
+      <Filter>GraphicDevice</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)WScene.h" />
@@ -215,6 +218,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)WRound.h">
       <Filter>UI</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)WGraphicDevice_DX11.h">
+      <Filter>GraphicDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Components">
@@ -231,6 +237,9 @@
     </Filter>
     <Filter Include="UI">
       <UniqueIdentifier>{9ada0bee-4f8c-47ed-bfa5-036e19ad0adb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GraphicDevice">
+      <UniqueIdentifier>{ee831b33-c989-4ad3-a939-145412378027}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

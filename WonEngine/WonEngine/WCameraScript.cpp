@@ -20,23 +20,23 @@ void Won::WCameraScript::Initialize()
 void Won::WCameraScript::Update()
 {
 	WTransform* tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> pos = tr->GetPosition();
+	Vector2 pos = tr->GetPosition();
 
 	if (WInput::GetKey(KeyType::LEFT))
 	{
-		pos.X -= 100.f * WTime::GetDeltaSeconds();
+		pos.x -= 100.f * WTime::GetDeltaSeconds();
 	}
 	if (WInput::GetKey(KeyType::RIGHT))
 	{
-		pos.X += 100.f * WTime::GetDeltaSeconds();
+		pos.x += 100.f * WTime::GetDeltaSeconds();
 	}
 	if (WInput::GetKey(KeyType::UP))
 	{
-		pos.Y -= 100.f * WTime::GetDeltaSeconds();
+		pos.y -= 100.f * WTime::GetDeltaSeconds();
 	}
 	if (WInput::GetKey(KeyType::DOWN))
 	{
-		pos.Y += 100.f * WTime::GetDeltaSeconds();
+		pos.y += 100.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);

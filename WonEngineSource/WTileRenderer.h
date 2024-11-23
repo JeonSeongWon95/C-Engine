@@ -15,16 +15,16 @@ namespace Won
 		void LateUpdate() override;
 		void Render(HDC NewDC) override;
 
-		void SetTileSize(sVector2<float> NewVector) { mSize = NewVector; }
+		void SetTileSize(Vector2 NewVector) { mSize = NewVector; }
 		void SetTexture(class WTexture* NewTexture) { texture = NewTexture; }
-		void SetSheetIndex(sVector2<int> NewVector) { mSheetIndex = NewVector; }
-		sVector2<float> GetSize() { return mSize; }
-		sVector2<int> GetSheetIndex() { return mSheetIndex; }
+		void SetSheetIndex(Vector2 NewVector) { mSheetIndex = NewVector; }
+		Vector2 GetSize() { return mSize; }
+		Vector2 GetSheetIndex() { return mSheetIndex; }
 
 	private:
 		class WTexture* texture;
-		sVector2<int> mSheetIndex;
-		sVector2<float> mSize;
+		Vector2 mSheetIndex;
+		Vector2 mSize;
     };
 }
 

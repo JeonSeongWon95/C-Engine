@@ -37,8 +37,8 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 		assert(false);
 
 	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> vc = Tr->GetPosition();
-	sVector2<float> Sc = Tr->GetScale();
+	Vector2 vc = Tr->GetPosition();
+	Vector2 Sc = Tr->GetScale();
 	float Ro = Tr->GetRotation();
 
 
@@ -69,10 +69,10 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 
 
 			AlphaBlend(NewDC
-				, static_cast<int>(vc.X)
-				, static_cast<int>(vc.Y)
-				, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
-				, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
+				, static_cast<int>(vc.x)
+				, static_cast<int>(vc.y)
+				, static_cast<int>(texture->GetWidth() * mSize.x * Sc.x)
+				, static_cast<int>(texture->GetHeight() * mSize.y * Sc.y)
 				, texture->GetHDC()
 				, static_cast<int>(CharacterRectangle.left)
 				, static_cast<int>(CharacterRectangle.top)
@@ -82,17 +82,17 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 		}
 		else
 		{
-			TransparentBlt(NewDC
-				, static_cast<int>(vc.X)
-				, static_cast<int>(vc.Y)
-				, static_cast<int>(texture->GetWidth() * mSize.X * Sc.X)
-				, static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y)
+			::TransparentBlt(NewDC
+				, static_cast<int>(vc.x)
+				, static_cast<int>(vc.y)
+				, static_cast<int>(texture->GetWidth() * mSize.x * Sc.x)
+				, static_cast<int>(texture->GetHeight() * mSize.y * Sc.y)
 				, texture->GetHDC()
 				, static_cast<int>(CharacterRectangle.left)
 				, static_cast<int>(CharacterRectangle.top)
 				, static_cast<int>(CharacterRectangle.right)
 				, static_cast<int>(CharacterRectangle.bottom)
-				, RGB(RemoveRGB.X, RemoveRGB.Y, RemoveRGB.Z));
+				, RGB(RemoveRGB.x, RemoveRGB.y, RemoveRGB.z));
 		}
 	}
 	else if (texture->GetTextureType() == WTexture::TextureType::png)
@@ -100,9 +100,9 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 
 		Gdiplus::Graphics graphics(NewDC);
 
-		graphics.TranslateTransform(vc.X, vc.Y);
+		graphics.TranslateTransform(vc.x, vc.y);
 		graphics.RotateTransform(Ro);
-		graphics.TranslateTransform(-vc.X, -vc.Y);
+		graphics.TranslateTransform(-vc.x, -vc.y);
 
 		Gdiplus::Rect srcRect
 		(
@@ -113,29 +113,29 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 		);
 
 		Gdiplus::Rect desRect = { };
-		desRect.X = static_cast<int>(vc.X + StartPosition.X);
-		desRect.Y = static_cast<int>(vc.Y + StartPosition.Y);
+		desRect.X = static_cast<int>(vc.x + StartPosition.x);
+		desRect.Y = static_cast<int>(vc.y + StartPosition.y);
 
-		if (TextureCuttingSize.X == 0 || TextureCuttingSize.Y == 0)
+		if (TextureCuttingSize.x == 0 || TextureCuttingSize.x == 0)
 		{
-			desRect.Width = static_cast<int>(texture->GetWidth() * mSize.X * Sc.X);
-			desRect.Height = static_cast<int>(texture->GetHeight() * mSize.Y * Sc.Y);
+			desRect.Width = static_cast<int>(texture->GetWidth() * mSize.x * Sc.x);
+			desRect.Height = static_cast<int>(texture->GetHeight() * mSize.y * Sc.y);
 		}
 		else
 		{
-			desRect.Width = static_cast<int>(TextureCuttingSize.X * mSize.X * Sc.X);
-			desRect.Height = static_cast<int>(TextureCuttingSize.Y * mSize.Y * Sc.Y);
+			desRect.Width = static_cast<int>(TextureCuttingSize.x * mSize.x * Sc.x);
+			desRect.Height = static_cast<int>(TextureCuttingSize.y * mSize.y * Sc.y);
 
 		}
 
 
-		if (!(RemoveRGB.X == 0 && RemoveRGB.Y == 0 && RemoveRGB.Z == 0))
+		if (!(RemoveRGB.x == 0 && RemoveRGB.y == 0 && RemoveRGB.z == 0))
 		{
 			Gdiplus::ImageAttributes imgAttr;
 
 			imgAttr.SetColorKey(
-				Gdiplus::Color(static_cast<BYTE>(RemoveRGB.X), static_cast<BYTE>(RemoveRGB.Y), static_cast<BYTE>(RemoveRGB.Z)),
-				Gdiplus::Color(static_cast<BYTE>(RemoveRGB.X), static_cast<BYTE>(RemoveRGB.Y), static_cast<BYTE>(RemoveRGB.Z)));
+				Gdiplus::Color(static_cast<BYTE>(RemoveRGB.x), static_cast<BYTE>(RemoveRGB.y), static_cast<BYTE>(RemoveRGB.z)),
+				Gdiplus::Color(static_cast<BYTE>(RemoveRGB.x), static_cast<BYTE>(RemoveRGB.y), static_cast<BYTE>(RemoveRGB.z)));
 
 			graphics.DrawImage(
 				texture->GetImage()
@@ -160,11 +160,11 @@ void Won::WSpriteRenderComponent::Render(HDC NewDC)
 	}
 }
 
-void Won::WSpriteRenderComponent::SetTextureSize(UINT NewWidth, UINT NewHeight)
+void Won::WSpriteRenderComponent::SetTextureSize(int NewWidth, int NewHeight)
 {
 	if(texture != nullptr)
 	{
-		TextureCuttingSize.X = NewWidth;
-		TextureCuttingSize.Y = NewHeight;
+		TextureCuttingSize.x = NewWidth;
+		TextureCuttingSize.y = NewHeight;
  	}
 }

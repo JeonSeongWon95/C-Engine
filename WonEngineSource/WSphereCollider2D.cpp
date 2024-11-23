@@ -26,7 +26,7 @@ void Won::WSphereCollider2D::LateUpdate()
 void Won::WSphereCollider2D::Render(HDC NewDC)
 {
 	WTransform* TR = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> Pos = TR->GetPosition();
+	Vector2 Pos = TR->GetPosition();
 
 	HBRUSH hbr = (HBRUSH)GetStockObject(NULL_BRUSH);
 	HPEN BluePen = CreatePen(PS_SOLID, 2, RGB(0, 0, 255));
@@ -34,14 +34,14 @@ void Won::WSphereCollider2D::Render(HDC NewDC)
 	HBRUSH OldBrush = (HBRUSH)SelectObject(NewDC, hbr);
 	HPEN OldPen = (HPEN)SelectObject(NewDC, BluePen);
 
-	sVector2<float> Offset = GetOffset();
-	sVector2<float> Size = GetSize();
+	Vector2 Offset = GetOffset();
+	Vector2 Size = GetSize();
 
 	Ellipse(NewDC
-		, static_cast<int>(Pos.X + Offset.X)
-		, static_cast<int>(Pos.Y + Offset.Y)
-		, static_cast<int>(Pos.X + Offset.X + Size.X)
-		, static_cast<int>(Pos.Y + Offset.Y + Size.Y));
+		, static_cast<int>(Pos.x + Offset.x)
+		, static_cast<int>(Pos.y + Offset.y)
+		, static_cast<int>(Pos.x + Offset.x + Size.x)
+		, static_cast<int>(Pos.y + Offset.y + Size.y));
 
 	SelectObject(NewDC, OldBrush);
 	SelectObject(NewDC, OldPen);

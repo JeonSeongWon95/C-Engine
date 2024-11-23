@@ -40,14 +40,14 @@ namespace Won
         void LateUpdate() override;
         void Render(HDC NewDC) override;
 
-        void CreateAnimation(const std::wstring& Name, class WTexture* NewTexture, sVector2<float> StartPosition,
-            sVector2<float> SpriteSize, sVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
+        void CreateAnimation(const std::wstring& Name, class WTexture* NewTexture, Vector2 StartPosition,
+            Vector2 SpriteSize, Vector2 offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
 
         class WAnimation* FindAnimation(const std::wstring& Name);
         Events* FindEvents(const std::wstring& Name);
 
         void PlayAnimation(const std::wstring& Name, bool bLoop);
-        void SetRemoveColor(sVector3<int> Newcolor);
+        void SetRemoveColor(Vector3 Newcolor);
         bool IsCompletedActiveAnimation();
         Event& GetStartEvent(const std::wstring& Name);
         Event& GetCompleteEvent(const std::wstring& Name);

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "IncludeHeader.h"
+#include "WGraphicDevice_DX11.h"
 
 namespace Won
 {
@@ -34,6 +35,7 @@ namespace Won
 		HDC ahdc;
 		HDC shdc;
 		HBITMAP BackBuffer;
+		std::unique_ptr<WGraphicDevice_DX11> mGraphicDevice;
 
 		float Speed;
 		int Width;

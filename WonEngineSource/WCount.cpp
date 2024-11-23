@@ -44,25 +44,25 @@ void Won::WCount::OnRender(HDC NewDC)
 		HUDNumber.push_back(WHUD::GetNumber(Number));
 	}
 
-	sVector2<float> StartPosition = mPosition;
+	Vector2 StartPosition = mPosition;
 	int mOffset = 0;
 
 	for (int i = 0; i < HUDNumber.size(); ++i)
 	{
 
 		TransparentBlt(NewDC
-			, static_cast<int>(StartPosition.X + mOffset)
-			, static_cast<int>(StartPosition.Y)
-			, static_cast<int>(mSize.X)
-			, static_cast<int>(mSize.Y)
+			, static_cast<int>(StartPosition.x + mOffset)
+			, static_cast<int>(StartPosition.y)
+			, static_cast<int>(mSize.x)
+			, static_cast<int>(mSize.y)
 			, WHUD::GetTexture()->GetHDC()
-			, static_cast<int>(HUDNumber[i]->mSheetStartPosition.X)
-			, static_cast<int>(HUDNumber[i]->mSheetStartPosition.Y)
-			, static_cast<int>(HUDNumber[i]->mSize.X)
-			, static_cast<int>(HUDNumber[i]->mSize.Y)
+			, static_cast<int>(HUDNumber[i]->mSheetStartPosition.x)
+			, static_cast<int>(HUDNumber[i]->mSheetStartPosition.y)
+			, static_cast<int>(HUDNumber[i]->mSize.x)
+			, static_cast<int>(HUDNumber[i]->mSize.y)
 			, RGB(255, 0, 255));
 
-		StartPosition.X += mSize.X;
+		StartPosition.x += mSize.x;
 		mOffset += 5;
 	}
 

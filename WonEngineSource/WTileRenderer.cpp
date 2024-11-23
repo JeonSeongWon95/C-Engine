@@ -33,12 +33,12 @@ void Won::WTileRenderer::Render(HDC NewDC)
 	if (texture == nullptr)
 		assert(false);
 
-	if (mSheetIndex.X == -1 && mSheetIndex.Y == -1)
+	if (mSheetIndex.x == -1 && mSheetIndex.y == -1)
 		return;
 
 	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> vc = Tr->GetPosition();
-	sVector2<float> Sc = Tr->GetScale();
+	Vector2 vc = Tr->GetPosition();
+	Vector2 Sc = Tr->GetScale();
 
 	if (MainCamera != nullptr)
 	{
@@ -48,39 +48,19 @@ void Won::WTileRenderer::Render(HDC NewDC)
 
 	if (texture->GetTextureType() == WTexture::TextureType::Bmp)
 	{
-		//if (!texture->IsAlpha())
-		//{
-			TransparentBlt(NewDC
-				, static_cast<int>(vc.X)
-				, static_cast<int>(vc.Y)
-				, static_cast<int>(mSize.X * Sc.X)
-				, static_cast<int>(mSize.Y * Sc.Y)
-				, texture->GetHDC()
-				, static_cast<int>(mSheetIndex.X * mSize.X)
-				, static_cast<int>(mSheetIndex.Y * mSize.Y)
-				, static_cast<int>(mSize.X)
-				, static_cast<int>(mSize.Y)
-				, RGB(255, 0, 255));
-		//}
-		//else
-		//{
-		//	BLENDFUNCTION func = {};
-		//	func.BlendOp = AC_SRC_OVER;
-		//	func.BlendFlags = 0;
-		//	func.AlphaFormat = AC_SRC_ALPHA;
-		//	func.SourceConstantAlpha = 255;
 
-		//	AlphaBlend(NewDC
-		//		, static_cast<int>(vc.X)
-		//		, static_cast<int>(vc.Y)
-		//		, static_cast<int>(mSize.X * Sc.X)
-		//		, static_cast<int>(mSize.Y * Sc.Y)
-		//		, texture->GetHDC()
-		//		, static_cast<int>(mSheetIndex.X * mSize.X)
-		//		, static_cast<int>(mSheetIndex.Y * mSize.Y + 11)
-		//		, static_cast<int>(mSize.X)
-		//		, static_cast<int>(mSize.Y)
-		//		, func);
-		//}
+		TransparentBlt(NewDC
+			, static_cast<int>(vc.x)
+			, static_cast<int>(vc.y)
+			, static_cast<int>(mSize.x * Sc.x)
+			, static_cast<int>(mSize.y * Sc.y)
+			, texture->GetHDC()
+			, static_cast<int>(mSheetIndex.x * mSize.x)
+			, static_cast<int>(mSheetIndex.y * mSize.y)
+			, static_cast<int>(mSize.x)
+			, static_cast<int>(mSize.y)
+			, RGB(255, 0, 255));
+
 	}
+
 }

@@ -40,8 +40,8 @@ void Won::WBulletScript::Update()
 
 	float radian = cosf( 5 * mDeathTimer);
 	WTransform* TR = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> GPOS = TR->GetPosition();
-	GPOS += sVector2<float>(1.0f,radian) * 100.0f * WTime::GetDeltaSeconds();
+	Vector2 GPOS = TR->GetPosition();
+	GPOS += Vector2(1.0f,radian) * 100.0f * WTime::GetDeltaSeconds();
 	TR->SetPos(GPOS);
 
 	if(mDeathTimer > 5.0f)

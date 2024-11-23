@@ -9,9 +9,9 @@ namespace Won
     public:
         struct Sprite
         {
-            sVector2<float> sStartPostion;
-            sVector2<float> sSize;
-            sVector2<float> Offset;
+            Vector2 sStartPostion;
+            Vector2 sSize;
+            Vector2 Offset;
             float Duration;
 
             Sprite()
@@ -28,14 +28,14 @@ namespace Won
 
         virtual HRESULT Load(const std::wstring& NewPath) override;
         bool IsCompleted() { return bIsCompleted; }
-        void CreateAnimation(const std::wstring& Name, class WTexture* NewText, sVector2<float> StartPosition,
-            sVector2<float> SpriteSize, sVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
+        void CreateAnimation(const std::wstring& Name, class WTexture* NewText, Vector2 StartPosition,
+           Vector2 SpriteSize, Vector2 offset, UINT AnimationSize, float Duration, bool bIsReversal = false);
 
         void SetAnimator(class WAnimator* NewAnimator) { Animator = NewAnimator; }
         void Update();
         void Reset();
         void Render(HDC NewDC);
-        void SetRemoveColor(sVector3<int> NewColor) { ColorKey = NewColor; }
+        void SetRemoveColor(Vector3 NewColor) { ColorKey = NewColor; }
       
 
     private:
@@ -45,7 +45,7 @@ namespace Won
         UINT mIndex;
         float mTimer;
         bool bIsCompleted;
-        sVector3<int> ColorKey;
+        Vector3 ColorKey;
 
     };
 }

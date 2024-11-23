@@ -111,8 +111,8 @@ void Won::WPlayerScript::Idle()
 
 			if (RG->IsGround())
 			{
-				sVector2<float> Vel = RG->GetVelocity();
-				Vel += sVector2<float>(0, -650.0f);
+				Vector2 Vel = RG->GetVelocity();
+				Vel += Vector2(0, -650.0f);
 				RG->SetVelocity(Vel);
 				RG->SetIsGround(false);
 
@@ -188,17 +188,17 @@ void Won::WPlayerScript::Walk()
 	if (mPlayerHealth > 0)
 	{
 		WTransform* tr = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> pos = tr->GetPosition();
+		Vector2 pos = tr->GetPosition();
 
 		WRigidbody* Rg = GetOwner()->GetComponent<WRigidbody>();
 
 		if (WInput::GetKey(KeyType::LEFT))
 		{
-			Rg->AddForce(sVector2<float>(-200.0f, 0.0f));
+			Rg->AddForce(Vector2(-200.0f, 0.0f));
 		}
 		if (WInput::GetKey(KeyType::RIGHT))
 		{
-			Rg->AddForce(sVector2<float>(200.0f, 0.0f));
+			Rg->AddForce(Vector2(200.0f, 0.0f));
 		}
 
 		tr->SetPos(pos);
@@ -245,8 +245,8 @@ void Won::WPlayerScript::Change()
 		return;
 
 	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> Pos = Tr->GetPosition();
-	Pos.Y -= 48.0f;
+	Vector2 Pos = Tr->GetPosition();
+	Pos.y -= 48.0f;
 	Tr->SetPos(Pos);
 
 	if (Direction == eDirection::LEFT)
@@ -261,7 +261,7 @@ void Won::WPlayerScript::Change()
 	WCollider* mCollider = GetOwner()->GetComponent<WCollider>();
 	if (mCollider->GetColliderType() == WCollider::eColliderType::Box)
 	{
-		mCollider->SetSize(sVector2<float>(50, 100));
+		mCollider->SetSize(Vector2(50, 100));
 	}
 
 	mState = ePlayerState::IdleState;
@@ -275,13 +275,13 @@ void Won::WPlayerScript::Fire()
 	WTransform* TR = Monster->GetComponent<WTransform>();
 	WBulletScript* BS = Monster->AddComponent<WBulletScript>();
 	TR->SetPos(GetOwner()->GetComponent<WTransform>()->GetPosition());
-	TR->SetScale(sVector2<float>(3.0f, 3.0f));
+	TR->SetScale(Vector2(3.0f, 3.0f));
 	BS->SetPlayer(dynamic_cast<Player*>(GetOwner()));
 	BS->SetTargetPos(WInput::GetMousePosition());
 
 	WTexture* MonsterTexture = WResourceManager::Find<WTexture>(L"Ch");
 	WAnimator* MAT = Monster->AddComponent<WAnimator>();
-	MAT->CreateAnimation(L"Flying", MonsterTexture, sVector2<float>(170, 75), sVector2<float>(10, 10), sVector2<float>(0, 0), 4, 0.1f);
+	MAT->CreateAnimation(L"Flying", MonsterTexture, Vector2(170, 75), Vector2(10, 10), Vector2(0, 0), 4, 0.1f);
 	MAT->PlayAnimation(L"Flying", true);
 
 	if (WInput::GetKeyUp(KeyType::Z))
@@ -303,7 +303,7 @@ void Won::WPlayerScript::Fire()
 void Won::WPlayerScript::AddDamage()
 {
 	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> Pos = Tr->GetPosition();
+	Vector2 Pos = Tr->GetPosition();
 
 	if (mPlayerIsHit == false)
 	{
@@ -325,10 +325,10 @@ void Won::WPlayerScript::AddDamage()
 
 			if (mCollider->GetColliderType() == WCollider::eColliderType::Box)
 			{
-				mCollider->SetSize(sVector2<float>(50, 50));
+				mCollider->SetSize(Vector2(50, 50));
 			}
 
-			Pos.Y += 48.0f;
+			Pos.y += 48.0f;
 			Tr->SetPos(Pos);
 
 			mState = ePlayerState::IdleState;
@@ -339,8 +339,8 @@ void Won::WPlayerScript::AddDamage()
 	if (mPlayerHealth <= 0)
 	{
 		WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
-		Tr->SetPos(sVector2<float>(Pos.X, Pos.Y - 50));
-		PlayerRB->SetVelocity(sVector2<float>(0, 0));
+		Tr->SetPos(Vector2(Pos.x, Pos.y - 50));
+		PlayerRB->SetVelocity(Vector2(0, 0));
 		PlayerRB->SetIsGround(true);
 		Anim->PlayAnimation(L"Dead", false);
 	}
@@ -355,40 +355,40 @@ void Won::WPlayerScript::AddDamageEnd()
 void Won::WPlayerScript::Dead()
 {
 	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
-	PlayerRB->SetVelocity(sVector2<float>(0,0));
+	PlayerRB->SetVelocity(Vector2(0,0));
 }
 
 void Won::WPlayerScript::PickUpflag()
 {
 	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
-	PlayerRB->SetVelocity(sVector2<float>(0, 0));
+	PlayerRB->SetVelocity(Vector2(0, 0));
 
 	if (Size == ePlayerSize::Bigger)
 	{
 		Anim->PlayAnimation(L"PickupflagBigger", false);
-		PlayerRB->SetVelocity(sVector2<float>(0, 500));
+		PlayerRB->SetVelocity(Vector2(0, 500));
 	}
 	else
 	{
 		Anim->PlayAnimation(L"PickupflagSmall", false);
-		PlayerRB->SetVelocity(sVector2<float>(0, 500));
+		PlayerRB->SetVelocity(Vector2(0, 500));
 	}
 }
 
 void Won::WPlayerScript::WalkRight()
 {
 	WRigidbody* PlayerRB = GetOwner()->GetComponent<WRigidbody>();
-	PlayerRB->SetVelocity(sVector2<float>(0, 0));
+	PlayerRB->SetVelocity(Vector2(0, 0));
 
 	if (Size == ePlayerSize::Bigger)
 	{
 		Anim->PlayAnimation(L"BiggerRightWalk", true);
-		PlayerRB->SetVelocity(sVector2<float>(500, 0));
+		PlayerRB->SetVelocity(Vector2(500, 0));
 	}
 	else
 	{
 		Anim->PlayAnimation(L"RightWalk", true);
-		PlayerRB->SetVelocity(sVector2<float>(500, 0));
+		PlayerRB->SetVelocity(Vector2(500, 0));
 	}
 }
 

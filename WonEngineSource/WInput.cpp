@@ -3,7 +3,7 @@
 #include "WonApplication.h"
 
 std::vector<Won::WInput::aKey> Won::WInput::Keys = {};
-Won::sVector2<float> Won::WInput::mMousePosition = { 0.f, 0.f };
+Won::Vector2 Won::WInput::mMousePosition = { 0.f, 0.f };
 
 extern Won::WonApplication Engine;
 
@@ -132,13 +132,13 @@ void Won::WInput::SetMousePosition()
 	LONG width = Engine.GetWidth();
 	LONG height = Engine.GetHeight();
 
-	mMousePosition.X = -1.0f;
-	mMousePosition.Y = -1.0f;
+	mMousePosition.x = -1.0f;
+	mMousePosition.y = -1.0f;
 
 	if (mousePos.x > 0 && mousePos.x < width)
-		mMousePosition.X = static_cast<float>(mousePos.x);
+		mMousePosition.x = static_cast<float>(mousePos.x);
 
 	if (mousePos.y > 0 && mousePos.y < height)
-		mMousePosition.Y = static_cast<float>(mousePos.y);
+		mMousePosition.y = static_cast<float>(mousePos.y);
 
 }

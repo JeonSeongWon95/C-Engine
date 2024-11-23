@@ -9,8 +9,8 @@ namespace Won
     public:
         struct Number
         {
-            sVector2<float> mSheetStartPosition;
-            sVector2<float> mSize;
+            Vector2 mSheetStartPosition;
+            Vector2 mSize;
         };
 
         WHUD();

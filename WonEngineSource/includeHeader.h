@@ -22,3 +22,5 @@
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 #include "WonEnum.h"
+#include <wrl.h>
+#include <memory>

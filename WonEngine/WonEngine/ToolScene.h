@@ -20,7 +20,7 @@ namespace Won
 		void Load();
 		void Save();
 
-		static Won::sVector2<int> sStartPosition;
+		static Won::Vector2 sStartPosition;
 
 
 	private:

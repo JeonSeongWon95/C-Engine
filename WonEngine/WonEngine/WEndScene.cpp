@@ -27,9 +27,9 @@ void Won::WEndScene::Initialize()
 	SRC->SetTexture(WResourceManager::Find<WTexture>(L"Ti"));
 	RECT rect = { 260, 250, 260, 200 };
 	SRC->SetRect(rect);
-	SRC->SetStartPosition(sVector2<float>(0, 0));
+	SRC->SetStartPosition(Vector2(0, 0));
 	SRC->SetName(L"SRC");
-	SRC->SetSize(sVector2<float>(1.0, 1.5));
+	SRC->SetSize(Vector2(1.0, 1.5));
 }
 
 void Won::WEndScene::Update()

@@ -15,16 +15,16 @@ namespace Won
 		void LateUpdate()  override;
 		void Render(HDC hdc)  override;
 
-		void SetPos(sVector2<float> NewVector) { Position = NewVector; }
-		sVector2<float> GetPosition() { return Position; }
-		sVector2<float> GetScale() { return mscale; }
+		void SetPos(Vector2 NewVector) { Position = NewVector; }
+		Vector2 GetPosition() { return Position; }
+		Vector2 GetScale() { return mscale; }
 		float GetRotation() { return Rotation; }
-		void SetScale(sVector2<float> NewScale) { mscale = NewScale; }
+		void SetScale(Vector2 NewScale) { mscale = NewScale; }
 		void SetRotation(float NewRotation) { Rotation = NewRotation; }
 
 	private:
-		sVector2<float> Position;
-		sVector2<float> mscale;
+		Vector2 Position;
+		Vector2 mscale;
 		float Rotation;
     };
 }

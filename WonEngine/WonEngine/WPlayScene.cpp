@@ -51,8 +51,8 @@ void Won::WPlayScene::Initialize()
 	_wfopen_s(&Pfile, L"../Stage", L"rb");
 	if (Pfile == nullptr)
 		return;
-	sVector2<int> SheetIndex;
-	sVector2<int> TileIndex;
+	Vector2 SheetIndex;
+	Vector2 TileIndex;
 
 	while (!feof(Pfile))
 	{
@@ -60,10 +60,10 @@ void Won::WPlayScene::Initialize()
 		fread(&TileIndex, sizeof(TileIndex), 1, Pfile);
 		TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
 		WTransform* ObjectTransform = Object->GetComponent<WTransform>();
-		ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+		ObjectTransform->SetScale(Vector2(3.0f, 3.0f));
 		WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
 		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Te"));
-		ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
+		ObjectTransform->SetPos(Vector2((TileIndex.x * TileRender->GetSize().x), (TileIndex.y * TileRender->GetSize().y)));
 		TileRender->SetSheetIndex(SheetIndex);
 	}
 	fclose(Pfile);
@@ -77,163 +77,163 @@ void Won::WPlayScene::Initialize()
 	WTransform* floorTr = floor->GetComponent<WTransform>();
 	floor->AddComponent<WFloorScript>();
 	WBoxCollider2D* floorBx = floor->AddComponent<WBoxCollider2D>();
-	floorTr->SetPos(sVector2<float>(0, 575.0f));
-	floorTr->SetScale(sVector2<float>(1, 500));
-	floorBx->SetSize(sVector2<float>(2360.0f, 50.0f));
+	floorTr->SetPos(Vector2(0, 575.0f));
+	floorTr->SetScale(Vector2(1, 500));
+	floorBx->SetSize(Vector2(2360.0f, 50.0f));
 
 	Floor* floortwo = InstanceSpawn<Floor>(eLayerType::Environment);
 	WTransform* floortwoTr = floortwo->GetComponent<WTransform>();
 	floortwo->AddComponent<WFloorScript>();
 	WBoxCollider2D* floortwoBx = floortwo->AddComponent<WBoxCollider2D>();
-	floortwoTr->SetPos(sVector2<float>(2450.0f, 575.0f));
-	floortwoTr->SetScale(sVector2<float>(1, 500));
-	floortwoBx->SetSize(sVector2<float>(480.0f, 50.0f));
+	floortwoTr->SetPos(Vector2(2450.0f, 575.0f));
+	floortwoTr->SetScale(Vector2(1, 500));
+	floortwoBx->SetSize(Vector2(480.0f, 50.0f));
 
 	Floor* floorth = InstanceSpawn<Floor>(eLayerType::Environment);
 	WTransform* floorthTr = floorth->GetComponent<WTransform>();
 	floorth->AddComponent<WFloorScript>();
 	WBoxCollider2D* floortrBx = floorth->AddComponent<WBoxCollider2D>();
-	floorthTr->SetPos(sVector2<float>(3025.0f, 575.0f));
-	floorthTr->SetScale(sVector2<float>(1, 500));
-	floortrBx->SetSize(sVector2<float>(810.0f, 50.0f));
+	floorthTr->SetPos(Vector2(3025.0f, 575.0f));
+	floorthTr->SetScale(Vector2(1, 500));
+	floortrBx->SetSize(Vector2(810.0f, 50.0f));
 
 	Floor* floorf = InstanceSpawn<Floor>(eLayerType::Environment);
 	WTransform* floorfTr = floorf->GetComponent<WTransform>();
 	floorf->AddComponent<WFloorScript>();
 	WBoxCollider2D* floorfBx = floorf->AddComponent<WBoxCollider2D>();
-	floorfTr->SetPos(sVector2<float>(3940.0f, 575.0f));
-	floorfTr->SetScale(sVector2<float>(1, 500));
-	floorfBx->SetSize(sVector2<float>(310.0f, 50.0f));
+	floorfTr->SetPos(Vector2(3940.0f, 575.0f));
+	floorfTr->SetScale(Vector2(1, 500));
+	floorfBx->SetSize(Vector2(310.0f, 50.0f));
 
 	Floor* floorfive = InstanceSpawn<Floor>(eLayerType::Environment);
 	WTransform* floorfiveTransform = floorfive->GetComponent<WTransform>();
 	floorfive->AddComponent<WFloorScript>();
 	WBoxCollider2D* floorfiveCollider = floorfive->AddComponent<WBoxCollider2D>();
-	floorfiveTransform->SetPos(sVector2<float>(4380.0f, 575.0f));
-	floorfiveTransform->SetScale(sVector2<float>(1, 500));
-	floorfiveCollider->SetSize(sVector2<float>(2000.0f, 50.0f));
+	floorfiveTransform->SetPos(Vector2(4380.0f, 575.0f));
+	floorfiveTransform->SetScale(Vector2(1, 500));
+	floorfiveCollider->SetSize(Vector2(2000.0f, 50.0f));
 
 	WWall* WallOne = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallOneTransform = WallOne->GetComponent<WTransform>();
 	WBoxCollider2D* WallOneCollider = WallOne->AddComponent<WBoxCollider2D>();
-	WallOneTransform->SetPos(sVector2<float>(1585.0f, 490.0f));
-	WallOneCollider->SetSize(sVector2<float>(85.0f, 100.0f));
+	WallOneTransform->SetPos(Vector2(1585.0f, 490.0f));
+	WallOneCollider->SetSize(Vector2(85.0f, 100.0f));
 
 	WWall* WallTwo = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallTwoTransform = WallTwo->GetComponent<WTransform>();
 	WBoxCollider2D* WallTwoCollider = WallTwo->AddComponent<WBoxCollider2D>();
-	WallTwoTransform->SetPos(sVector2<float>(1880.0f, 440.0f));
-	WallTwoCollider->SetSize(sVector2<float>(85.0f, 150.0f));
+	WallTwoTransform->SetPos(Vector2(1880.0f, 440.0f));
+	WallTwoCollider->SetSize(Vector2(85.0f, 150.0f));
 
 	WWall* WallThree = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallThreeTransform = WallThree->GetComponent<WTransform>();
 	WBoxCollider2D* WallThreeCollider = WallThree->AddComponent<WBoxCollider2D>();
-	WallThreeTransform->SetPos(sVector2<float>(2120.0f, 390.0f));
-	WallThreeCollider->SetSize(sVector2<float>(85.0f, 200.0f));
+	WallThreeTransform->SetPos(Vector2(2120.0f, 390.0f));
+	WallThreeCollider->SetSize(Vector2(85.0f, 200.0f));
 
 	WWall* WallFour = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallFourTransform = WallFour->GetComponent<WTransform>();
 	WBoxCollider2D* WallFourCollider = WallFour->AddComponent<WBoxCollider2D>();
-	WallFourTransform->SetPos(sVector2<float>(3165.0f, 530.0f));
-	WallFourCollider->SetSize(sVector2<float>(200.0f, 50.0f));
+	WallFourTransform->SetPos(Vector2(3165.0f, 530.0f));
+	WallFourCollider->SetSize(Vector2(200.0f, 50.0f));
 
 	WWall* WallFive = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallFiveTransform = WallFive->GetComponent<WTransform>();
 	WBoxCollider2D* WallFiveCollider = WallFive->AddComponent<WBoxCollider2D>();
-	WallFiveTransform->SetPos(sVector2<float>(3215.0f, 480.0f));
-	WallFiveCollider->SetSize(sVector2<float>(150.0f, 50.0f));
+	WallFiveTransform->SetPos(Vector2(3215.0f, 480.0f));
+	WallFiveCollider->SetSize(Vector2(150.0f, 50.0f));
 
 	WWall* WallSix = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallSixTransform = WallSix->GetComponent<WTransform>();
 	WBoxCollider2D* WallSixCollider = WallSix->AddComponent<WBoxCollider2D>();
-	WallSixTransform->SetPos(sVector2<float>(3265.0f, 430.0f));
-	WallSixCollider->SetSize(sVector2<float>(100.0f, 50.0f));
+	WallSixTransform->SetPos(Vector2(3265.0f, 430.0f));
+	WallSixCollider->SetSize(Vector2(100.0f, 50.0f));
 
 	WWall* WallSeven = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallSevenransform = WallSeven->GetComponent<WTransform>();
 	WBoxCollider2D* WallSevenCollider = WallSeven->AddComponent<WBoxCollider2D>();
-	WallSevenransform->SetPos(sVector2<float>(3315.0f, 380.0f));
-	WallSevenCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	WallSevenransform->SetPos(Vector2(3315.0f, 380.0f));
+	WallSevenCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WWall* WallEight = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallEightTransform = WallEight->GetComponent<WTransform>();
 	WBoxCollider2D* WallEightCollider = WallEight->AddComponent<WBoxCollider2D>();
-	WallEightTransform->SetPos(sVector2<float>(3505.0f, 530.0f));
-	WallEightCollider->SetSize(sVector2<float>(150.0f, 50.0f));
+	WallEightTransform->SetPos(Vector2(3505.0f, 530.0f));
+	WallEightCollider->SetSize(Vector2(150.0f, 50.0f));
 
 	WWall* WallNine = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallNineTransform = WallNine->GetComponent<WTransform>();
 	WBoxCollider2D* WallNineCollider = WallNine->AddComponent<WBoxCollider2D>();
-	WallNineTransform->SetPos(sVector2<float>(3505.0f, 480.0f));
-	WallNineCollider->SetSize(sVector2<float>(100.0f, 50.0f));
+	WallNineTransform->SetPos(Vector2(3505.0f, 480.0f));
+	WallNineCollider->SetSize(Vector2(100.0f, 50.0f));
 
 	WWall* WallTen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallTenTransform = WallTen->GetComponent<WTransform>();
 	WBoxCollider2D* WallTenCollider = WallTen->AddComponent<WBoxCollider2D>();
-	WallTenTransform->SetPos(sVector2<float>(3505.0f, 430.0f));
-	WallTenCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	WallTenTransform->SetPos(Vector2(3505.0f, 430.0f));
+	WallTenCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WWall* WallEleven = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallElevenTransform = WallEleven->GetComponent<WTransform>();
 	WBoxCollider2D* WallElevenCollider = WallEleven->AddComponent<WBoxCollider2D>();
-	WallElevenTransform->SetPos(sVector2<float>(3980.0f, 530.0f));
-	WallElevenCollider->SetSize(sVector2<float>(300.0f, 50.0f));
+	WallElevenTransform->SetPos(Vector2(3980.0f, 530.0f));
+	WallElevenCollider->SetSize(Vector2(300.0f, 50.0f));
 
 	WWall* Walltwelve = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WalltwelveTransform = Walltwelve->GetComponent<WTransform>();
 	WBoxCollider2D* WalltwelveCollider = Walltwelve->AddComponent<WBoxCollider2D>();
-	WalltwelveTransform->SetPos(sVector2<float>(4650.0f, 540.0f));
-	WalltwelveCollider->SetSize(sVector2<float>(400.0f, 50.0f));
+	WalltwelveTransform->SetPos(Vector2(4650.0f, 540.0f));
+	WalltwelveCollider->SetSize(Vector2(400.0f, 50.0f));
 
 	WWall* WallThirteen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallThirteenTransform = WallThirteen->GetComponent<WTransform>();
 	WBoxCollider2D* WallThirteenCollider = WallThirteen->AddComponent<WBoxCollider2D>();
-	WallThirteenTransform->SetPos(sVector2<float>(4700.0f, 490.0f));
-	WallThirteenCollider->SetSize(sVector2<float>(350.0f, 50.0f));
+	WallThirteenTransform->SetPos(Vector2(4700.0f, 490.0f));
+	WallThirteenCollider->SetSize(Vector2(350.0f, 50.0f));
 
 	WWall* WallFourteen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallFourteenTransform = WallFourteen->GetComponent<WTransform>();
 	WBoxCollider2D* WallFourteenCollider = WallFourteen->AddComponent<WBoxCollider2D>();
-	WallFourteenTransform->SetPos(sVector2<float>(4750.0f, 440.0f));
-	WallFourteenCollider->SetSize(sVector2<float>(300.0f, 50.0f));
+	WallFourteenTransform->SetPos(Vector2(4750.0f, 440.0f));
+	WallFourteenCollider->SetSize(Vector2(300.0f, 50.0f));
 
 	WWall* Wallfifteen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallfifteenTransform = Wallfifteen->GetComponent<WTransform>();
 	WBoxCollider2D* WallfifteenCollider = Wallfifteen->AddComponent<WBoxCollider2D>();
-	WallfifteenTransform->SetPos(sVector2<float>(4800.0f, 390.0f));
-	WallfifteenCollider->SetSize(sVector2<float>(250.0f, 50.0f));
+	WallfifteenTransform->SetPos(Vector2(4800.0f, 390.0f));
+	WallfifteenCollider->SetSize(Vector2(250.0f, 50.0f));
 
 	WWall* Wallsixteen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallsixteenTransform = Wallsixteen->GetComponent<WTransform>();
 	WBoxCollider2D* WallsixteenCollider = Wallsixteen->AddComponent<WBoxCollider2D>();
-	WallsixteenTransform->SetPos(sVector2<float>(4850.0f, 340.0f));
-	WallsixteenCollider->SetSize(sVector2<float>(200.0f, 50.0f));
+	WallsixteenTransform->SetPos(Vector2(4850.0f, 340.0f));
+	WallsixteenCollider->SetSize(Vector2(200.0f, 50.0f));
 
 	WWall* Wallseventeen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WallseventeenTransform = Wallseventeen->GetComponent<WTransform>();
 	WBoxCollider2D* WallseventeenCollider = Wallseventeen->AddComponent<WBoxCollider2D>();
-	WallseventeenTransform->SetPos(sVector2<float>(4900.0f, 290.0f));
-	WallseventeenCollider->SetSize(sVector2<float>(150.0f, 50.0f));
+	WallseventeenTransform->SetPos(Vector2(4900.0f, 290.0f));
+	WallseventeenCollider->SetSize(Vector2(150.0f, 50.0f));
 
 	WWall* Walleighteen = InstanceSpawn<WWall>(eLayerType::Environment);
 	WTransform* WalleighteenTransform = Walleighteen->GetComponent<WTransform>();
 	WBoxCollider2D* WalleighteenCollider = Walleighteen->AddComponent<WBoxCollider2D>();
-	WalleighteenTransform->SetPos(sVector2<float>(4950.0f, 240.0f));
-	WalleighteenCollider->SetSize(sVector2<float>(100.0f, 50.0f));
+	WalleighteenTransform->SetPos(Vector2(4950.0f, 240.0f));
+	WalleighteenCollider->SetSize(Vector2(100.0f, 50.0f));
 
 	WFlagBlock* flagblock = InstanceSpawn<WFlagBlock>(eLayerType::Environment);
 	WTransform* flagblockTransform = flagblock->GetComponent<WTransform>();
 	WBoxCollider2D* flagblockCollider = flagblock->AddComponent<WBoxCollider2D>();
 	flagblock->AddComponent<WFlagBlockScript>();
-	flagblockTransform->SetPos(sVector2<float>(5280.0f, 525.0f));
-	flagblockCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	flagblockTransform->SetPos(Vector2(5280.0f, 525.0f));
+	flagblockCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WGameObject* KingdomWall = InstanceSpawn<WGameObject>(eLayerType::Environment);
 	WTransform* KingdomWallTransform = KingdomWall->GetComponent<WTransform>();
 	WBoxCollider2D* KingdomWallCollider = KingdomWall->AddComponent<WBoxCollider2D>();
 	KingdomWall->AddComponent<WEndScript>();
-	KingdomWallTransform->SetPos(sVector2<float>(5750.0f, 200.0f));
-	KingdomWallCollider->SetSize(sVector2<float>(10.0f, 400.0f));
+	KingdomWallTransform->SetPos(Vector2(5750.0f, 200.0f));
+	KingdomWallCollider->SetSize(Vector2(10.0f, 400.0f));
 
 	mCharacter = InstanceSpawn<Player>(eLayerType::Player);
 	WPlayerScript* chScr = mCharacter->AddComponent<WPlayerScript>();
@@ -241,114 +241,114 @@ void Won::WPlayScene::Initialize()
 	ChRg->Setmass(1.5f);
 
 	WBoxCollider2D* PlayerCollider = mCharacter->AddComponent<WBoxCollider2D>();
-	PlayerCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	PlayerCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WTransform* CTR = mCharacter->GetComponent<WTransform>();
-	CTR->SetScale(sVector2<float>(3.0f, 3.0f));
-	CTR->SetPos(sVector2<float>(0, 500.f));
+	CTR->SetScale(Vector2(3.0f, 3.0f));
+	CTR->SetPos(Vector2(0, 500.f));
 
 	WTexture* CharcterTexture = WResourceManager::Find<WTexture>(L"Ch");
 	WAnimator* CAT = mCharacter->AddComponent<WAnimator>();
 
-	CAT->CreateAnimation(L"RightWalk", CharcterTexture, sVector2<float>(0, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 4, 0.1f);
-	CAT->CreateAnimation(L"LeftWalk", CharcterTexture, sVector2<float>(570, 221), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 4, 0.1f, true);
-	CAT->CreateAnimation(L"RightIdle", CharcterTexture, sVector2<float>(0, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.2f);
-	CAT->CreateAnimation(L"LeftIdle", CharcterTexture, sVector2<float>(570, 221), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.2f, true);
-	CAT->CreateAnimation(L"ChangeToRightBigger", CharcterTexture, sVector2<float>(18.5, 72), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.3f);
-	CAT->CreateAnimation(L"ChangeToLeftBigger", CharcterTexture, sVector2<float>(550.5, 285), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.3f, true);
-	CAT->CreateAnimation(L"ChangeToRightSmall", CharcterTexture, sVector2<float>(37, 72), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.3f, true);
-	CAT->CreateAnimation(L"ChangeToLeftSmall", CharcterTexture, sVector2<float>(532, 285), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 2, 0.3f);
-	CAT->CreateAnimation(L"BiggerRightWalk", CharcterTexture, sVector2<float>(0, 32), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 4, 0.1f);
-	CAT->CreateAnimation(L"BiggerLeftWalk", CharcterTexture, sVector2<float>(570, 246), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 4, 0.1f, true);
-	CAT->CreateAnimation(L"BiggerRightIdle", CharcterTexture, sVector2<float>(0, 32), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 1, 0.2f);
-	CAT->CreateAnimation(L"BiggerLeftIdle", CharcterTexture, sVector2<float>(570, 246), sVector2<float>(18.5, 32), sVector2<float>(9.25, 32), 1, 0.2f, true);
-	CAT->CreateAnimation(L"Dead", CharcterTexture, sVector2<float>(115, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 32), 1, 0.2f);
-	CAT->CreateAnimation(L"LeftJumpSmall", CharcterTexture, sVector2<float>(475, 221), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.1f, true);
-	CAT->CreateAnimation(L"RightJumpSmall", CharcterTexture, sVector2<float>(96.5, 7), sVector2<float>(18.5, 16), sVector2<float>(9.25, 16), 1, 0.1f);
-	CAT->CreateAnimation(L"LeftJumpBigger", CharcterTexture, sVector2<float>(455, 246), sVector2<float>(20, 32), sVector2<float>(10, 32), 1, 0.1f);
-	CAT->CreateAnimation(L"RightJumpBigger", CharcterTexture, sVector2<float>(96.5, 32), sVector2<float>(20, 32), sVector2<float>(10, 32), 1, 0.1f);
-	CAT->CreateAnimation(L"PickupflagBigger", CharcterTexture, sVector2<float>(156.5, 32), sVector2<float>(20, 32), sVector2<float>(10, 32), 1, 0.1f);
-	CAT->CreateAnimation(L"PickupflagSmall", CharcterTexture, sVector2<float>(156.5, 7), sVector2<float>(20, 16), sVector2<float>(10, 32), 1, 0.1f);
-	CAT->CreateAnimation(L"Attack", CharcterTexture, sVector2<float>(135, 73), sVector2<float>(20, 32), sVector2<float>(10, 32), 1, 0.1f);
+	CAT->CreateAnimation(L"RightWalk", CharcterTexture, Vector2(0, 7), Vector2(18.5, 16), Vector2(9.25, 16), 4, 0.1f);
+	CAT->CreateAnimation(L"LeftWalk", CharcterTexture, Vector2(570, 221), Vector2(18.5, 16), Vector2(9.25, 16), 4, 0.1f, true);
+	CAT->CreateAnimation(L"RightIdle", CharcterTexture, Vector2(0, 7), Vector2(18.5, 16), Vector2(9.25, 16), 1, 0.2f);
+	CAT->CreateAnimation(L"LeftIdle", CharcterTexture, Vector2(570, 221), Vector2(18.5, 16),Vector2(9.25, 16), 1, 0.2f, true);
+	CAT->CreateAnimation(L"ChangeToRightBigger", CharcterTexture, Vector2(18.5, 72), Vector2(18.5, 32), Vector2(9.25, 32), 2, 0.3f);
+	CAT->CreateAnimation(L"ChangeToLeftBigger", CharcterTexture, Vector2(550.5, 285), Vector2(18.5, 32), Vector2(9.25, 32), 2, 0.3f, true);
+	CAT->CreateAnimation(L"ChangeToRightSmall", CharcterTexture, Vector2(37, 72), Vector2(18.5, 32), Vector2(9.25, 32), 2, 0.3f, true);
+	CAT->CreateAnimation(L"ChangeToLeftSmall", CharcterTexture, Vector2(532, 285), Vector2(18.5, 32), Vector2(9.25, 32), 2, 0.3f);
+	CAT->CreateAnimation(L"BiggerRightWalk", CharcterTexture, Vector2(0, 32), Vector2(18.5, 32), Vector2(9.25, 32), 4, 0.1f);
+	CAT->CreateAnimation(L"BiggerLeftWalk", CharcterTexture, Vector2(570, 246), Vector2(18.5, 32), Vector2(9.25, 32), 4, 0.1f, true);
+	CAT->CreateAnimation(L"BiggerRightIdle", CharcterTexture, Vector2(0, 32), Vector2(18.5, 32), Vector2(9.25, 32), 1, 0.2f);
+	CAT->CreateAnimation(L"BiggerLeftIdle", CharcterTexture, Vector2(570, 246), Vector2(18.5, 32), Vector2(9.25, 32), 1, 0.2f, true);
+	CAT->CreateAnimation(L"Dead", CharcterTexture, Vector2(115, 7), Vector2(18.5, 16), Vector2(9.25, 32), 1, 0.2f);
+	CAT->CreateAnimation(L"LeftJumpSmall", CharcterTexture, Vector2(475, 221), Vector2(18.5, 16), Vector2(9.25, 16), 1, 0.1f, true);
+	CAT->CreateAnimation(L"RightJumpSmall", CharcterTexture, Vector2(96.5, 7), Vector2(18.5, 16), Vector2(9.25, 16), 1, 0.1f);
+	CAT->CreateAnimation(L"LeftJumpBigger", CharcterTexture, Vector2(455, 246), Vector2(20, 32), Vector2(10, 32), 1, 0.1f);
+	CAT->CreateAnimation(L"RightJumpBigger", CharcterTexture, Vector2(96.5, 32), Vector2(20, 32), Vector2(10, 32), 1, 0.1f);
+	CAT->CreateAnimation(L"PickupflagBigger", CharcterTexture, Vector2(156.5, 32), Vector2(20, 32), Vector2(10, 32), 1, 0.1f);
+	CAT->CreateAnimation(L"PickupflagSmall", CharcterTexture, Vector2(156.5, 7), Vector2(20, 16), Vector2(10, 32), 1, 0.1f);
+	CAT->CreateAnimation(L"Attack", CharcterTexture,Vector2(135, 73), Vector2(20, 32), Vector2(10, 32), 1, 0.1f);
 	CAT->GetStartEvent(L"Attack") = std::bind(&WPlayerScript::Fire, chScr);
 	CAT->GetStartEvent(L"Dead") = std::bind(&WPlayerScript::Dead, chScr);
 	CAT->PlayAnimation(L"RightIdle", false);
 
 	Enemy* Monster = InstanceSpawn<Enemy>(eLayerType::Character);
 	WTransform* MonsterTransform = Monster->GetComponent<WTransform>();
-	MonsterTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	MonsterTransform->SetPos(sVector2<float>(500.f, 500.f));
+	MonsterTransform->SetScale(Vector2(3.0f, 3.0f));
+	MonsterTransform->SetPos(Vector2(500.f, 500.f));
 
 	Enemy* Monsterfour = InstanceSpawn<Enemy>(eLayerType::Character);
 	WTransform* MonsterfourTransform = Monsterfour->GetComponent<WTransform>();
-	MonsterfourTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	MonsterfourTransform->SetPos(sVector2<float>(650.f, 500.f));
+	MonsterfourTransform->SetScale(Vector2(3.0f, 3.0f));
+	MonsterfourTransform->SetPos(Vector2(650.f, 500.f));
 
 	Enemy* Monstertwo = InstanceSpawn<Enemy>(eLayerType::Character);
 	WTransform* MonstertwoTransform = Monstertwo->GetComponent<WTransform>();
-	MonstertwoTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	MonstertwoTransform->SetPos(sVector2<float>(750.f, 500.f));
+	MonstertwoTransform->SetScale(Vector2(3.0f, 3.0f));
+	MonstertwoTransform->SetPos(Vector2(750.f, 500.f));
 
 	Enemy* Monsterthree = InstanceSpawn<Enemy>(eLayerType::Character);
 	WTransform* MonsterthreeTransform = Monsterthree->GetComponent<WTransform>();
-	MonsterthreeTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	MonsterthreeTransform->SetPos(sVector2<float>(800.f, 500.f));
+	MonsterthreeTransform->SetScale(Vector2(3.0f, 3.0f));
+	MonsterthreeTransform->SetPos(Vector2(800.f, 500.f));
 
 	ItemBlock* Itemblock = InstanceSpawn<ItemBlock>(eLayerType::Environment);
 	WTransform* ItemblockTransform = Itemblock->GetComponent<WTransform>();
-	ItemblockTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	ItemblockTransform->SetPos(sVector2<float>(300, 300));
+	ItemblockTransform->SetScale(Vector2(3.0f, 3.0f));
+	ItemblockTransform->SetPos(Vector2(300, 300));
 
 	Block* block = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockTransform = block->GetComponent<WTransform>();
-	blockTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockTransform->SetPos(sVector2<float>(200, 400));
+	blockTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockTransform->SetPos(Vector2(200, 400));
 
 	Block* blocka = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockaTransform = blocka->GetComponent<WTransform>();
-	blockaTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockaTransform->SetPos(sVector2<float>(1000, 400));
+	blockaTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockaTransform->SetPos(Vector2(1000, 400));
 	Block* blockb = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockbTransform = blockb->GetComponent<WTransform>();
-	blockbTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockbTransform->SetPos(sVector2<float>(1050, 400));
+	blockbTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockbTransform->SetPos(Vector2(1050, 400));
 	Block* blockc = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockcTransform = blockc->GetComponent<WTransform>();
-	blockcTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockcTransform->SetPos(sVector2<float>(1100, 400));
+	blockcTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockcTransform->SetPos(Vector2(1100, 400));
 	Block* blockd = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockdTransform = blockd->GetComponent<WTransform>();
-	blockdTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockdTransform->SetPos(sVector2<float>(1150, 400));
+	blockdTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockdTransform->SetPos(Vector2(1150, 400));
 
 	Block* blocke = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockeTransform = blocke->GetComponent<WTransform>();
-	blockeTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockeTransform->SetPos(sVector2<float>(3125, 200));
+	blockeTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockeTransform->SetPos(Vector2(3125, 200));
 	Block* blockf = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockfTransform = blockf->GetComponent<WTransform>();
-	blockfTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockfTransform->SetPos(sVector2<float>(3175, 200));
+	blockfTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockfTransform->SetPos(Vector2(3175, 200));
 	Block* blockg = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockgTransform = blockg->GetComponent<WTransform>();
-	blockgTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockgTransform->SetPos(sVector2<float>(3600, 200));
+	blockgTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockgTransform->SetPos(Vector2(3600, 200));
 	Block* blockh = InstanceSpawn<Block>(eLayerType::Environment);
 	WTransform* blockhTransform = blockh->GetComponent<WTransform>();
-	blockhTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	blockhTransform->SetPos(sVector2<float>(3850, 200));
+	blockhTransform->SetScale(Vector2(3.0f, 3.0f));
+	blockhTransform->SetPos(Vector2(3850, 200));
 
 	Coin* coin = InstanceSpawn<Coin>(eLayerType::Item);
 	WTransform* coinTransform = coin->GetComponent<WTransform>();
-	coinTransform->SetScale(sVector2<float>(3.0f, 3.0f));
-	coinTransform->SetPos(sVector2<float>(100, 500));
+	coinTransform->SetScale(Vector2(3.0f, 3.0f));
+	coinTransform->SetPos(Vector2(100, 500));
 
 	WFlag* flag = InstanceSpawn<WFlag>(eLayerType::Environment);
 	WTransform* flagTransform = flag->GetComponent<WTransform>();
 	WBoxCollider2D* BoxCollider = flag->AddComponent<WBoxCollider2D>();
 	WFlagScript* FlagScript = flag->AddComponent<WFlagScript>();
-	flagTransform->SetPos(sVector2<float>(5295, 80));
-	BoxCollider->SetSize(sVector2<float>(20, 450));
+	flagTransform->SetPos(Vector2(5295, 80));
+	BoxCollider->SetSize(Vector2(20, 450));
 
 	WScene::Initialize();
 }

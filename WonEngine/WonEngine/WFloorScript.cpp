@@ -38,16 +38,16 @@ void Won::WFloorScript::OnColliderEnter(WCollider* Other)
 	WTransform* floorTr = this->GetOwner()->GetComponent<WTransform>();
 	WCollider* floorCol = this->GetOwner()->GetComponent<WCollider>();
 
-	sVector2<float> PlayerPos = playerTr->GetPosition();
-	sVector2<float> FloorPos = floorTr->GetPosition();
+	Vector2 PlayerPos = playerTr->GetPosition();
+	Vector2 FloorPos = floorTr->GetPosition();
 
-	float len = (FloorPos.Y - PlayerPos.Y) + 10;
-	float scale = playerCol->GetSize().Y;
+	float len = (FloorPos.y - PlayerPos.y) + 10;
+	float scale = playerCol->GetSize().y;
 
 	if (len < scale)
 	{
-		float Distance = fabs((PlayerPos.Y + Other->GetSize().Y) - FloorPos.Y);
-		PlayerPos.Y -= Distance;
+		float Distance = fabs((PlayerPos.y + Other->GetSize().y) - FloorPos.y);
+		PlayerPos.y -= Distance;
 		playerTr->SetPos(PlayerPos);
 	}
 

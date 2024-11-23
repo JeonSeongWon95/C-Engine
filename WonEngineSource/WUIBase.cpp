@@ -1,8 +1,8 @@
 #include "WUIBase.h"
 
 Won::WUIBase::WUIBase()
-	: mPosition(sVector2<float>(0,0))
-	, mSize(sVector2<float>(1.0f, 1.0f))
+	: mPosition(Vector2(0,0))
+	, mSize(Vector2(1.0f, 1.0f))
 	, mIsFullScreen(false)
 	, mEnable(true)
     , mType(eUIType::None)

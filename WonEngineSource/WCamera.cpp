@@ -8,9 +8,9 @@ extern Won::WonApplication Engine;
 Won::WCamera::WCamera()
 	: WComponent(eComponentType::Camera)
 	, mTarget(nullptr)
-	, mDistance(sVector2<float>(0,0))
-	, mLookPosition(sVector2<float>(0,0))
-	, mResolution(sVector2<float>(0, 0))
+	, mDistance(Vector2(0,0))
+	, mLookPosition(Vector2(0,0))
+	, mResolution(Vector2(0, 0))
 {
 
 }
@@ -22,11 +22,11 @@ Won::WCamera::~WCamera()
 
 void Won::WCamera::Initialize()
 {
-	mResolution.X = static_cast<float>(Engine.GetWidth());
-	mResolution.Y = static_cast<float>(Engine.GetHeight());
+	mResolution.x = static_cast<float>(Engine.GetWidth());
+	mResolution.y = static_cast<float>(Engine.GetHeight());
 
 	WTransform* cameraTr = GetOwner()->GetComponent<WTransform>();
-	cameraTr->SetPos(sVector2<float>(mResolution.X / 2, mResolution.Y / 2));
+	cameraTr->SetPos(Vector2(mResolution.x / 2, mResolution.y / 2));
 }
 
 void Won::WCamera::Update()

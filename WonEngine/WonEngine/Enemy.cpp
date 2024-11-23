@@ -22,12 +22,12 @@ void Won::Enemy::Initialize()
 		WEnemyScript* MonsterScript = AddComponent<WEnemyScript>();
 		WBoxCollider2D* MonsterCollider = AddComponent<WBoxCollider2D>();
 		WRigidbody* MonsterRigidbody = AddComponent<WRigidbody>();
-		MonsterCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+		MonsterCollider->SetSize(Vector2(50.0f, 50.0f));
 
 		WTexture* MonsterTexture = WResourceManager::Find<WTexture>(L"Ee");
 		WAnimator* MonsterAnimator = AddComponent<WAnimator>();
-		MonsterAnimator->CreateAnimation(L"Walk", MonsterTexture, sVector2<float>(0, 15), sVector2<float>(18.5, 18.5), sVector2<float>(0, 0), 2, 0.1f);
-		MonsterAnimator->CreateAnimation(L"Dead", MonsterTexture, sVector2<float>(37, 15), sVector2<float>(18.5, 18.5), sVector2<float>(0, 0), 1, 0.1f);
+		MonsterAnimator->CreateAnimation(L"Walk", MonsterTexture, Vector2(0, 15), Vector2(18.5, 18.5), Vector2(0, 0), 2, 0.1f);
+		MonsterAnimator->CreateAnimation(L"Dead", MonsterTexture, Vector2(37, 15), Vector2(18.5, 18.5),Vector2(0, 0), 1, 0.1f);
 		MonsterAnimator->GetCompleteEvent(L"Dead") = std::bind(&WEnemyScript::Dead, MonsterScript);
 		MonsterAnimator->PlayAnimation(L"Walk", true);
 	}

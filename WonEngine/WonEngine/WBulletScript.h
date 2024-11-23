@@ -17,7 +17,7 @@ namespace Won
        void Render(HDC NewDC) override;
 
         void SetPlayer(class Player* NewPlayer) { Target = NewPlayer; }
-        void SetTargetPos(sVector2<float> NewPos) { Pos = NewPos; }
+        void SetTargetPos(Vector2 NewPos) { Pos = NewPos; }
 
         void OnColliderEnter(WCollider* Other) override;
         void OnColliderStay(WCollider* Other) override;
@@ -26,7 +26,7 @@ namespace Won
 
     private:
         Player* Target;
-        sVector2<float> Pos;
+        Vector2 Pos;
         eDirection Dr;
         float mDeathTimer;
     };

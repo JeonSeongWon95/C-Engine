@@ -28,18 +28,18 @@ namespace Won
         virtual void OnColliderStay(WCollider* Other);
         virtual void OnColliderExit(WCollider* Other);
 
-        sVector2<float> GetOffset() { return offset; }
-        void Setoffset(sVector2<float> NewOffset) { offset = NewOffset; }
+        Vector2 GetOffset() { return offset; }
+        void Setoffset(Vector2 NewOffset) { offset = NewOffset; }
         UINT32 GetID() { return mID; }
-        void SetSize(sVector2<float> NewSize) { mSize = NewSize; }
-        sVector2<float> GetSize() { return mSize; }
+        void SetSize(Vector2 NewSize) { mSize = NewSize; }
+        Vector2 GetSize() { return mSize; }
         eColliderType GetColliderType() { return mType; }
         void SetColliderType(eColliderType NewType) { mType = NewType; }
 
     private:
         static UINT32 ColliderID;
-        sVector2<float> offset;
-        sVector2<float> mSize;
+        Vector2 offset;
+        Vector2 mSize;
         eColliderType mType;
         UINT32 mID;
     };

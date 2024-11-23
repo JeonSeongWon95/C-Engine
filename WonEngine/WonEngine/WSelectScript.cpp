@@ -16,7 +16,7 @@ void Won::WSelectScript::Initialize()
 {
 	WTransform* Tr = GetOwner()->GetComponent<WTransform>();
 	mPresentSelected = eSelectedOption::PlayerOne;
-	Tr->SetPos(sVector2<float>(220.0f, 405.0f));
+	Tr->SetPos(Vector2(220.0f, 405.0f));
 }
 
 void Won::WSelectScript::Update()
@@ -28,7 +28,7 @@ void Won::WSelectScript::Update()
 
 		WTransform* Tr = GetOwner()->GetComponent<WTransform>();
 		mPresentSelected = eSelectedOption::PlayerOne;
-		Tr->SetPos(sVector2<float>(220.0f, 405.0f));
+		Tr->SetPos(Vector2(220.0f, 405.0f));
 	}
 
 	if (WInput::GetKey(KeyType::DOWN))
@@ -38,7 +38,7 @@ void Won::WSelectScript::Update()
 
 		WTransform* Tr = GetOwner()->GetComponent<WTransform>();
 		mPresentSelected = eSelectedOption::PlayerTwo;
-		Tr->SetPos(sVector2<float>(220.0f, 455.0f));
+		Tr->SetPos(Vector2(220.0f, 455.0f));
 	}
 }
 

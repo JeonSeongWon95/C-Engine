@@ -21,9 +21,9 @@ Won::WBlockScript::~WBlockScript()
 void Won::WBlockScript::Initialize()
 {
 	WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> Pos = Transform->GetPosition();
+	Vector2 Pos = Transform->GetPosition();
 
-	mStartposition = Pos.Y;
+	mStartposition = Pos.y;
 }
 
 void Won::WBlockScript::Update()
@@ -31,11 +31,11 @@ void Won::WBlockScript::Update()
 	if (mIsHit)
 	{
 		WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> Pos = Transform->GetPosition();
+		Vector2 Pos = Transform->GetPosition();
 
-		if (Pos.Y >= mStartposition - 30.0f)
+		if (Pos.y >= mStartposition - 30.0f)
 		{
-			Pos.Y -= (100.0f * WTime::GetDeltaSeconds());
+			Pos.y -= (100.0f * WTime::GetDeltaSeconds());
 			Transform->SetPos(Pos);
 		}
 		else
@@ -46,11 +46,11 @@ void Won::WBlockScript::Update()
 	else
 	{
 		WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> Pos = Transform->GetPosition();
+		Vector2 Pos = Transform->GetPosition();
 
-		if (Pos.Y <= mStartposition)
+		if (Pos.y <= mStartposition)
 		{
-			Pos.Y += (100.0f * WTime::GetDeltaSeconds());
+			Pos.y += (100.0f * WTime::GetDeltaSeconds());
 			Transform->SetPos(Pos);
 		}
 	}
@@ -76,20 +76,20 @@ void Won::WBlockScript::OnColliderEnter(WCollider* Other)
 	WTransform* FloorTr = GetOwner()->GetComponent<WTransform>();
 
 	WCollider* FloorCollider = GetOwner()->GetComponent<WCollider>();
-	sVector2<float> PlayerPos = PlayerTr->GetPosition();
-	sVector2<float> FloorPos = FloorTr->GetPosition();
+	Vector2 PlayerPos = PlayerTr->GetPosition();
+	Vector2 FloorPos = FloorTr->GetPosition();
 
-	float PlayerPosMaxY = PlayerPos.Y + Other->GetSize().Y;
-	float FloorPosMaxY = FloorPos.Y + FloorCollider->GetSize().Y;
-	float PlayerPosMaxX = PlayerPos.X + Other->GetSize().X;
-	float FloorPosMaxX = FloorPos.X + FloorCollider->GetSize().X;
-	float PlayerPosMinY = PlayerPos.Y;
-	float FloorPosMinY = FloorPos.Y;
-	float PlayerPosMinX = PlayerPos.X;
-	float FloorPosMinX = FloorPos.X;
+	float PlayerPosMaxY = PlayerPos.y + Other->GetSize().y;
+	float FloorPosMaxY = FloorPos.y + FloorCollider->GetSize().y;
+	float PlayerPosMaxX = PlayerPos.x + Other->GetSize().x;
+	float FloorPosMaxX = FloorPos.x + FloorCollider->GetSize().x;
+	float PlayerPosMinY = PlayerPos.y;
+	float FloorPosMinY = FloorPos.y;
+	float PlayerPosMinX = PlayerPos.x;
+	float FloorPosMinX = FloorPos.x;
 
-	float PlayerVelocityX = PlayerRB->GetVelocity().X;
-	float PlayerVelocityY = PlayerRB->GetVelocity().Y;
+	float PlayerVelocityX = PlayerRB->GetVelocity().x;
+	float PlayerVelocityY = PlayerRB->GetVelocity().y;
 
 	float overlapX = min(PlayerPosMaxX, FloorPosMaxX) - max(PlayerPosMinX, FloorPosMinX);
 	float overlapY = min(PlayerPosMaxY, FloorPosMaxY) - max(PlayerPosMinY, FloorPosMinY);
@@ -99,11 +99,11 @@ void Won::WBlockScript::OnColliderEnter(WCollider* Other)
 
 		if (PlayerVelocityX > 0)
 		{
-			PlayerPos.X = FloorPosMinX - (PlayerPosMaxX - PlayerPosMinX);
+			PlayerPos.x = FloorPosMinX - (PlayerPosMaxX - PlayerPosMinX);
 		}
 		else if (PlayerVelocityX < 0)
 		{
-			PlayerPos.X = FloorPosMaxX;
+			PlayerPos.x = FloorPosMaxX;
 		}
 
 		PlayerVelocityX = 0;
@@ -113,11 +113,11 @@ void Won::WBlockScript::OnColliderEnter(WCollider* Other)
 		if (PlayerVelocityY > 0)
 		{
 			PlayerRB->SetIsGround(true);
-			PlayerPos.Y = FloorPosMinY - (PlayerPosMaxY - PlayerPosMinY);
+			PlayerPos.y = FloorPosMinY - (PlayerPosMaxY - PlayerPosMinY);
 		}
 		else if (PlayerVelocityY < 0)
 		{
-			PlayerPos.Y = FloorPosMaxY;
+			PlayerPos.y = FloorPosMaxY;
 
 			if (PlayerScript->GetPlayerSize() == WPlayerScript::ePlayerSize::Small)
 			{
@@ -133,7 +133,7 @@ void Won::WBlockScript::OnColliderEnter(WCollider* Other)
 	}
 
 	PlayerTr->SetPos(PlayerPos);
-	PlayerRB->SetVelocity(sVector2<float>(PlayerVelocityX, PlayerVelocityY));
+	PlayerRB->SetVelocity(Vector2(PlayerVelocityX, PlayerVelocityY));
 }
 
 void Won::WBlockScript::OnColliderStay(WCollider* Other)
@@ -149,7 +149,7 @@ void Won::WBlockScript::OnColliderExit(WCollider* Other)
 	if (PlayerTr == nullptr || PlayerRB == nullptr)
 		return;
 
-	if (PlayerTr->GetPosition().Y < FloorTr->GetPosition().Y)
+	if (PlayerTr->GetPosition().y < FloorTr->GetPosition().y)
 	{
 		PlayerRB->SetIsGround(false);
 	}

@@ -10,7 +10,7 @@
 #include "WRender.h"
 #include "WonApplication.h"
 
-Won::sVector2<int> Won::ToolScene::sStartPosition = Won::sVector2<int>(-1,-1);
+Won::Vector2 Won::ToolScene::sStartPosition = Won::Vector2(-1,-1);
 extern Won::WonApplication Engine;
 
 Won::ToolScene::ToolScene()
@@ -42,33 +42,33 @@ void Won::ToolScene::Update()
 
 	if (WInput::GetKey(KeyType::LBUTTON))
 	{
-		sVector2<float> MousePos = WInput::GetMousePosition();
+		Vector2 MousePos = WInput::GetMousePosition();
 
-		if (MousePos.X == -1 && MousePos.Y == -1 || sStartPosition.X == -1 || sStartPosition.Y == -1)
+		if (MousePos.x == -1 && MousePos.y == -1 || sStartPosition.x == -1 || sStartPosition.y == -1)
 			return;
 
 		MousePos = MainCamera->CaluateTilePosition(MousePos);
 
-		if (MousePos.X >= 0.0f && MousePos.Y >= 0.0f)
+		if (MousePos.x >= 0.0f && MousePos.y >= 0.0f)
 		{
 
 			TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
 
 			WTransform* ObjectTransform = Object->GetComponent<WTransform>();
-			ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+			ObjectTransform->SetScale(Vector2(3.0f, 3.0f));
 
 			WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
 			TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Te"));
 
-			sVector2<float> Size = TileRender->GetSize();
-			sVector2<float> Scale = ObjectTransform->GetScale();
-			sVector2<int> Index;
-			sVector2<float> Position;
-			Index.X = static_cast<int>(MousePos.X / (Size.X * Scale.X));
-			Index.Y = static_cast<int>(MousePos.Y / (Size.Y * Scale.Y));
+			Vector2 Size = TileRender->GetSize();
+			Vector2 Scale = ObjectTransform->GetScale();
+			Vector2 Index;
+			Vector2 Position;
+			Index.x = static_cast<int>(MousePos.x / (Size.x * Scale.x));
+			Index.y = static_cast<int>(MousePos.y / (Size.y * Scale.y));
 
-			Position.X = Index.X * (Size.X * Scale.X);
-			Position.Y = Index.Y * (Size.Y * Scale.Y);
+			Position.x = Index.x * (Size.x * Scale.x);
+			Position.y = Index.y * (Size.y * Scale.y);
 
 			ObjectTransform->SetPos(Position);
 			TileRender->SetSheetIndex(sStartPosition);
@@ -96,17 +96,17 @@ void Won::ToolScene::Render(HDC NewDC)
 
 	for (int i = 0; i < 50; ++i)
 	{
-		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(static_cast<float>((16 * 3 * i)), 0));
+		Vector2 Pos = MainCamera->CaluatePostion(Vector2(static_cast<float>((16 * 3 * i)), 0));
 
-		MoveToEx(NewDC, static_cast<int>(Pos.X), 0, NULL);
-		LineTo(NewDC, static_cast<int>(Pos.X), 1000);
+		MoveToEx(NewDC, static_cast<int>(Pos.x), 0, NULL);
+		LineTo(NewDC, static_cast<int>(Pos.x), 1000);
 	}
 	for (int i = 0; i < 50; ++i)
 	{
-		sVector2<float> Pos = MainCamera->CaluatePostion(sVector2<float>(0, (static_cast<float>(16 * 3 * i))));
+		Vector2 Pos = MainCamera->CaluatePostion(Vector2(0, (static_cast<float>(16 * 3 * i))));
 
-		MoveToEx(NewDC, 0, static_cast<int>(Pos.Y), NULL);
-		LineTo(NewDC, 1000, static_cast<int>(Pos.Y));
+		MoveToEx(NewDC, 0, static_cast<int>(Pos.y), NULL);
+		LineTo(NewDC, 1000, static_cast<int>(Pos.y));
 	}
 }
 
@@ -146,8 +146,8 @@ void Won::ToolScene::Load()
 	if (Pfile == nullptr)
 		return;
 
-	sVector2<int> SheetIndex;
-	sVector2<int> TileIndex;
+	Vector2 SheetIndex;
+	Vector2 TileIndex;
 
 	while (!feof(Pfile))
 	{
@@ -157,10 +157,10 @@ void Won::ToolScene::Load()
 
 		TileObject* Object = InstanceSpawn<TileObject>(eLayerType::Tilemap);
 		WTransform* ObjectTransform = Object->GetComponent<WTransform>();
-		ObjectTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+		ObjectTransform->SetScale(Vector2(3.0f, 3.0f));
 		WTileRenderer* TileRender = Object->AddComponent<WTileRenderer>();
 		TileRender->SetTexture(WResourceManager::Find<WTexture>(L"Te"));
-		ObjectTransform->SetPos(sVector2<float>((TileIndex.X * TileRender->GetSize().X), (TileIndex.Y * TileRender->GetSize().Y)));
+		ObjectTransform->SetPos(Vector2((TileIndex.x * TileRender->GetSize().x), (TileIndex.y * TileRender->GetSize().y)));
 		TileRender->SetSheetIndex(SheetIndex);
 
 	}
@@ -199,8 +199,8 @@ void Won::ToolScene::Save()
 
 	WLayer* TileLayers = WScene::GetLayer(eLayerType::Tilemap);
 
-	sVector2<int> SheetIndex;
-	sVector2<int> TileIndex;
+	Vector2 SheetIndex;
+	Vector2 TileIndex;
 
 	for(WGameObject* GB : TileLayers->GetGameObject())
 	{
@@ -209,10 +209,10 @@ void Won::ToolScene::Save()
 		
 		WTileRenderer* TileRender = GB->GetComponent<WTileRenderer>();
 		WTransform* ObjectTransform = GB->GetComponent<WTransform>();
-		TileIndex.X = static_cast<int>(ObjectTransform->GetPosition().X / TileRender->GetSize().X);
-		TileIndex.Y = static_cast<int>(ObjectTransform->GetPosition().Y / TileRender->GetSize().Y);
-		SheetIndex.X = TileRender->GetSheetIndex().X;
-		SheetIndex.Y = TileRender->GetSheetIndex().Y;
+		TileIndex.x = static_cast<int>(ObjectTransform->GetPosition().x / TileRender->GetSize().x);
+		TileIndex.y = static_cast<int>(ObjectTransform->GetPosition().y / TileRender->GetSize().y);
+		SheetIndex.x = TileRender->GetSheetIndex().x;
+		SheetIndex.y = TileRender->GetSheetIndex().y;
 
 		fwrite(&SheetIndex, sizeof(SheetIndex), 1, Pfile);
 		fwrite(&TileIndex, sizeof(TileIndex), 1, Pfile);
@@ -224,9 +224,9 @@ void Won::ToolScene::Save()
 
 LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	Won::sVector2<int> mStartPosition = Won::sVector2<int>(0, 0);
-	Won::sVector2<int> SheetIndex = Won::sVector2<int>(0, 0);
-	Won::sVector2 <float> MousePos = Won::sVector2<float>(0, 0);
+	Won::Vector2 mStartPosition = Won::Vector2(0, 0);
+	Won::Vector2 SheetIndex = Won::Vector2(0, 0);
+	Won::Vector2 MousePos = Won::Vector2(0, 0);
 	POINT Cursorpos = {};
 
     switch (message)
@@ -295,11 +295,11 @@ LRESULT CALLBACK WndProcToo(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 		GetCursorPos(&Cursorpos);
 		ScreenToClient(hWnd, &Cursorpos);
 
-		MousePos.X = static_cast<float>(Cursorpos.x);
-		MousePos.Y = static_cast<float>(Cursorpos.y);
+		MousePos.x = static_cast<float>(Cursorpos.x);
+		MousePos.y = static_cast<float>(Cursorpos.y);
 
-		mStartPosition.X = static_cast<int>(MousePos.X / 16);
-		mStartPosition.Y = static_cast<int>(MousePos.Y / 16);
+		mStartPosition.x = static_cast<int>(MousePos.x / 16);
+		mStartPosition.y = static_cast<int>(MousePos.y / 16);
 
 		Won::ToolScene::sStartPosition = mStartPosition;
 		break;

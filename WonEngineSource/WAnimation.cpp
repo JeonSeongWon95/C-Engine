@@ -43,8 +43,8 @@ HRESULT Won::WAnimation::Load(const std::wstring& NewPath)
 	return E_NOTIMPL;
 }
 
-void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewText, sVector2<float> StartPosition,
-	sVector2<float> SpriteSize, sVector2<float> offset, UINT AnimationSize, float Duration, bool bIsReverse)
+void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewText, Vector2 StartPosition,
+	Vector2 SpriteSize, Vector2 offset, UINT AnimationSize, float Duration, bool bIsReverse)
 {
 	MainTexture = NewText;
 	SetName(Name);
@@ -54,8 +54,8 @@ void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewTex
 		for (int i = 0; i < (int)AnimationSize; ++i)
 		{
 			Sprite* SP = new Sprite();
-			SP->sStartPostion.X = StartPosition.X + (SpriteSize.X * i);
-			SP->sStartPostion.Y = StartPosition.Y;
+			SP->sStartPostion.x = StartPosition.x + (SpriteSize.x * i);
+			SP->sStartPostion.y = StartPosition.y;
 			SP->sSize = SpriteSize;
 			SP->Duration = Duration;
 			SP->Offset = offset;
@@ -68,8 +68,8 @@ void Won::WAnimation::CreateAnimation(const std::wstring& Name, WTexture* NewTex
 		for (int i = 1; i < (int)AnimationSize + 1; ++i)
 		{
 			Sprite* SP = new Sprite();
-			SP->sStartPostion.X = StartPosition.X - (SpriteSize.X * i);
-			SP->sStartPostion.Y = StartPosition.Y;
+			SP->sStartPostion.x = StartPosition.x - (SpriteSize.x * i);
+			SP->sStartPostion.y = StartPosition.y;
 			SP->sSize = SpriteSize;
 			SP->Duration = Duration;
 			SP->Offset = offset;
@@ -115,8 +115,8 @@ void Won::WAnimation::Render(HDC NewDC)
 
 	WGameObject* GO = Animator->GetOwner();
 	WTransform* Tr = GO->GetComponent<WTransform>();
-	sVector2<float> Pos = Tr->GetPosition();
-	sVector2<float> Sca = Tr->GetScale();
+	Vector2 Pos = Tr->GetPosition();
+	Vector2 Sca = Tr->GetScale();
 	float Rot = Tr->GetRotation();
 	Sprite* CurrentSprite = Sprites[mIndex];
 	HDC ImageDC = MainTexture->GetHDC();
@@ -141,29 +141,29 @@ void Won::WAnimation::Render(HDC NewDC)
 
 
 			AlphaBlend(NewDC
-				, static_cast<int>(Pos.X)
-				, static_cast<int>(Pos.Y)
-				, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
-				, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
+				, static_cast<int>(Pos.x)
+				, static_cast<int>(Pos.y)
+				, static_cast<int>(CurrentSprite->sSize.x * Sca.x)
+				, static_cast<int>(CurrentSprite->sSize.y * Sca.y)
 				, ImageDC
-				, static_cast<int>(CurrentSprite->sStartPostion.X)
-				, static_cast<int>(CurrentSprite->sStartPostion.Y)
-				, static_cast<int>(CurrentSprite->sSize.X)
-				, static_cast<int>(CurrentSprite->sSize.Y), func);
+				, static_cast<int>(CurrentSprite->sStartPostion.x)
+				, static_cast<int>(CurrentSprite->sStartPostion.y)
+				, static_cast<int>(CurrentSprite->sSize.x)
+				, static_cast<int>(CurrentSprite->sSize.y), func);
 		}
 		else
 		{
 
 			TransparentBlt(NewDC
-				, static_cast<int>(Pos.X)
-				, static_cast<int>(Pos.Y)
-				, static_cast<int>(CurrentSprite->sSize.X * Sca.X)
-				, static_cast<int>(CurrentSprite->sSize.Y * Sca.Y)
+				, static_cast<int>(Pos.x)
+				, static_cast<int>(Pos.y)
+				, static_cast<int>(CurrentSprite->sSize.x * Sca.x)
+				, static_cast<int>(CurrentSprite->sSize.y * Sca.y)
 				, ImageDC
-				, static_cast<int>(CurrentSprite->sStartPostion.X)
-				, static_cast<int>(CurrentSprite->sStartPostion.Y)
-				, static_cast<int>(CurrentSprite->sSize.X)
-				, static_cast<int>(CurrentSprite->sSize.Y)
+				, static_cast<int>(CurrentSprite->sStartPostion.x)
+				, static_cast<int>(CurrentSprite->sStartPostion.y)
+				, static_cast<int>(CurrentSprite->sSize.x)
+				, static_cast<int>(CurrentSprite->sSize.y)
 				, RGB(255, 0, 255));
 		}
 
@@ -173,33 +173,33 @@ void Won::WAnimation::Render(HDC NewDC)
 		Gdiplus::Graphics graphics(NewDC);
 		Gdiplus::ImageAttributes imgAttr;
 		
-		graphics.TranslateTransform(Pos.X, Pos.Y);
+		graphics.TranslateTransform(Pos.x, Pos.y);
 		graphics.RotateTransform(Rot);
-		graphics.TranslateTransform(-Pos.X, -Pos.Y);
+		graphics.TranslateTransform(-Pos.x, -Pos.y);
 		
 
-		if(ColorKey.X == -1 && ColorKey.Y == -1 && ColorKey.Z == -1)
+		if(ColorKey.x == -1 && ColorKey.y == -1 && ColorKey.z == -1)
 		{
 			imgAttr.SetColorKey(Gdiplus::Color(255, 0, 255), Gdiplus::Color(255, 0, 255));
 		}
 		else
 		{
-			imgAttr.SetColorKey(Gdiplus::Color(ColorKey.X, ColorKey.Y, ColorKey.Z), 
-				Gdiplus::Color(ColorKey.X, ColorKey.Y, ColorKey.Z));
+			imgAttr.SetColorKey(Gdiplus::Color(ColorKey.x, ColorKey.y, ColorKey.z), 
+				Gdiplus::Color(ColorKey.x, ColorKey.y, ColorKey.z));
 		}
 		
 		graphics.DrawImage(MainTexture->GetImage()
 			, Gdiplus::Rect
 			( 
-				  static_cast<INT>((Pos.X) - (CurrentSprite->sSize.X / 2.f + CurrentSprite->Offset.X))
-				, static_cast<INT>((Pos.Y) - (CurrentSprite->sSize.Y / 2.f + CurrentSprite->Offset.Y))
-				, static_cast<INT>((CurrentSprite->sSize.X) * Sca.X)
-				, static_cast<INT>((CurrentSprite->sSize.Y) * Sca.Y)
+				  static_cast<INT>((Pos.x) - (CurrentSprite->sSize.x / 2.f + CurrentSprite->Offset.x))
+				, static_cast<INT>((Pos.y) - (CurrentSprite->sSize.y / 2.f + CurrentSprite->Offset.y))
+				, static_cast<INT>((CurrentSprite->sSize.x) * Sca.x)
+				, static_cast<INT>((CurrentSprite->sSize.y) * Sca.y)
 			)
-			, static_cast<INT>(CurrentSprite->sStartPostion.X)
-			, static_cast<INT>(CurrentSprite->sStartPostion.Y)
-			, static_cast<INT>(CurrentSprite->sSize.X)
-			, static_cast<INT>(CurrentSprite->sSize.Y)
+			, static_cast<INT>(CurrentSprite->sStartPostion.x)
+			, static_cast<INT>(CurrentSprite->sStartPostion.y)
+			, static_cast<INT>(CurrentSprite->sSize.x)
+			, static_cast<INT>(CurrentSprite->sSize.y)
 			, Gdiplus::UnitPixel
 			, &imgAttr);
 

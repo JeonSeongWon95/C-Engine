@@ -59,20 +59,20 @@ void Won::WEndScript::OnColliderEnter(WCollider* Other)
 	WTransform* FloorTr = GetOwner()->GetComponent<WTransform>();
 
 	WCollider* FloorCollider = GetOwner()->GetComponent<WCollider>();
-	sVector2<float> PlayerPos = PlayerTr->GetPosition();
-	sVector2<float> FloorPos = FloorTr->GetPosition();
+	Vector2 PlayerPos = PlayerTr->GetPosition();
+	Vector2 FloorPos = FloorTr->GetPosition();
 
-	float PlayerPosMaxY = PlayerPos.Y + Other->GetSize().Y;
-	float FloorPosMaxY = FloorPos.Y + FloorCollider->GetSize().Y;
-	float PlayerPosMaxX = PlayerPos.X + Other->GetSize().X;
-	float FloorPosMaxX = FloorPos.X + FloorCollider->GetSize().X;
-	float PlayerPosMinY = PlayerPos.Y;
-	float FloorPosMinY = FloorPos.Y;
-	float PlayerPosMinX = PlayerPos.X;
-	float FloorPosMinX = FloorPos.X;
+	float PlayerPosMaxY = PlayerPos.y + Other->GetSize().y;
+	float FloorPosMaxY = FloorPos.y + FloorCollider->GetSize().y;
+	float PlayerPosMaxX = PlayerPos.x + Other->GetSize().x;
+	float FloorPosMaxX = FloorPos.x + FloorCollider->GetSize().x;
+	float PlayerPosMinY = PlayerPos.y;
+	float FloorPosMinY = FloorPos.y;
+	float PlayerPosMinX = PlayerPos.x;
+	float FloorPosMinX = FloorPos.x;
 
-	float PlayerVelocityX = PlayerRB->GetVelocity().X;
-	float PlayerVelocityY = PlayerRB->GetVelocity().Y;
+	float PlayerVelocityX = PlayerRB->GetVelocity().x;
+	float PlayerVelocityY = PlayerRB->GetVelocity().y;
 
 	float overlapX = min(PlayerPosMaxX, FloorPosMaxX) - max(PlayerPosMinX, FloorPosMinX);
 	float overlapY = min(PlayerPosMaxY, FloorPosMaxY) - max(PlayerPosMinY, FloorPosMinY);
@@ -82,18 +82,18 @@ void Won::WEndScript::OnColliderEnter(WCollider* Other)
 
 		if (PlayerVelocityX > 0)
 		{
-			PlayerPos.X = FloorPosMinX - (PlayerPosMaxX - PlayerPosMinX);
+			PlayerPos.x = FloorPosMinX - (PlayerPosMaxX - PlayerPosMinX);
 		}
 		else if (PlayerVelocityX < 0)
 		{
-			PlayerPos.X = FloorPosMaxX;
+			PlayerPos.x = FloorPosMaxX;
 		}
 
 		PlayerVelocityX = 0;
 	}
 
 	PlayerTr->SetPos(PlayerPos);
-	PlayerRB->SetVelocity(sVector2<float>(PlayerVelocityX, PlayerVelocityY));
+	PlayerRB->SetVelocity(Vector2(PlayerVelocityX, PlayerVelocityY));
 	IsEnd = true;
 	Other->GetOwner()->SetActive(false);
 }

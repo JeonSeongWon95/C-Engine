@@ -21,9 +21,9 @@ namespace Won
         void IsActive();
         void SetActive(bool NewBool) { mEnable = NewBool; }
         void SetIsFullScreen(bool NewBool) { mIsFullScreen = NewBool; }
-        void SetSize(sVector2<float> NewSize) { mSize = NewSize; }
+        void SetSize(Vector2 NewSize) { mSize = NewSize; }
         void SetUIType(eUIType type) { mType = type; }
-        void SetPosition(sVector2<float> NewPosition) { mPosition = NewPosition; }
+        void SetPosition(Vector2 NewPosition) { mPosition = NewPosition; }
         eUIType GetUIType() { return mType; }
 
         virtual void OnActive();
@@ -35,8 +35,8 @@ namespace Won
         virtual void Onclear();
 
     protected:
-        sVector2<float> mPosition;
-        sVector2<float> mSize;
+        Vector2 mPosition;
+        Vector2 mSize;
 
     private:
         bool mIsFullScreen;

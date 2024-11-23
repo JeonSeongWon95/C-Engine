@@ -44,33 +44,33 @@ void Won::WHUD::OnInit()
 	for (int i = 0; i < 10; ++i)
 	{
 		Number* NewNumber = new Number();
-		NewNumber->mSize.X = 8;
-		NewNumber->mSize.Y = 8;
-		NewNumber->mSheetStartPosition.X = 518 + (i * NewNumber->mSize.X) + offset;
-		NewNumber->mSheetStartPosition.Y = 256;
+		NewNumber->mSize.x = 8;
+		NewNumber->mSize.y = 8;
+		NewNumber->mSheetStartPosition.x = 518 + (i * NewNumber->mSize.x) + offset;
+		NewNumber->mSheetStartPosition.y = 256;
 
 		offset += 1.5;
 		mNumbers.push_back(NewNumber);
 	}
 
 	WScore* Score = new WScore();
-	Score->SetSize(sVector2<float>(20, 20));
-	Score->SetPosition(sVector2<float>(100, 50));
+	Score->SetSize(Vector2(20, 20));
+	Score->SetPosition(Vector2(100, 50));
 	mChildUI.push_back(Score);
 
 	WTimer* Time = new WTimer();
-	Time->SetSize(sVector2<float>(20, 20));
-	Time->SetPosition(sVector2<float>(610, 50));
+	Time->SetSize(Vector2(20, 20));
+	Time->SetPosition(Vector2(610, 50));
 	mChildUI.push_back(Time);
 
 	WCount* Count = new WCount();
-	Count->SetSize(sVector2<float>(20, 20));
-	Count->SetPosition(sVector2<float>(310, 50));
+	Count->SetSize(Vector2(20, 20));
+	Count->SetPosition(Vector2(310, 50));
 	mChildUI.push_back(Count);
 
 	WRound* Round = new WRound();
-	Round->SetSize(sVector2<float>(20, 20));
-	Round->SetPosition(sVector2<float>(460, 50));
+	Round->SetSize(Vector2(20, 20));
+	Round->SetPosition(Vector2(460, 50));
 	mChildUI.push_back(Round);
 
 }
@@ -93,7 +93,7 @@ void Won::WHUD::OnLateUpdate()
 
 void Won::WHUD::OnRender(HDC NewDC)
 {
-	sVector2<float> Pos = { 0,0 };
+	Vector2 Pos = { 0,0 };
 
 	if (MainCamera != nullptr)
 	{
@@ -101,8 +101,8 @@ void Won::WHUD::OnRender(HDC NewDC)
 	}
 
 	TransparentBlt(NewDC
-		, Pos.X
-		, Pos.Y
+		, Pos.x
+		, Pos.y
 		, mNumberTexture->GetWidth()
 		, mNumberTexture->GetHeight() * 1.5
 		, mNumberTexture->GetHDC()

@@ -64,8 +64,8 @@ void Won::WEnemyScript::OnColliderEnter(WCollider* Other)
 		WTransform* PlayerTr = Other->GetOwner()->GetComponent<WTransform>();
 		WTransform* MyTr = this->GetOwner()->GetComponent<WTransform>();
 		
-		float PlayerFoot = PlayerTr->GetPosition().Y + Other->GetSize().Y;
-		float MyHeight = MyTr->GetPosition().Y + 10;
+		float PlayerFoot = PlayerTr->GetPosition().y + Other->GetSize().y;
+		float MyHeight = MyTr->GetPosition().y + 10;
 
 		if (PlayerFoot <= MyHeight)
 		{
@@ -122,16 +122,16 @@ void Won::WEnemyScript::Idle()
 void Won::WEnemyScript::Walk()
 {
 	WTransform* tr = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> pos = tr->GetPosition();
+	Vector2 pos = tr->GetPosition();
 	mTimer += WTime::GetDeltaSeconds();
 
 	if (Direction == eDirection::LEFT)
 	{
-		pos.X -= 100.f * WTime::GetDeltaSeconds();
+		pos.x -= 100.f * WTime::GetDeltaSeconds();
 	}
 	else if (Direction == eDirection::RIGHT)
 	{
-		pos.X += 100.f * WTime::GetDeltaSeconds();
+		pos.x += 100.f * WTime::GetDeltaSeconds();
 	}
 
 	tr->SetPos(pos);

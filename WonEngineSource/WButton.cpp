@@ -25,10 +25,10 @@ void Won::WButton::OnInit()
 
 void Won::WButton::OnUpdate()
 {
-	sVector2<float> MousePos = WInput::GetMousePosition();
+	Vector2 MousePos = WInput::GetMousePosition();
 
-	if(mPosition.X < MousePos.X && mPosition.X + mSize.X > MousePos.X 
-		&& mPosition.Y < MousePos.Y && mPosition.Y + mSize.Y > MousePos.Y)
+	if(mPosition.x < MousePos.x && mPosition.x + mSize.x > MousePos.x 
+		&& mPosition.y < MousePos.y && mPosition.y + mSize.y > MousePos.y)
 	{
 		mIsOverlap = true;
 	}
@@ -56,14 +56,14 @@ void Won::WButton::OnRender(HDC NewDC)
 	{
 		HBRUSH GreenBrush = CreateSolidBrush(RGB(0, 255, 0));
 		HBRUSH OldBrush = (HBRUSH)SelectObject(NewDC, GreenBrush);
-		Rectangle(NewDC, mPosition.X, mPosition.Y, mPosition.X + mSize.X, mPosition.Y + mSize.Y);
+		::Rectangle(NewDC, mPosition.x, mPosition.y, mPosition.x + mSize.x, mPosition.y + mSize.y);
 
 		SelectObject(NewDC, OldBrush);
 		DeleteObject(GreenBrush);
 	}
 	else
 	{
-		Rectangle(NewDC, mPosition.X, mPosition.Y, mPosition.X + mSize.X, mPosition.Y + mSize.Y);
+		::Rectangle(NewDC, mPosition.x, mPosition.y, mPosition.x + mSize.x, mPosition.y + mSize.y);
 	}
 
 }

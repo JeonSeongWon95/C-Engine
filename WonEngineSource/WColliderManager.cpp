@@ -146,18 +146,18 @@ bool Won::WColliderManager::Intersect(WCollider* Left, WCollider* Right)
 	WTransform* LeftTransform = Left->GetOwner()->GetComponent<WTransform>();
 	WTransform* RightTransform = Right->GetOwner()->GetComponent<WTransform>();
 
-	sVector2<float> LeftPos = LeftTransform->GetPosition();
-	sVector2<float> RightPos = RightTransform->GetPosition();
+	Vector2 LeftPos = LeftTransform->GetPosition();
+	Vector2 RightPos = RightTransform->GetPosition();
 
-	sVector2<float> LeftSize = Left->GetSize();
-	sVector2<float> RightSize = Right->GetSize();
+	Vector2 LeftSize = Left->GetSize();
+	Vector2 RightSize = Right->GetSize();
 
 	
 	if (Left->GetColliderType() == WCollider::eColliderType::Box && Right->GetColliderType() == WCollider::eColliderType::Box)
 	{
 
-		if ((LeftSize.X/2 + RightSize.X/2) >= fabs((LeftPos.X + (LeftSize.X/2)) - (RightPos.X + (RightSize.X/2))) 
-			&& (LeftSize.Y / 2 + RightSize.Y / 2) >= fabs((LeftPos.Y + (LeftSize.Y/2)) - (RightPos.Y + (RightSize.Y/2))))
+		if ((LeftSize.x/2 + RightSize.x/2) >= fabs((LeftPos.x + (LeftSize.x/2)) - (RightPos.x + (RightSize.x/2))) 
+			&& (LeftSize.y / 2 + RightSize.y / 2) >= fabs((LeftPos.y + (LeftSize.y/2)) - (RightPos.y + (RightSize.y/2))))
 		{
 			return true;
 		}
@@ -165,7 +165,7 @@ bool Won::WColliderManager::Intersect(WCollider* Left, WCollider* Right)
 	else if(Left->GetColliderType() == WCollider::eColliderType::Sphere && Right->GetColliderType() == WCollider::eColliderType::Sphere)
 	{
 
-		if(fabs(LeftSize.X / 2 + RightSize.X/ 2) >= fabs(((LeftPos - (LeftSize / 2)) - (RightPos - (RightSize / 2))).Lenth()))
+		if(fabs(LeftSize.x / 2 + RightSize.x/ 2) >= fabs(((LeftPos - (LeftSize / 2)) - (RightPos - (RightSize / 2))).Length()))
 		{
 			return true;
 		}

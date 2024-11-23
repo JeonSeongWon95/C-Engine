@@ -19,7 +19,7 @@ Won::WCoinScript::~WCoinScript()
 
 void Won::WCoinScript::Initialize()
 {
-	mUpLocation = GetOwner()->GetComponent<WTransform>()->GetPosition().Y - 50.0f;
+	mUpLocation = GetOwner()->GetComponent<WTransform>()->GetPosition().y - 50.0f;
 }
 
 void Won::WCoinScript::Update()
@@ -27,11 +27,11 @@ void Won::WCoinScript::Update()
 	if(mIsEat)
 	{
 		WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-		sVector2<float> Pos = Transform->GetPosition();
+		Vector2 Pos = Transform->GetPosition();
 
-		if(Pos.Y >= mUpLocation - 30.0f)
+		if(Pos.y >= mUpLocation - 30.0f)
 		{
-			Pos.Y -= (100.0f * WTime::GetDeltaSeconds());
+			Pos.y -= (100.0f * WTime::GetDeltaSeconds());
 			Transform->SetPos(Pos);
 		}
 		else

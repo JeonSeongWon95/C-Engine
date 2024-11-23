@@ -16,13 +16,13 @@ Won::Coin::~Coin()
 void Won::Coin::Initialize()
 {
 	WBoxCollider2D* CoinCollider = AddComponent<WBoxCollider2D>();
-	CoinCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	CoinCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WCoinScript* CoinScript = AddComponent<WCoinScript>();
 
 	WTexture* CoinTexture = WResourceManager::Find<WTexture>(L"Te");
 	WAnimator* CoinAnimator = AddComponent<WAnimator>();
-	CoinAnimator->CreateAnimation(L"Idle", CoinTexture, sVector2<float>(384, 16), sVector2<float>(16, 16), sVector2<float>(0, 0), 1, 0.1f);
+	CoinAnimator->CreateAnimation(L"Idle", CoinTexture, Vector2(384, 16), Vector2(16, 16), Vector2(0, 0), 1, 0.1f);
 	CoinAnimator->PlayAnimation(L"Idle", false);
 
 	WGameObject::Initialize();

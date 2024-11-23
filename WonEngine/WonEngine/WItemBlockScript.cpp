@@ -43,9 +43,9 @@ void Won::WItemBlockScript::Initialize()
 	}
 
 	WTransform* Transform = GetOwner()->GetComponent<WTransform>();
-	sVector2<float> Pos = Transform->GetPosition();
+	Vector2 Pos = Transform->GetPosition();
 
-	mStartposition = Pos.Y;
+	mStartposition = Pos.y;
 }
 
 void Won::WItemBlockScript::Update()
@@ -80,24 +80,24 @@ void Won::WItemBlockScript::OnColliderEnter(WCollider* Other)
 
 	WTransform* BlockTransform = GetOwner()->GetComponent<WTransform>();
 	WCollider* BlockCollider = GetOwner()->GetComponent<WCollider>();
-	sVector2<float> PlayerPos = PlayerTr->GetPosition();
-	sVector2<float> BlockPos = BlockTransform->GetPosition();
+	Vector2 PlayerPos = PlayerTr->GetPosition();
+	Vector2 BlockPos = BlockTransform->GetPosition();
 
 	if (PlayerScript == nullptr)
 		return;
 
 
-	float PlayerPosMaxY = PlayerPos.Y + Other->GetSize().Y;
-	float BlockPosMaxY = BlockPos.Y + BlockCollider->GetSize().Y;
-	float PlayerPosMaxX = PlayerPos.X + Other->GetSize().X;
-	float BlockPosMaxX = BlockPos.X + BlockCollider->GetSize().X;
-	float PlayerPosMinY = PlayerPos.Y;
-	float BlockPosMinY = BlockPos.Y;
-	float PlayerPosMinX = PlayerPos.X;
-	float BlockPosMinX = BlockPos.X;
+	float PlayerPosMaxY = PlayerPos.y + Other->GetSize().y;
+	float BlockPosMaxY = BlockPos.y + BlockCollider->GetSize().y;
+	float PlayerPosMaxX = PlayerPos.x + Other->GetSize().x;
+	float BlockPosMaxX = BlockPos.x + BlockCollider->GetSize().x;
+	float PlayerPosMinY = PlayerPos.y;
+	float BlockPosMinY = BlockPos.y;
+	float PlayerPosMinX = PlayerPos.x;
+	float BlockPosMinX = BlockPos.x;
 
-	float PlayerVelocityX = PlayerRB->GetVelocity().X;
-	float PlayerVelocityY = PlayerRB->GetVelocity().Y;
+	float PlayerVelocityX = PlayerRB->GetVelocity().x;
+	float PlayerVelocityY = PlayerRB->GetVelocity().y;
 
 	float overlapX = min(PlayerPosMaxX, BlockPosMaxX) - max(PlayerPosMinX, BlockPosMinX);
 	float overlapY = min(PlayerPosMaxY, BlockPosMaxY) - max(PlayerPosMinY, BlockPosMinY);
@@ -107,11 +107,11 @@ void Won::WItemBlockScript::OnColliderEnter(WCollider* Other)
 
 		if (PlayerVelocityX > 0)
 		{
-			PlayerPos.X = BlockPosMinX - (PlayerPosMaxX - PlayerPosMinX);
+			PlayerPos.x = BlockPosMinX - (PlayerPosMaxX - PlayerPosMinX);
 		}
 		else if (PlayerVelocityX < 0)
 		{
-			PlayerPos.X = BlockPosMaxX;
+			PlayerPos.x = BlockPosMaxX;
 		}
 
 		PlayerVelocityX = 0;
@@ -121,17 +121,17 @@ void Won::WItemBlockScript::OnColliderEnter(WCollider* Other)
 		if (PlayerVelocityY > 0)
 		{
 			PlayerRB->SetIsGround(true);
-			PlayerPos.Y = BlockPosMinY - (PlayerPosMaxY - PlayerPosMinY);
+			PlayerPos.y = BlockPosMinY - (PlayerPosMaxY - PlayerPosMinY);
 		}
 		else if (PlayerVelocityY < 0)
 		{
-			PlayerPos.Y = BlockPosMaxY;
+			PlayerPos.y = BlockPosMaxY;
 
 			if (!mNoItem)
 			{
 				WHUD::AddScore(100);
 				Mushroom* Mush = InstanceSpawn<Mushroom>(eLayerType::Character
-					, sVector2<float>(BlockPos.X, BlockPos.Y - 50.0f));
+					, Vector2(BlockPos.x, BlockPos.y - 50.0f));
 				mNoItem = true;
 			}
 			
@@ -141,7 +141,7 @@ void Won::WItemBlockScript::OnColliderEnter(WCollider* Other)
 	}
 
 	PlayerTr->SetPos(PlayerPos);
-	PlayerRB->SetVelocity(sVector2<float>(PlayerVelocityX, PlayerVelocityY));
+	PlayerRB->SetVelocity(Vector2(PlayerVelocityX, PlayerVelocityY));
 
 }
 
@@ -158,7 +158,7 @@ void Won::WItemBlockScript::OnColliderExit(WCollider* Other)
 	if (PlayerTr == nullptr || PlayerRB == nullptr)
 		return;
 
-	if (PlayerTr->GetPosition().Y < FloorTr->GetPosition().Y)
+	if (PlayerTr->GetPosition().y < FloorTr->GetPosition().y)
 	{
 		PlayerRB->SetIsGround(false);
 	}

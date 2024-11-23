@@ -32,6 +32,10 @@ namespace Won
 		abjustwindowRect(NewHWND, NewWidth, NewHeight);
 		createBuffer(NewWidth, NewHeight);
 		initializeEtc();
+
+		mGraphicDevice = std::make_unique<WGraphicDevice_DX11>();
+
+
 		WFmod::Initialize();
 		WColliderManager::Initialize();
 		WUIManager::Initialize();
@@ -88,7 +92,7 @@ namespace Won
 		HBRUSH GrayBrush = CreateSolidBrush(RGB(124, 134, 255));
 		HBRUSH OldBrush = (HBRUSH)SelectObject(shdc, GrayBrush);
 
-		Rectangle(shdc, -1, -1, Width + 1, Height + 1);
+		::Rectangle(shdc, -1, -1, Width + 1, Height + 1);
 		(HBRUSH)SelectObject(shdc, OldBrush);
 
 		DeleteObject(GrayBrush);

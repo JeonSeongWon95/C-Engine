@@ -60,7 +60,7 @@ void Won::WTimer::OnRender(HDC NewDC)
 	tensNum = WHUD::GetNumber(tens);
 	onesNum = WHUD::GetNumber(ones);
 
-	sVector2<float> StartPosition = mPosition;
+	Vector2 StartPosition = mPosition;
 
 	while(onesNum != nullptr)
 	{
@@ -76,18 +76,18 @@ void Won::WTimer::OnRender(HDC NewDC)
 		}
 
 		TransparentBlt(NewDC
-			, static_cast<int>(StartPosition.X + mOffset)
-			, static_cast<int>(StartPosition.Y)
-			, static_cast<int>(mSize.X)
-			, static_cast<int>(mSize.Y)
+			, static_cast<int>(StartPosition.x + mOffset)
+			, static_cast<int>(StartPosition.y)
+			, static_cast<int>(mSize.x)
+			, static_cast<int>(mSize.y)
 			, WHUD::GetTexture()->GetHDC()
-			, static_cast<int>(CurrentNum->mSheetStartPosition.X)
-			, static_cast<int>(CurrentNum->mSheetStartPosition.Y)
-			, static_cast<int>(CurrentNum->mSize.X)
-			, static_cast<int>(CurrentNum->mSize.Y)
+			, static_cast<int>(CurrentNum->mSheetStartPosition.x)
+			, static_cast<int>(CurrentNum->mSheetStartPosition.y)
+			, static_cast<int>(CurrentNum->mSize.x)
+			, static_cast<int>(CurrentNum->mSize.y)
 			, RGB(255,0,255));
 
-		StartPosition.X += mSize.X;
+		StartPosition.x += mSize.x;
 		mOffset += 5;
 
 		if (CurrentNum == hundredsNum)

@@ -22,15 +22,15 @@ void Won::Mushroom::Initialize()
 	WBoxCollider2D* MushCollider = AddComponent<WBoxCollider2D>();
 	WRigidbody* MushRigidbody = AddComponent<WRigidbody>();
 	WTransform* MushTransform = GetComponent<WTransform>();
-	MushCollider->SetSize(sVector2<float>(50.0f, 50.0f));
+	MushCollider->SetSize(Vector2(50.0f, 50.0f));
 
 	WTexture* MushTexture = WResourceManager::Find<WTexture>(L"It");
 	WAnimator* MushAnimator = AddComponent<WAnimator>();
 
-	MushAnimator->CreateAnimation(L"Idle", MushTexture, sVector2<float>(0, 159), sVector2<float>(18, 15), sVector2<float>(0, 0), 1, 0.1f);
+	MushAnimator->CreateAnimation(L"Idle", MushTexture, Vector2(0, 159), Vector2(18, 15), Vector2(0, 0), 1, 0.1f);
 	MushAnimator->PlayAnimation(L"Idle", false);
 
-	MushTransform->SetScale(sVector2<float>(3.0f, 3.0f));
+	MushTransform->SetScale(Vector2(3.0f, 3.0f));
 
 	mIsInit = true;
 
